@@ -1,8 +1,9 @@
 #import "@preview/cetz:0.2.2"
-#import "typ_modules/env_mod.typ": *
-#import "typ_modules/math_mod.typ"
-#import "typ_modules/cs_mod.typ"
-#import "typ_modules/quantum_mod.typ"
+#import "src/math_mod.typ"
+#import "src/cs_mod.typ"
+#import "src/quantum_mod.typ"
+
+#import "src/env_mod.typ": *
 
 // Quality of life
 #let integer = int // required for integral
