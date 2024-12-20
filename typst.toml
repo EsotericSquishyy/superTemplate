@@ -4,7 +4,7 @@ version = "0.1.0"
 compiler = "0.11.0"
 entrypoint = "lib.typ"
 
-authors = ["Jesse Cobb <@EsotericSquishyy>"]
+authors = ["Jesse Cobb <@EsotericSquishyy>, Nate Annau <@aneziac>"]
 repository = "https://github.com/EsotericSquishyy/superTemplate"
 description = "A suite of environments/macros for ease of taking notes or doing problem sets in Mathematics, Computer Science, and Physics"
 disciplines = ["mathematics", "computer-science", "physics"]
