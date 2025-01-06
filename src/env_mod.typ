@@ -11,6 +11,27 @@
   [_Proof_: ]; body; qed
 }
 
+//-----Bookmark-----//
+#let bookmark(
+  title,
+  info,
+  bgcolor:      white,
+  strokecolor:  red,
+) = {
+  block(
+    fill: rgb(bgcolor),
+    width: 100%,
+    inset: 8pt,
+    stroke: rgb(strokecolor),
+    breakable: false,
+    grid(
+      columns: (1fr, 1fr),
+      align(left)[#title],
+      align(right)[#info],
+    )
+  )
+}
+
 
 //-----Theorem Environments-----//
 #let thm_env(
@@ -144,7 +165,7 @@
     inset: 8pt,
     radius: 7pt,
     stroke: rgb(strokecolor),
-    breakable: false,
+    breakable: breakable,
     stack(
       name_content,
       pad(
