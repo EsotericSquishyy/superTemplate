@@ -2,6 +2,7 @@
 #import "src/math_mod.typ"
 #import "src/cs_mod.typ"
 #import "src/quantum_mod.typ"
+#import "src/pstat_mod.typ"
 
 #import "src/env_mod.typ": *
 

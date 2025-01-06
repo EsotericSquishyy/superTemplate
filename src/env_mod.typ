@@ -1,6 +1,4 @@
-#let example_counter = counter("example")
 #let problem_counter = counter("problem")
-#let exercise_counter = counter("exercise")
 
 #let correction(body) = {
   text(fill: rgb("#ea4120"), weight: "semibold", body)
@@ -204,7 +202,7 @@
   defn_env(
     name,
     statement,
-    type:         [Example #example_counter.step()#context { example_counter.display() }],
+    type:         [Example],
     breakable:    breakable,
     bgcolor:      "#fafffa",
     strokecolor:  "#1fc71f",
@@ -338,7 +336,7 @@
   breakable: false,
 ) = {
   prob_env(
-    [#exercise_counter.step() #context { exercise_counter.display() }],
+    [],
     statement,
     solution,
     type:         [Exercise],
@@ -452,9 +450,7 @@
     #v(1.2em)
   ]
 
-  example_counter.update(0)
   problem_counter.update(0)
-  exercise_counter.update(0)
   show link: l => underline(l) //  + $#emoji.chain$
 
   doc
