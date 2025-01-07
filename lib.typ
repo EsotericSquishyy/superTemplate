@@ -15,6 +15,7 @@
 #let oiint  = $integral.surf$
 #let oiiint = $integral.vol$
 #let bu(unit) = $bold(upright(unit))$
+#let vtr(unit) = $bold(upright(unit))$
 #let u(unit) = $upright(unit)$
 #let dt = $upright(d) t$
 #let dx = $upright(d) x$
@@ -57,12 +58,17 @@
 #let pm = $plus.minus$
 #let sim = $tilde.op$
 #let st = "such that"
+#let fs = "for some"
 #let iff = "if and only if"
 #let wlog = "without loss of generality"
 #let Wlog = "Without loss of generality"
+#let Sps = "Suppose"
+#let Spst = "Suppose that"
 #let cdots = $dots.h.c$
 #let comp = $compose$
 #let propto = $prop$
+#let varphi = $phi.alt$
+#let mapsto = $arrow.r.long.bar$
 
 // misc operators
 #let Id = $op("Id")$
@@ -76,4 +82,3 @@
 #let otimes = $times.circle$
 
 #show link: underline
-

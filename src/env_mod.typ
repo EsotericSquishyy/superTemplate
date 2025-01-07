@@ -4,7 +4,7 @@
   text(fill: rgb("#ea4120"), weight: "semibold", body)
 }
 
-#let qed = $square.big$
+#let qed = [#v(0.2em) #h(90%) $square.big$]
 #let proof(body) = {
   [_Proof_: ]; body; qed
 }
