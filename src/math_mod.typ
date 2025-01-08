@@ -4,7 +4,6 @@
 #let curl(x) = $grad times #x$
 #let lapl = $laplace$
 
-
 // Topology
 #let bound = $diff$
 #let clo(x) = $overline(#x)$
@@ -19,6 +18,8 @@
 #let inf = $limits(op("inf"))$
 #let limsup = $limits(op("limsup"))$
 #let liminf = $limits(op("liminf"))$
+#let contint1 = $integral_C f(z) d z$
+#let contint2 = $integral_gamma f(z) d z$
 
 // Linear Algebra
 #let proj = $op("proj")$
@@ -51,13 +52,7 @@
 #let SL = $op("SL")$
 #let iso = $tilde.equiv$
 #let notiso = $tilde.equiv.not$
+#let rcoset = $#h(0cm) \\ #h(0cm)$
 
 // number theory
 #let lcm = $op("lcm")$
-
-// stats
-#let Var = $op("Var")$
-#let Bin = $op("Bin")$
-#let Exp = $op("Exp")$
-#let Poisson = $op("Poisson")$
-#let Geom = $op("Geom")$
