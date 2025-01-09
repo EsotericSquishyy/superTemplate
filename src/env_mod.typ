@@ -220,14 +220,36 @@
   )
 }
 
-#let algor(statement, breakable: false) = {
+#let comp_prob(name, statement, breakable: false) = {
   defn_env(
-    [],
+    name,
+    statement,
+    type:         [Computational Problem],
+    breakable:    breakable,
+    bgcolor:      rgb("#e3f2f4"),
+    strokecolor:  rgb("#14a1f2"),
+  )
+}
+
+#let algor(name, statement, breakable: false) = {
+  defn_env(
+    name,
     statement,
     type:         [Algorithm],
     breakable:    breakable,
-    bgcolor:      rgb("#eee3f4"),
-    strokecolor:  rgb("#951fc7"),
+    bgcolor:      rgb("#e3e3f4"),
+    strokecolor:  rgb("#221fc7"),
+  )
+}
+
+#let runtime(statement, breakable: false) = {
+  defn_env(
+    [],
+    statement,
+    type:         [Runtime Analysis],
+    breakable:    breakable,
+    bgcolor:      rgb("#ebcceb"),
+    strokecolor:  rgb("#9e18a2"),
   )
 }
 
