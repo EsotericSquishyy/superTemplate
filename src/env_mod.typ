@@ -353,8 +353,6 @@
 //-----Templates-----//
 #let notes(title, author, doc) = {
   set document(title: title, author: author)
-  set enum(numbering: "i)")
-  set heading(numbering: "1.")
   set page(
     paper:"us-letter",
     // https://stackoverflow.com/a/78318321
