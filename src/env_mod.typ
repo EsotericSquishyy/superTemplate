@@ -193,8 +193,8 @@
     statement,
     type:         [Remark],
     breakable:    breakable,
-    bgcolor:      rgb("#eee3f4"),
-    strokecolor:  rgb("#951fc7"),
+    bgcolor:      rgb("#fcf0fc"),
+    strokecolor:  rgb("#e734ed"),
   )
 }
 
@@ -217,6 +217,17 @@
     breakable:    breakable,
     bgcolor:      rgb("#cceeff"),
     strokecolor:  rgb("#33adff"),
+  )
+}
+
+#let algor(statement, breakable: false) = {
+  defn_env(
+    [],
+    statement,
+    type:         [Algorithm],
+    breakable:    breakable,
+    bgcolor:      rgb("#eee3f4"),
+    strokecolor:  rgb("#951fc7"),
   )
 }
 
