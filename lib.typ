@@ -64,7 +64,8 @@
 #let Wlog = "Without loss of generality"
 #let Sps = "Suppose"
 #let Spst = "Suppose that"
-#let cdots = $dots.h.c$
+#let cdots = math.class("relation", $dot thin dot thin dot$)
+#let ldots = math.class("relation", $. thin . thin .$)
 #let comp = $compose$
 #let propto = $prop$
 #let varphi = $phi.alt$

@@ -17,10 +17,10 @@
   strokecolor:  red,
 ) = {
   block(
-    fill: rgb(bgcolor),
+    fill: bgcolor,
     width: 100%,
     inset: 8pt,
-    stroke: rgb(strokecolor),
+    stroke: strokecolor,
     breakable: false,
     grid(
       columns: (1fr, 1fr),
@@ -49,11 +49,11 @@
       bottom: 12pt,
       left: 12pt,
       block(
-        fill: rgb(bgcolor2),
+        fill: bgcolor2,
         inset: 8pt,
         radius: 2pt,
         stroke: (
-          left: rgb(strokecolor2) + 6pt
+          left: strokecolor2 + 6pt
         ),
         statement
       )
@@ -75,7 +75,7 @@
     width: 100%,
     inset: 8pt,
     radius: 7pt,
-    stroke: rgb(strokecolor1),
+    stroke: strokecolor1,
     breakable: breakable,
     stack(
       name_content,
@@ -92,10 +92,10 @@
     proof,
     type:         [Theorem],
     breakable:    breakable,
-    bgcolor1:     "#faf1fd",
-    bgcolor2:     "#dfc1e6",
-    strokecolor1: "#6913d1",
-    strokecolor2: "#87739a",
+    bgcolor1:     rgb("#faf1fd"),
+    bgcolor2:     rgb("#dfc1e6"),
+    strokecolor1: rgb("#6913d1"),
+    strokecolor2: rgb("#87739a"),
   )
 }
 
@@ -106,10 +106,10 @@
     proof,
     type:         [Lemma],
     breakable:    breakable,
-    bgcolor1:     "#fcffcc",
-    bgcolor2:     "#edeb69",
-    strokecolor1: "#abc00c",
-    strokecolor2: "#b2c016",
+    bgcolor1:     rgb("#fcffcc"),
+    bgcolor2:     rgb("#edeb69"),
+    strokecolor1: rgb("#abc00c"),
+    strokecolor2: rgb("#b2c016"),
   )
 }
 
@@ -120,10 +120,10 @@
     proof,
     type:         [Corollary],
     breakable:    breakable,
-    bgcolor1:     "#dedbf8",
-    bgcolor2:     "#bfb6df",
-    strokecolor1: "#0f0cc0",
-    strokecolor2: "#4922bf",
+    bgcolor1:     rgb("#dedbf8"),
+    bgcolor2:     rgb("#bfb6df"),
+    strokecolor1: rgb("#0f0cc0"),
+    strokecolor2: rgb("#4922bf"),
   )
 }
 
@@ -134,10 +134,10 @@
     proof,
     type:         [Proposition],
     breakable:    breakable,
-    bgcolor1:     "#fbdfdb",
-    bgcolor2:     "#e1a29f",
-    strokecolor1: "#e03636",
-    strokecolor2: "#d45345",
+    bgcolor1:     rgb("#fbdfdb"),
+    bgcolor2:     rgb("#e1a29f"),
+    strokecolor1: rgb("#e03636"),
+    strokecolor2: rgb("#d45345"),
   )
 }
 
@@ -158,11 +158,11 @@
     name_content = [=== #type: #name]
   }
   block(
-    fill: rgb(bgcolor),
+    fill: bgcolor,
     width: 100%,
     inset: 8pt,
     radius: 7pt,
-    stroke: rgb(strokecolor),
+    stroke: strokecolor,
     breakable: breakable,
     stack(
       name_content,
@@ -182,8 +182,8 @@
     statement,
     type:         [Definition],
     breakable:    breakable,
-    bgcolor:      "#cceeff",
-    strokecolor:  "#33adff",
+    bgcolor:      rgb("#cceeff"),
+    strokecolor:  rgb("#33adff"),
   )
 }
 
@@ -193,8 +193,8 @@
     statement,
     type:         [Remark],
     breakable:    breakable,
-    bgcolor:      "#eee3f4",
-    strokecolor:  "#951fc7",
+    bgcolor:      rgb("#fcf0fc"),
+    strokecolor:  rgb("#e734ed"),
   )
 }
 
@@ -204,8 +204,8 @@
     statement,
     type:         [Example],
     breakable:    breakable,
-    bgcolor:      "#fafffa",
-    strokecolor:  "#1fc71f",
+    bgcolor:      rgb("#fafffa"),
+    strokecolor:  rgb("#1fc71f"),
   )
 }
 
@@ -215,12 +215,43 @@
     statement,
     type:         [Instructions],
     breakable:    breakable,
-    bgcolor:      "#cceeff",
-    strokecolor:  "#33adff",
+    bgcolor:      rgb("#cceeff"),
+    strokecolor:  rgb("#33adff"),
   )
 }
 
+#let comp_prob(name, statement, breakable: false) = {
+  defn_env(
+    name,
+    statement,
+    type:         [Computational Problem],
+    breakable:    breakable,
+    bgcolor:      rgb("#e3f2f4"),
+    strokecolor:  rgb("#14a1f2"),
+  )
+}
 
+#let algor(name, statement, breakable: false) = {
+  defn_env(
+    name,
+    statement,
+    type:         [Algorithm],
+    breakable:    breakable,
+    bgcolor:      rgb("#e3e3f4"),
+    strokecolor:  rgb("#221fc7"),
+  )
+}
+
+#let runtime(statement, breakable: false) = {
+  defn_env(
+    [],
+    statement,
+    type:         [Runtime Analysis],
+    breakable:    breakable,
+    bgcolor:      rgb("#ebcceb"),
+    strokecolor:  rgb("#9e18a2"),
+  )
+}
 
 //-----Problem Environments-----//
 #let prob_env(
@@ -242,7 +273,7 @@
     height: height,
     inset: 8pt,
     radius: 7pt,
-    stroke: rgb(strokecolor1),
+    stroke: strokecolor1,
     breakable: breakable,
     stack(
       [=== #type #name],
@@ -251,11 +282,11 @@
         bottom: 12pt,
         left: 12pt,
         block(
-          fill: rgb(bgcolor2),
+          fill: bgcolor2,
           inset: 8pt,
           radius: 2pt,
           stroke: (
-            left: rgb(strokecolor2) + 6pt
+            left: strokecolor2 + 6pt
           ),
           statement
         )
@@ -280,10 +311,10 @@
     solution,
     type:         [Problem],
     breakable:    breakable,
-    bgcolor1:     "#fafffa",
-    bgcolor2:     "#abc3b0",
-    strokecolor1: "#1fc71f",
-    strokecolor2: "#739a7a",
+    bgcolor1:     rgb("#fafffa"),
+    bgcolor2:     rgb("#abc3b0"),
+    strokecolor1: rgb("#1fc71f"),
+    strokecolor2: rgb("#739a7a"),
     width:        width,
     height:       height,
   )
@@ -300,10 +331,10 @@
     solution,
     type:         [Problem],
     breakable:    breakable,
-    bgcolor1:     "#fafffa",
-    bgcolor2:     "#abc3b0",
-    strokecolor1: "#1fc71f",
-    strokecolor2: "#739a7a",
+    bgcolor1:     rgb("#fafffa"),
+    bgcolor2:     rgb("#abc3b0"),
+    strokecolor1: rgb("#1fc71f"),
+    strokecolor2: rgb("#739a7a"),
   )
 }
 
@@ -321,10 +352,10 @@
     solution,
     type:         [Exercise],
     breakable:    breakable,
-    bgcolor1:     "#fff3e1",
-    bgcolor2:     "#eed08a",
-    strokecolor1: "#fd9e0a",
-    strokecolor2: "#c37410",
+    bgcolor1:     rgb("#fff3e1"),
+    bgcolor2:     rgb("#eed08a"),
+    strokecolor1: rgb("#fd9e0a"),
+    strokecolor2: rgb("#c37410"),
     width:        width,
     height:       height,
   )
@@ -341,10 +372,10 @@
     solution,
     type:         [Exercise],
     breakable:    breakable,
-    bgcolor1:     "#fff3e1",
-    bgcolor2:     "#eed08a",
-    strokecolor1: "#fd9e0a",
-    strokecolor2: "#c37410",
+    bgcolor1:     rgb("#fff3e1"),
+    bgcolor2:     rgb("#eed08a"),
+    strokecolor1: rgb("#fd9e0a"),
+    strokecolor2: rgb("#c37410"),
   )
 }
 
@@ -353,10 +384,8 @@
 //-----Templates-----//
 #let notes(title, author, doc) = {
   set document(title: title, author: author)
-  set enum(numbering: "i)")
-  set heading(numbering: "1.")
   set page(
-    paper:"us-letter",
+    paper: "us-letter",
     // https://stackoverflow.com/a/78318321
     header: context {
       let selector = selector(heading).before(here())
@@ -459,7 +488,7 @@
 #let basic(doc) = {
   set document()
   set page(
-    paper:"us-letter",
+    paper: "us-letter",
     margin: 1cm
   )
   doc
@@ -469,7 +498,7 @@
   set document(title: title, author: author)
   set enum(numbering: "a)")
   set page(
-    paper:"us-letter",
+    paper: "us-letter",
     header: context {
       if counter(page).at(here()).first() != 1 {
         align(right, [*#title* | *#author*])
