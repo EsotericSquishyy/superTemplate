@@ -6,14 +6,14 @@ Refer to the [Packages](https://github.com/typst/packages) repository for instal
 
 ## Versioning Symlink Example
 
-# Linux
+### Linux
 ```sh
 mkdir -p ~/.local/share/typst/packages/local/superTemplate
 VERSION=$(grep -oP '(?<=^version = ").*?(?=")' typst.toml)
 ln -s ~/code/superTemplate ~/.local/share/typst/packages/local/superTemplate/"$VERSION"
 ```
 
-# MacOS
+### MacOS
 
 ```sh
 mkdir -p /Users/Nate/Library/Application Support/typst/packages/local/superTemplate
