@@ -220,6 +220,18 @@
   )
 }
 
+// For a more general definition
+#let conc(name, statement, breakable: false) = {
+  defn_env(
+    name,
+    statement,
+    type:         [Concept],
+    breakable:    breakable,
+    bgcolor:      rgb("#bddce9"),
+    strokecolor:  rgb("#0a5667"),
+  )
+}
+
 #let comp_prob(name, statement, breakable: false) = {
   defn_env(
     name,
