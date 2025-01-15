@@ -32,7 +32,7 @@
 
 
 //-----Theorem Environments-----//
-#let thm_env(
+#let proof_env(
   name,
   statement,
   proof,
@@ -86,7 +86,7 @@
 }
 
 #let thm(name, statement, proof, breakable: false) = {
-  thm_env(
+  proof_env(
     name,
     statement,
     proof,
@@ -100,7 +100,7 @@
 }
 
 #let lemma(name, statement, proof, breakable: false) = {
-  thm_env(
+  proof_env(
     name,
     statement,
     proof,
@@ -114,7 +114,7 @@
 }
 
 #let cor(name, statement, proof, breakable: false) = {
-  thm_env(
+  proof_env(
     name,
     statement,
     proof,
@@ -128,7 +128,7 @@
 }
 
 #let prop(statement, proof, breakable: false) = {
-  thm_env(
+  proof_env(
     [],
     statement,
     proof,
@@ -144,7 +144,7 @@
 
 
 //-----Definition Environments-----//
-#let defn_env(
+#let statement_env(
   name,
   statement,
   type:         [Definition],
@@ -176,8 +176,19 @@
   )
 }
 
+#let note(statement, breakable: false) = {
+  statement_env(
+    [],
+    statement,
+    type:         [Note],
+    breakable:    breakable,
+    bgcolor:      rgb("#ffffff"),
+    strokecolor:  rgb("#000000"),
+  )
+}
+
 #let defn(name, statement, breakable: false) = {
-  defn_env(
+  statement_env(
     name,
     statement,
     type:         [Definition],
@@ -188,7 +199,7 @@
 }
 
 #let remark(statement, breakable: false) = {
-  defn_env(
+  statement_env(
     [],
     statement,
     type:         [Remark],
@@ -199,7 +210,7 @@
 }
 
 #let example(name, statement, breakable: false) = {
-  defn_env(
+  statement_env(
     name,
     statement,
     type:         [Example],
@@ -210,7 +221,7 @@
 }
 
 #let instr(statement, breakable: false) = {
-  defn_env(
+  statement_env(
     [],
     statement,
     type:         [Instructions],
@@ -222,7 +233,7 @@
 
 // For a more general definition
 #let conc(name, statement, breakable: false) = {
-  defn_env(
+  statement_env(
     name,
     statement,
     type:         [Concept],
@@ -233,7 +244,7 @@
 }
 
 #let comp_prob(name, statement, breakable: false) = {
-  defn_env(
+  statement_env(
     name,
     statement,
     type:         [Computational Problem],
@@ -244,7 +255,7 @@
 }
 
 #let algor(name, statement, breakable: false) = {
-  defn_env(
+  statement_env(
     name,
     statement,
     type:         [Algorithm],
@@ -255,7 +266,7 @@
 }
 
 #let runtime(statement, breakable: false) = {
-  defn_env(
+  statement_env(
     [],
     statement,
     type:         [Runtime Analysis],
