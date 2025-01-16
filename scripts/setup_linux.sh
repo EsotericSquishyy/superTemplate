@@ -4,6 +4,10 @@ if [[ ! -f "typst.toml" ]]; then
   exit 1
 fi
 
-mkdir -p ~/.local/share/typst/packages/local/superTemplate
+PKG_DIR=$(pwd)
+TARGET_DIR="$HOME/.local/share/typst/packages/local/superTemplate"
 VERSION=$(grep -oP '(?<=^version = ").*?(?=")' typst.toml)
-ln -sf . ~/.local/share/typst/packages/local/superTemplate/"$VERSION"
+
+mkdir -p "$TARGET_DIR"
+ln -sfn "$PKG_DIR" "$TARGET_DIR/$VERSION"
+
