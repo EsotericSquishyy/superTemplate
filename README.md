@@ -16,8 +16,7 @@ ln -sf ~/code/superTemplate ~/.local/share/typst/packages/local/superTemplate/"$
 ### MacOS
 
 ```sh
-USER=$(whoami)
-mkdir -p "/Users/$USER/Library/Application Support/typst/packages/local/superTemplate"
+mkdir -p "$HOME/Library/Application Support/typst/packages/local/superTemplate"
 VERSION=$(grep '^version = ' typst.toml | sed -E 's/^version = "([^"]+)"/\1/')
-ln -sf ~/Documents/Github/superTemplate "/Users/$USER/Library/Application Support/typst/packages/local/superTemplate/$VERSION"
+ln -sf ~/Documents/Github/superTemplate "$HOME/Library/Application Support/typst/packages/local/superTemplate/$VERSION"
 ```
