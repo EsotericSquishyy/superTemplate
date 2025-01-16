@@ -10,4 +10,3 @@ VERSION=$(grep -oP '(?<=^version = ").*?(?=")' typst.toml)
 
 mkdir -p "$TARGET_DIR"
 ln -sfn "$PKG_DIR" "$TARGET_DIR/$VERSION"
-
