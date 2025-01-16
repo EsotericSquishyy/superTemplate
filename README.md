@@ -10,13 +10,14 @@ Refer to the [Packages](https://github.com/typst/packages) repository for instal
 ```sh
 mkdir -p ~/.local/share/typst/packages/local/superTemplate
 VERSION=$(grep -oP '(?<=^version = ").*?(?=")' typst.toml)
-ln -s ~/code/superTemplate ~/.local/share/typst/packages/local/superTemplate/"$VERSION"
+ln -sf ~/code/superTemplate ~/.local/share/typst/packages/local/superTemplate/"$VERSION"
 ```
 
 ### MacOS
 
 ```sh
-mkdir -p /Users/Nate/Library/Application Support/typst/packages/local/superTemplate
-VERSION=$(grep -oP '(?<=^version = ").*?(?=")' typst.toml)
-ln -s ~/Documents/Github/superTemplate ""/Users/Nate/Library/Application Support/typst/packages/local/superTemplate/"$VERSION""
+USER=$(whoami)
+mkdir -p "/Users/$USER/Library/Application Support/typst/packages/local/superTemplate"
+VERSION=$(grep '^version = ' typst.toml | sed -E 's/^version = "([^"]+)"/\1/')
+ln -sf ~/Documents/Github/superTemplate "/Users/$USER/Library/Application Support/typst/packages/local/superTemplate/$VERSION"
 ```
