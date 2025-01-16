@@ -3,5 +3,7 @@
 #import "@preview/lovelace:0.3.0": *
 
 #let KeyGen = $op("KeyGen")$
+#let Gen = $op("Gen")$
+#let unif = $<-^(\$)$
 #let Enc = $op("Enc")$
 #let Dec = $op("Dec")$
