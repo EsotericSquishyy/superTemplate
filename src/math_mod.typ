@@ -1,3 +1,5 @@
+#import "@preview/commute:0.2.0": node, arr, commutative-diagram
+
 // Differential Geometry
 #let grad = $gradient$
 #let div(x) = $grad dot #x$
