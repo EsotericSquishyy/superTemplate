@@ -402,10 +402,17 @@
   )
 }
 
-
+//------Misc------//
+#let nn(content) = {  // no number
+  math.equation(
+    block: true,
+    numbering: none,
+    content
+  )
+}
 
 //-----Templates-----//
-#let notes(title, author, doc) = {
+#let notes(title, author, doc, number: false) = {
   set document(title: title, author: author)
   set page(
     paper: "us-letter",
@@ -466,6 +473,20 @@
     *#title*
   ])
   align(center, text(15pt)[#author])
+
+  let eq-numbering = none
+  if number {
+    eq-numbering = "(1.1)"
+  }
+
+  set math.equation(numbering: eq-numbering, supplement: none)
+  show ref: it => { // https://github.com/typst/typst/issues/873
+    if it.element != none and it.element.func() == math.equation {
+      [(#it)]
+    } else {
+      it
+    }
+  }
 
   set heading(numbering: "1.")
   show outline.entry.where(
