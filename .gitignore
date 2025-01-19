@@ -1,1 +1,3 @@
 *.pdf
+venv/
+!examples/*.pdf
