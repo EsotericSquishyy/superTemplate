@@ -9,6 +9,8 @@
 
 == Introduction
 
+#bookmark([Lecture 1], [Jan 1, 2025])
+
 We must predicate the main concepts of analysis on a well-defined concept of numbers.
 What do we mean when we say the sequence
 #nn[$
@@ -42,7 +44,6 @@ We now consider this more closely.
   $<4>
   If $p in A$, then $p^2 - 2 < 0$, so @3 shows that $q > p$, and @4 shows that $q^2 < 2$.
   Thus $q in A$.
-
   If $p in B$, then $p^2 - 2 > 0$ so @3 shows that $0 < q < p$ and @4 shows that $q^2 > 2$.
   Thus $q in B$.
 ])
