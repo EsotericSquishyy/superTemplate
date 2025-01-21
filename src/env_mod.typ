@@ -209,6 +209,17 @@
   )
 }
 
+#let notation(statement, breakable: false) = {
+  statement_env(
+    [],
+    statement,
+    type:         [Notation],
+    breakable:    breakable,
+    bgcolor:      rgb("#fcf4f0"),
+    strokecolor:  rgb("#ed9a34"),
+  )
+}
+
 #let example(name, statement, breakable: false) = {
   statement_env(
     name,

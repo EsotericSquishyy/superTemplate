@@ -35,6 +35,7 @@
 #let tr = $op("tr")$  // trace
 #let dsum = $plus.circle$  // direct sum
 #let tp = $times.circle$  // tensor product
+#let codim = $op("codim")$
 
 // algebra
 #let eclass(a) = $overline(#a)$
@@ -55,6 +56,10 @@
 #let iso = $tilde.equiv$
 #let notiso = $tilde.equiv.not$
 #let rcoset = $#h(0cm) \\ #h(0cm)$
+#let Isom = $op("Isom")$
 
 // number theory
 #let lcm = $op("lcm")$
+
+// geometry
+#let link = $op("link")$
