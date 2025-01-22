@@ -61,6 +61,3 @@
 
 // number theory
 #let lcm = $op("lcm")$
-
-// geometry
-#let link = $op("link")$
