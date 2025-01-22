@@ -2,19 +2,19 @@
 
 A [`Typst`](https://github.com/typst/typst) suite of environments/macros for ease of taking notes or doing problem sets in Mathematics, Computer Science, and Physics.
 
+> [`Typst`](https://github.com/typst/typst) is required to use this package.
+> You can get started by checking out the integrated language service [`Tinymist`](https://github.com/Myriad-Dreamin/tinymist) or by referring to Typst's [installation page](https://github.com/typst/typst?tab=readme-ov-file#installation).
+> Note that [`Tinymist`](https://github.com/Myriad-Dreamin/tinymist) currently supports `VSCode`, `NeoVim`, `Emacs`, `Sublime Text`, `Helix`, and `Zed`.
+
 ## Installation
 
-1. Install [`Tinymist`](https://github.com/Myriad-Dreamin/tinymist) on your code editor of choice.
-Note the current supported editors are `VSCode`, `NeoVim`, `Emacs`, `Sublime Text`, `Helix`, and `Zed`.
-You may be able to get a `Typst` LSP working on another editor if you really want to, but this is the easiest option.
+1. Clone this repository somewhere locally on your machine.
 
-2. Clone this repository somewhere locally on your machine.
-
-3. `cd` into the repository and use the setup script in `./scripts` matching your operating system to install.
+2. `cd` into the repository and use the setup script in `./scripts` matching your operating system to install.
 (The Windows install script is currently still experimental.)
 Refer to the [Typst Packages](https://github.com/typst/packages) repository for more information.
 
-4. Test whether the installation worked by opening a new `.typ` file in any directory with the following code:
+3. Test whether the installation worked by opening a new `.typ` file in any directory with the following code:
     ```typ
     #import "@local/superTemplate:0.1.3": *
     #import math_mod: *
@@ -24,4 +24,5 @@ Refer to the [Typst Packages](https://github.com/typst/packages) repository for 
     ```
     If you're able to render the pdf, you're good to go.
 
-5. Check out the examples in `./examples` to get started.
+4. Check out the examples in `./examples` to get started.
+

@@ -1,4 +1,4 @@
-#import "colors.typ": *
+#import "theme/colors.typ": *
 
 #let problem_counter = counter("problem")
 
