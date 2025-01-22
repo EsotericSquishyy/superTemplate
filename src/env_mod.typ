@@ -1,3 +1,5 @@
+#import "colors.typ": *
+
 #let problem_counter = counter("problem")
 
 #let correction(body) = {
@@ -13,8 +15,8 @@
 #let bookmark(
   title,
   info,
-  bgcolor:      white,
-  strokecolor:  red,
+  bgcolor:      colors("bookmark", "bgcolor"),
+  strokecolor:  colors("bookmark", "strokecolor"),
 ) = {
   block(
     fill: bgcolor,
@@ -92,10 +94,10 @@
     proof,
     type:         [Theorem],
     breakable:    breakable,
-    bgcolor1:     rgb("#faf1fd"),
-    bgcolor2:     rgb("#dfc1e6"),
-    strokecolor1: rgb("#6913d1"),
-    strokecolor2: rgb("#87739a"),
+    bgcolor1:     colors("thm", "bgcolor1"),
+    bgcolor2:     colors("thm", "bgcolor2"),
+    strokecolor1: colors("thm", "strokecolor1"),
+    strokecolor2: colors("thm", "strokecolor2"),
   )
 }
 
@@ -106,10 +108,10 @@
     proof,
     type:         [Lemma],
     breakable:    breakable,
-    bgcolor1:     rgb("#fcffcc"),
-    bgcolor2:     rgb("#edeb69"),
-    strokecolor1: rgb("#abc00c"),
-    strokecolor2: rgb("#b2c016"),
+    bgcolor1:     colors("lemma", "bgcolor1"),
+    bgcolor2:     colors("lemma", "bgcolor2"),
+    strokecolor1: colors("lemma", "strokecolor1"),
+    strokecolor2: colors("lemma", "strokecolor2"),
   )
 }
 
@@ -120,10 +122,10 @@
     proof,
     type:         [Corollary],
     breakable:    breakable,
-    bgcolor1:     rgb("#dedbf8"),
-    bgcolor2:     rgb("#bfb6df"),
-    strokecolor1: rgb("#0f0cc0"),
-    strokecolor2: rgb("#4922bf"),
+    bgcolor1:     colors("cor", "bgcolor1"),
+    bgcolor2:     colors("cor", "bgcolor2"),
+    strokecolor1: colors("cor", "strokecolor1"),
+    strokecolor2: colors("cor", "strokecolor2"),
   )
 }
 
@@ -134,10 +136,10 @@
     proof,
     type:         [Proposition],
     breakable:    breakable,
-    bgcolor1:     rgb("#fbdfdb"),
-    bgcolor2:     rgb("#e1a29f"),
-    strokecolor1: rgb("#e03636"),
-    strokecolor2: rgb("#d45345"),
+    bgcolor1:     colors("prop", "bgcolor1"),
+    bgcolor2:     colors("prop", "bgcolor2"),
+    strokecolor1: colors("prop", "strokecolor1"),
+    strokecolor2: colors("prop", "strokecolor2"),
   )
 }
 
@@ -182,8 +184,8 @@
     statement,
     type:         [Note],
     breakable:    breakable,
-    bgcolor:      rgb("#ffffff"),
-    strokecolor:  rgb("#000000"),
+    bgcolor:      colors("note", "bgcolor"),
+    strokecolor:  colors("note", "strokecolor"),
   )
 }
 
@@ -193,8 +195,8 @@
     statement,
     type:         [Definition],
     breakable:    breakable,
-    bgcolor:      rgb("#cceeff"),
-    strokecolor:  rgb("#33adff"),
+    bgcolor:      colors("defn", "bgcolor"),
+    strokecolor:  colors("defn", "strokecolor"),
   )
 }
 
@@ -204,8 +206,8 @@
     statement,
     type:         [Remark],
     breakable:    breakable,
-    bgcolor:      rgb("#fcf0fc"),
-    strokecolor:  rgb("#e734ed"),
+    bgcolor:      colors("remark", "bgcolor"),
+    strokecolor:  colors("remark", "strokecolor"),
   )
 }
 
@@ -215,8 +217,8 @@
     statement,
     type:         [Notation],
     breakable:    breakable,
-    bgcolor:      rgb("#fcf4f0"),
-    strokecolor:  rgb("#ed9a34"),
+    bgcolor:      colors("notation", "bgcolor"),
+    strokecolor:  colors("notation", "strokecolor"),
   )
 }
 
@@ -226,19 +228,8 @@
     statement,
     type:         [Example],
     breakable:    breakable,
-    bgcolor:      rgb("#fafffa"),
-    strokecolor:  rgb("#1fc71f"),
-  )
-}
-
-#let instr(statement, breakable: false) = {
-  statement_env(
-    [],
-    statement,
-    type:         [Instructions],
-    breakable:    breakable,
-    bgcolor:      rgb("#cceeff"),
-    strokecolor:  rgb("#33adff"),
+    bgcolor:      colors("example", "bgcolor"),
+    strokecolor:  colors("example", "strokecolor"),
   )
 }
 
@@ -249,8 +240,8 @@
     statement,
     type:         [Concept],
     breakable:    breakable,
-    bgcolor:      rgb("#bddce9"),
-    strokecolor:  rgb("#0a5667"),
+    bgcolor:      colors("conc", "bgcolor"),
+    strokecolor:  colors("conc", "strokecolor"),
   )
 }
 
@@ -260,8 +251,8 @@
     statement,
     type:         [Computational Problem],
     breakable:    breakable,
-    bgcolor:      rgb("#e3f2f4"),
-    strokecolor:  rgb("#14a1f2"),
+    bgcolor:      colors("comp_prob", "bgcolor"),
+    strokecolor:  colors("comp_prob", "strokecolor"),
   )
 }
 
@@ -271,8 +262,8 @@
     statement,
     type:         [Algorithm],
     breakable:    breakable,
-    bgcolor:      rgb("#e3e3f4"),
-    strokecolor:  rgb("#221fc7"),
+    bgcolor:      colors("algor", "bgcolor"),
+    strokecolor:  colors("algor", "strokecolor"),
   )
 }
 
@@ -282,8 +273,8 @@
     statement,
     type:         [Runtime Analysis],
     breakable:    breakable,
-    bgcolor:      rgb("#ebcceb"),
-    strokecolor:  rgb("#9e18a2"),
+    bgcolor:      colors("runtime", "bgcolor"),
+    strokecolor:  colors("runtime", "strokecolor"),
   )
 }
 
@@ -345,10 +336,10 @@
     solution,
     type:         [Problem],
     breakable:    breakable,
-    bgcolor1:     rgb("#fafffa"),
-    bgcolor2:     rgb("#abc3b0"),
-    strokecolor1: rgb("#1fc71f"),
-    strokecolor2: rgb("#739a7a"),
+    bgcolor1:     colors("named_prob", "bgcolor1"),
+    bgcolor2:     colors("named_prob", "bgcolor2"),
+    strokecolor1: colors("named_prob", "strokecolor1"),
+    strokecolor2: colors("named_prob", "strokecolor2"),
     width:        width,
     height:       height,
   )
@@ -365,10 +356,10 @@
     solution,
     type:         [Problem],
     breakable:    breakable,
-    bgcolor1:     rgb("#fafffa"),
-    bgcolor2:     rgb("#abc3b0"),
-    strokecolor1: rgb("#1fc71f"),
-    strokecolor2: rgb("#739a7a"),
+    bgcolor1:     colors("prob", "bgcolor1"),
+    bgcolor2:     colors("prob", "bgcolor2"),
+    strokecolor1: colors("prob", "strokecolor1"),
+    strokecolor2: colors("prob", "strokecolor2"),
   )
 }
 
@@ -386,10 +377,10 @@
     solution,
     type:         [Exercise],
     breakable:    breakable,
-    bgcolor1:     rgb("#fff3e1"),
-    bgcolor2:     rgb("#eed08a"),
-    strokecolor1: rgb("#fd9e0a"),
-    strokecolor2: rgb("#c37410"),
+    bgcolor1:     colors("named_excs", "bgcolor1"),
+    bgcolor2:     colors("named_excs", "bgcolor2"),
+    strokecolor1: colors("named_excs", "strokecolor1"),
+    strokecolor2: colors("named_excs", "strokecolor2"),
     width:        width,
     height:       height,
   )
@@ -406,10 +397,10 @@
     solution,
     type:         [Exercise],
     breakable:    breakable,
-    bgcolor1:     rgb("#fff3e1"),
-    bgcolor2:     rgb("#eed08a"),
-    strokecolor1: rgb("#fd9e0a"),
-    strokecolor2: rgb("#c37410"),
+    bgcolor1:     colors("excs", "bgcolor1"),
+    bgcolor2:     colors("excs", "bgcolor2"),
+    strokecolor1: colors("excs", "strokecolor1"),
+    strokecolor2: colors("excs", "strokecolor2"),
   )
 }
 
