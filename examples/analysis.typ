@@ -18,7 +18,7 @@ What do we mean when we say the sequence
 $]
 tends to $sqrt(2)$?
 
-#example([], [
+#ex([], [
   We now show that the equation $ p^2 = 2 $<1> is not satisfied by any rational $p$.
   By contradiction, suppose there were such a $p$.
   Then we could write $p = m / n$ where $n, m in ZZ$ and $n$ and $m$ are coprime.
@@ -48,7 +48,7 @@ We now consider this more closely.
   Thus $q in B$.
 ])
 
-#remark([
+#rmk([
   This shows that the rational number system has gaps, despite the density of $QQ$ in $QQ$.
   The real number system fills these gaps.
 ])
