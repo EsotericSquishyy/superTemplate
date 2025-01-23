@@ -5,7 +5,7 @@
   },
   "thm": {
     "bgcolor1": "#ffffff",
-    "bgcolor2": "#ffffff",
+    "bgcolor2": "#bbbbbb",
     "strokecolor1": "#000000",
     "strokecolor2": "#000000"
   },
@@ -17,17 +17,16 @@
   },
   "cor": {
     "bgcolor1": "#ffffff",
-    "bgcolor2": "#ffffff",
+    "bgcolor2": "#bbbbbb",
     "strokecolor1": "#000000",
     "strokecolor2": "#000000"
   },
   "prop": {
     "bgcolor1": "#ffffff",
-    "bgcolor2": "#ffffff",
+    "bgcolor2": "#bbbbbb",
     "strokecolor1": "#000000",
     "strokecolor2": "#000000"
   },
-
   "note": {
     "bgcolor": "#ffffff",
     "strokecolor": "#000000"
@@ -62,25 +61,25 @@
   },
   "named_prob": {
     "bgcolor1": "#ffffff",
-    "bgcolor2": "#ffffff",
+    "bgcolor2": "#bbbbbb",
     "strokecolor1": "#000000",
     "strokecolor2": "#000000"
   },
   "prob": {
     "bgcolor1": "#ffffff",
-    "bgcolor2": "#ffffff",
+    "bgcolor2": "#bbbbbb",
     "strokecolor1": "#000000",
     "strokecolor2": "#000000"
   },
   "named_excs": {
     "bgcolor1": "#ffffff",
-    "bgcolor2": "#ffffff",
+    "bgcolor2": "#bbbbbb",
     "strokecolor1": "#000000",
     "strokecolor2": "#000000"
   },
   "excs": {
     "bgcolor1": "#ffffff",
-    "bgcolor2": "#ffffff",
+    "bgcolor2": "#bbbbbb",
     "strokecolor1": "#000000",
     "strokecolor2": "#000000"
   }
