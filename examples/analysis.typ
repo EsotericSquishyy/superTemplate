@@ -1,4 +1,4 @@
-#import "@local/superTemplate:0.1.3": *
+#import "@local/superTemplate:0.2.0": *
 #import math_mod: *
 #show: notes.with("Analysis Lecture Notes", "John Doe", number: true)
 #set enum(numbering: "i)")

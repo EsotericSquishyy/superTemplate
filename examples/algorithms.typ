@@ -1,4 +1,4 @@
-#import "@local/superTemplate:0.1.3": *
+#import "@local/superTemplate:0.2.0": *
 #import cs_mod: *
 #show: notes.with("Algorithms", "Jane Doe")
 
