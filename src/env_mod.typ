@@ -15,9 +15,10 @@
 #let bookmark(
   title,
   info,
-  bgcolor:      colors("bookmark", "bgcolor"),
-  strokecolor:  colors("bookmark", "strokecolor"),
-) = {
+) = context {
+  let bgcolor     = colors(env_theme.get(), "bookmark", "bgcolor")
+  let strokecolor = colors(env_theme.get(), "bookmark", "strokecolor")
+
   block(
     fill: bgcolor,
     width: 100%,
@@ -40,11 +41,13 @@
   proof,
   type:         [],
   breakable:    false,
-  bgcolor1:     white,
-  bgcolor2:     white,
-  strokecolor1: black,
-  strokecolor2: black,
-) = {
+  id:           "",
+) = context {
+  let bgcolor1      = colors(env_theme.get(), id, "bgcolor1")
+  let bgcolor2      = colors(env_theme.get(), id, "bgcolor2")
+  let strokecolor1  = colors(env_theme.get(), id, "strokecolor1")
+  let strokecolor2  = colors(env_theme.get(), id, "strokecolor2")
+
   let name_content = [=== _ #type _]
   let statement_content = pad(
       top: 12pt,
@@ -73,7 +76,7 @@
   }
 
   block(
-    fill: rgb(bgcolor1),
+    fill: bgcolor1,
     width: 100%,
     inset: 8pt,
     radius: 7pt,
@@ -94,10 +97,7 @@
     proof,
     type:         [Theorem],
     breakable:    breakable,
-    bgcolor1:     colors("thm", "bgcolor1"),
-    bgcolor2:     colors("thm", "bgcolor2"),
-    strokecolor1: colors("thm", "strokecolor1"),
-    strokecolor2: colors("thm", "strokecolor2"),
+    id:           "thm",
   )
 }
 
@@ -108,10 +108,7 @@
     proof,
     type:         [Lemma],
     breakable:    breakable,
-    bgcolor1:     colors("lemma", "bgcolor1"),
-    bgcolor2:     colors("lemma", "bgcolor2"),
-    strokecolor1: colors("lemma", "strokecolor1"),
-    strokecolor2: colors("lemma", "strokecolor2"),
+    id:           "lemma",
   )
 }
 
@@ -122,10 +119,7 @@
     proof,
     type:         [Corollary],
     breakable:    breakable,
-    bgcolor1:     colors("cor", "bgcolor1"),
-    bgcolor2:     colors("cor", "bgcolor2"),
-    strokecolor1: colors("cor", "strokecolor1"),
-    strokecolor2: colors("cor", "strokecolor2"),
+    id:           "cor",
   )
 }
 
@@ -136,10 +130,7 @@
     proof,
     type:         [Proposition],
     breakable:    breakable,
-    bgcolor1:     colors("prop", "bgcolor1"),
-    bgcolor2:     colors("prop", "bgcolor2"),
-    strokecolor1: colors("prop", "strokecolor1"),
-    strokecolor2: colors("prop", "strokecolor2"),
+    id:           "prop",
   )
 }
 
@@ -149,11 +140,13 @@
 #let statement_env(
   name,
   statement,
-  type:         [Definition],
+  type:         [],
   breakable:    false,
-  bgcolor:      white,
-  strokecolor:  black,
-) = {
+  id:           "",
+) = context {
+  let bgcolor     = colors(env_theme.get(), id, "bgcolor")
+  let strokecolor = colors(env_theme.get(), id, "strokecolor")
+
   let name_content = [=== #type]
 
   if name != [] {
@@ -184,8 +177,7 @@
     statement,
     type:         [Note],
     breakable:    breakable,
-    bgcolor:      colors("note", "bgcolor"),
-    strokecolor:  colors("note", "strokecolor"),
+    id:           "note",
   )
 }
 
@@ -195,8 +187,7 @@
     statement,
     type:         [Definition],
     breakable:    breakable,
-    bgcolor:      colors("defn", "bgcolor"),
-    strokecolor:  colors("defn", "strokecolor"),
+    id:           "defn",
   )
 }
 
@@ -206,8 +197,7 @@
     statement,
     type:         [Remark],
     breakable:    breakable,
-    bgcolor:      colors("remark", "bgcolor"),
-    strokecolor:  colors("remark", "strokecolor"),
+    id:           "remark",
   )
 }
 
@@ -217,8 +207,7 @@
     statement,
     type:         [Notation],
     breakable:    breakable,
-    bgcolor:      colors("notation", "bgcolor"),
-    strokecolor:  colors("notation", "strokecolor"),
+    id:           "notation",
   )
 }
 
@@ -228,8 +217,7 @@
     statement,
     type:         [Example],
     breakable:    breakable,
-    bgcolor:      colors("example", "bgcolor"),
-    strokecolor:  colors("example", "strokecolor"),
+    id:           "example",
   )
 }
 
@@ -240,8 +228,7 @@
     statement,
     type:         [Concept],
     breakable:    breakable,
-    bgcolor:      colors("conc", "bgcolor"),
-    strokecolor:  colors("conc", "strokecolor"),
+    id:           "conc",
   )
 }
 
@@ -251,8 +238,7 @@
     statement,
     type:         [Computational Problem],
     breakable:    breakable,
-    bgcolor:      colors("comp_prob", "bgcolor"),
-    strokecolor:  colors("comp_prob", "strokecolor"),
+    id:           "comp_prob",
   )
 }
 
@@ -262,8 +248,7 @@
     statement,
     type:         [Algorithm],
     breakable:    breakable,
-    bgcolor:      colors("algor", "bgcolor"),
-    strokecolor:  colors("algor", "strokecolor"),
+    id:           "algor",
   )
 }
 
@@ -273,8 +258,7 @@
     statement,
     type:         [Runtime Analysis],
     breakable:    breakable,
-    bgcolor:      colors("runtime", "bgcolor"),
-    strokecolor:  colors("runtime", "strokecolor"),
+    id:           "runtime",
   )
 }
 
@@ -285,13 +269,15 @@
   solution,
   type:         [],
   breakable:    false,
-  bgcolor1:     white,
-  bgcolor2:     white,
-  strokecolor1: black,
-  strokecolor2: black,
+  id:           "",
   width:        100%,
   height:       auto,
-) = {
+) = context {
+  let bgcolor1      = colors(env_theme.get(), id, "bgcolor1")
+  let bgcolor2      = colors(env_theme.get(), id, "bgcolor2")
+  let strokecolor1  = colors(env_theme.get(), id, "strokecolor1")
+  let strokecolor2  = colors(env_theme.get(), id, "strokecolor2")
+
   block(
     fill: rgb(bgcolor1),
     width: width,
@@ -336,10 +322,7 @@
     solution,
     type:         [Problem],
     breakable:    breakable,
-    bgcolor1:     colors("named_prob", "bgcolor1"),
-    bgcolor2:     colors("named_prob", "bgcolor2"),
-    strokecolor1: colors("named_prob", "strokecolor1"),
-    strokecolor2: colors("named_prob", "strokecolor2"),
+    id:           "named_prob",
     width:        width,
     height:       height,
   )
@@ -356,10 +339,7 @@
     solution,
     type:         [Problem],
     breakable:    breakable,
-    bgcolor1:     colors("prob", "bgcolor1"),
-    bgcolor2:     colors("prob", "bgcolor2"),
-    strokecolor1: colors("prob", "strokecolor1"),
-    strokecolor2: colors("prob", "strokecolor2"),
+    id:           "prob",
   )
 }
 
@@ -377,10 +357,7 @@
     solution,
     type:         [Exercise],
     breakable:    breakable,
-    bgcolor1:     colors("named_excs", "bgcolor1"),
-    bgcolor2:     colors("named_excs", "bgcolor2"),
-    strokecolor1: colors("named_excs", "strokecolor1"),
-    strokecolor2: colors("named_excs", "strokecolor2"),
+    id:           "named_excs",
     width:        width,
     height:       height,
   )
@@ -397,10 +374,7 @@
     solution,
     type:         [Exercise],
     breakable:    breakable,
-    bgcolor1:     colors("excs", "bgcolor1"),
-    bgcolor2:     colors("excs", "bgcolor2"),
-    strokecolor1: colors("excs", "strokecolor1"),
-    strokecolor2: colors("excs", "strokecolor2"),
+    id:           "excs",
   )
 }
 
