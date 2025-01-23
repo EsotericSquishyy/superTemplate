@@ -1,3 +1,4 @@
 *.pdf
 venv/
 !examples/*.pdf
+TEST/
