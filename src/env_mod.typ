@@ -1,3 +1,5 @@
+#import "theme/colors.typ": *
+
 #let problem_counter = counter("problem")
 
 #let correction(body) = {
@@ -13,9 +15,10 @@
 #let bookmark(
   title,
   info,
-  bgcolor:      white,
-  strokecolor:  red,
-) = {
+) = context {
+  let bgcolor     = colors(env_theme.get(), "bookmark", "bgcolor")
+  let strokecolor = colors(env_theme.get(), "bookmark", "strokecolor")
+
   block(
     fill: bgcolor,
     width: 100%,
@@ -32,17 +35,19 @@
 
 
 //-----Theorem Environments-----//
-#let thm_env(
+#let proof_env(
   name,
   statement,
   proof,
   type:         [],
   breakable:    false,
-  bgcolor1:     white,
-  bgcolor2:     white,
-  strokecolor1: black,
-  strokecolor2: black,
-) = {
+  id:           "",
+) = context {
+  let bgcolor1      = colors(env_theme.get(), id, "bgcolor1")
+  let bgcolor2      = colors(env_theme.get(), id, "bgcolor2")
+  let strokecolor1  = colors(env_theme.get(), id, "strokecolor1")
+  let strokecolor2  = colors(env_theme.get(), id, "strokecolor2")
+
   let name_content = [=== _ #type _]
   let statement_content = pad(
       top: 12pt,
@@ -71,7 +76,7 @@
   }
 
   block(
-    fill: rgb(bgcolor1),
+    fill: bgcolor1,
     width: 100%,
     inset: 8pt,
     radius: 7pt,
@@ -86,72 +91,62 @@
 }
 
 #let thm(name, statement, proof, breakable: false) = {
-  thm_env(
+  proof_env(
     name,
     statement,
     proof,
     type:         [Theorem],
     breakable:    breakable,
-    bgcolor1:     rgb("#faf1fd"),
-    bgcolor2:     rgb("#dfc1e6"),
-    strokecolor1: rgb("#6913d1"),
-    strokecolor2: rgb("#87739a"),
+    id:           "thm",
   )
 }
 
 #let lemma(name, statement, proof, breakable: false) = {
-  thm_env(
+  proof_env(
     name,
     statement,
     proof,
     type:         [Lemma],
     breakable:    breakable,
-    bgcolor1:     rgb("#fcffcc"),
-    bgcolor2:     rgb("#edeb69"),
-    strokecolor1: rgb("#abc00c"),
-    strokecolor2: rgb("#b2c016"),
+    id:           "lemma",
   )
 }
 
 #let cor(name, statement, proof, breakable: false) = {
-  thm_env(
+  proof_env(
     name,
     statement,
     proof,
     type:         [Corollary],
     breakable:    breakable,
-    bgcolor1:     rgb("#dedbf8"),
-    bgcolor2:     rgb("#bfb6df"),
-    strokecolor1: rgb("#0f0cc0"),
-    strokecolor2: rgb("#4922bf"),
+    id:           "cor",
   )
 }
 
 #let prop(statement, proof, breakable: false) = {
-  thm_env(
+  proof_env(
     [],
     statement,
     proof,
     type:         [Proposition],
     breakable:    breakable,
-    bgcolor1:     rgb("#fbdfdb"),
-    bgcolor2:     rgb("#e1a29f"),
-    strokecolor1: rgb("#e03636"),
-    strokecolor2: rgb("#d45345"),
+    id:           "prop",
   )
 }
 
 
 
 //-----Definition Environments-----//
-#let defn_env(
+#let statement_env(
   name,
   statement,
-  type:         [Definition],
+  type:         [],
   breakable:    false,
-  bgcolor:      white,
-  strokecolor:  black,
-) = {
+  id:           "",
+) = context {
+  let bgcolor     = colors(env_theme.get(), id, "bgcolor")
+  let strokecolor = colors(env_theme.get(), id, "strokecolor")
+
   let name_content = [=== #type]
 
   if name != [] {
@@ -176,80 +171,94 @@
   )
 }
 
+#let note(statement, breakable: false) = {
+  statement_env(
+    [],
+    statement,
+    type:         [Note],
+    breakable:    breakable,
+    id:           "note",
+  )
+}
+
 #let defn(name, statement, breakable: false) = {
-  defn_env(
+  statement_env(
     name,
     statement,
     type:         [Definition],
     breakable:    breakable,
-    bgcolor:      rgb("#cceeff"),
-    strokecolor:  rgb("#33adff"),
+    id:           "defn",
   )
 }
 
 #let remark(statement, breakable: false) = {
-  defn_env(
+  statement_env(
     [],
     statement,
     type:         [Remark],
     breakable:    breakable,
-    bgcolor:      rgb("#fcf0fc"),
-    strokecolor:  rgb("#e734ed"),
+    id:           "remark",
+  )
+}
+
+#let notation(statement, breakable: false) = {
+  statement_env(
+    [],
+    statement,
+    type:         [Notation],
+    breakable:    breakable,
+    id:           "notation",
   )
 }
 
 #let example(name, statement, breakable: false) = {
-  defn_env(
+  statement_env(
     name,
     statement,
     type:         [Example],
     breakable:    breakable,
-    bgcolor:      rgb("#fafffa"),
-    strokecolor:  rgb("#1fc71f"),
+    id:           "example",
   )
 }
 
-#let instr(statement, breakable: false) = {
-  defn_env(
-    [],
+// For a more general definition
+#let conc(name, statement, breakable: false) = {
+  statement_env(
+    name,
     statement,
-    type:         [Instructions],
+    type:         [Concept],
     breakable:    breakable,
-    bgcolor:      rgb("#cceeff"),
-    strokecolor:  rgb("#33adff"),
+    id:           "conc",
   )
 }
 
 #let comp_prob(name, statement, breakable: false) = {
-  defn_env(
+  statement_env(
     name,
     statement,
     type:         [Computational Problem],
     breakable:    breakable,
-    bgcolor:      rgb("#e3f2f4"),
-    strokecolor:  rgb("#14a1f2"),
+    id:           "comp_prob",
   )
 }
 
 #let algor(name, statement, breakable: false) = {
-  defn_env(
+  statement_env(
     name,
     statement,
     type:         [Algorithm],
     breakable:    breakable,
-    bgcolor:      rgb("#e3e3f4"),
-    strokecolor:  rgb("#221fc7"),
+    id:           "algor",
   )
 }
 
 #let runtime(statement, breakable: false) = {
-  defn_env(
+  statement_env(
     [],
     statement,
     type:         [Runtime Analysis],
     breakable:    breakable,
-    bgcolor:      rgb("#ebcceb"),
-    strokecolor:  rgb("#9e18a2"),
+    id:           "runtime",
   )
 }
 
@@ -260,13 +269,15 @@
   solution,
   type:         [],
   breakable:    false,
-  bgcolor1:     white,
-  bgcolor2:     white,
-  strokecolor1: black,
-  strokecolor2: black,
+  id:           "",
   width:        100%,
   height:       auto,
-) = {
+) = context {
+  let bgcolor1      = colors(env_theme.get(), id, "bgcolor1")
+  let bgcolor2      = colors(env_theme.get(), id, "bgcolor2")
+  let strokecolor1  = colors(env_theme.get(), id, "strokecolor1")
+  let strokecolor2  = colors(env_theme.get(), id, "strokecolor2")
+
   block(
     fill: rgb(bgcolor1),
     width: width,
@@ -311,10 +322,7 @@
     solution,
     type:         [Problem],
     breakable:    breakable,
-    bgcolor1:     rgb("#fafffa"),
-    bgcolor2:     rgb("#abc3b0"),
-    strokecolor1: rgb("#1fc71f"),
-    strokecolor2: rgb("#739a7a"),
+    id:           "named_prob",
     width:        width,
     height:       height,
   )
@@ -331,10 +339,7 @@
     solution,
     type:         [Problem],
     breakable:    breakable,
-    bgcolor1:     rgb("#fafffa"),
-    bgcolor2:     rgb("#abc3b0"),
-    strokecolor1: rgb("#1fc71f"),
-    strokecolor2: rgb("#739a7a"),
+    id:           "prob",
   )
 }
 
@@ -352,10 +357,7 @@
     solution,
     type:         [Exercise],
     breakable:    breakable,
-    bgcolor1:     rgb("#fff3e1"),
-    bgcolor2:     rgb("#eed08a"),
-    strokecolor1: rgb("#fd9e0a"),
-    strokecolor2: rgb("#c37410"),
+    id:           "named_excs",
     width:        width,
     height:       height,
   )
@@ -372,17 +374,21 @@
     solution,
     type:         [Exercise],
     breakable:    breakable,
-    bgcolor1:     rgb("#fff3e1"),
-    bgcolor2:     rgb("#eed08a"),
-    strokecolor1: rgb("#fd9e0a"),
-    strokecolor2: rgb("#c37410"),
+    id:           "excs",
   )
 }
 
-
+//------Misc------//
+#let nn(content) = {  // no number
+  math.equation(
+    block: true,
+    numbering: none,
+    content
+  )
+}
 
 //-----Templates-----//
-#let notes(title, author, doc) = {
+#let notes(title, author, doc, number: false) = {
   set document(title: title, author: author)
   set page(
     paper: "us-letter",
@@ -443,6 +449,20 @@
     *#title*
   ])
   align(center, text(15pt)[#author])
+
+  let eq-numbering = none
+  if number {
+    eq-numbering = "(1.1)"
+  }
+
+  set math.equation(numbering: eq-numbering, supplement: none)
+  show ref: it => { // https://github.com/typst/typst/issues/873
+    if it.element != none and it.element.func() == math.equation {
+      [(#it)]
+    } else {
+      it
+    }
+  }
 
   set heading(numbering: "1.")
   show outline.entry.where(

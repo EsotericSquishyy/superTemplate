@@ -57,6 +57,7 @@
 #let infty = $infinity$
 #let pm = $plus.minus$
 #let sim = $tilde.op$
+#let ni = $in.rev$
 #let st = "such that"
 #let fs = "for some"
 #let iff = "if and only if"

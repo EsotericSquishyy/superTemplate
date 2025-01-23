@@ -1,3 +1,5 @@
+#import "@preview/commute:0.2.0": node, arr, commutative-diagram
+
 // Differential Geometry
 #let grad = $gradient$
 #let div(x) = $grad dot #x$
@@ -33,6 +35,7 @@
 #let tr = $op("tr")$  // trace
 #let dsum = $plus.circle$  // direct sum
 #let tp = $times.circle$  // tensor product
+#let codim = $op("codim")$
 
 // algebra
 #let eclass(a) = $overline(#a)$
@@ -53,6 +56,8 @@
 #let iso = $tilde.equiv$
 #let notiso = $tilde.equiv.not$
 #let rcoset = $#h(0cm) \\ #h(0cm)$
+#let Isom = $op("Isom")$
+#let char = $op("char")$
 
 // number theory
 #let lcm = $op("lcm")$
