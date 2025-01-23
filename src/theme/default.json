@@ -59,6 +59,10 @@
     "bgcolor":      "#e3e3f4",
     "strokecolor":  "#221fc7"
   },
+  "runtime": {
+    "bgcolor":      "#ebcceb",
+    "strokecolor":  "#9e18a2"
+  },
   "named_prob": {
     "bgcolor1":     "#fafffa",
     "bgcolor2":     "#abc3b0",
@@ -84,4 +88,3 @@
     "strokecolor2": "#c37410"
   }
 }
-
