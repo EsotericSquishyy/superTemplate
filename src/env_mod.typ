@@ -550,9 +550,15 @@
 
   show heading.where(level: 1): it => [
     #pagebreak(weak: true)
-    #set text(25pt)
-    #it
-    #v(1.2em)
+    #set text(27pt, rgb("#290661"))
+    #underline[#it]
+    #v(0.3em)
+  ]
+
+  show heading.where(level: 2): it => [
+    #set text(21pt, rgb("#663209"))
+    #underline[#it]
+    #v(0.5em)
   ]
 
   problem_counter.update(0)
