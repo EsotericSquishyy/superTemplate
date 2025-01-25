@@ -1,4 +1,4 @@
-#let theme_list = ("default", "bw", "bootstrap")
+#let theme_list = ("classic", "bw", "bootstrap")
 #let colors_dict = (:)
 #for theme in theme_list {
   colors_dict.insert(theme, json(theme + ".json"))
