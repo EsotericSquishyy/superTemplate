@@ -179,6 +179,8 @@
 
   let block_inset
   let top_pad
+  let side_pad
+  let bottom_pad
   if header_style.get() == "tab" {
     name_content = block(
       fill: strokecolor,
@@ -189,10 +191,14 @@
 
     block_inset = 0pt
     top_pad = 8pt
+    side_pad = 12pt
+    bottom_pad = 10pt
 
   } else if header_style.get() == "classic" {
     block_inset = 8pt
     top_pad = 12pt
+    side_pad = 0pt
+    bottom_pad = 3pt
   }
 
   block(
@@ -207,8 +213,9 @@
       name_content,
       pad(
         top: top_pad,
-        bottom: 6pt,
-        left: 12pt,
+        bottom: bottom_pad,
+        left: side_pad,
+        right: side_pad,
         statement
       )
     )
@@ -459,7 +466,7 @@
 }
 
 //-----Templates-----//
-#let notes(title, author, doc, number: false) = {
+#let notes(title, author, doc, number: false, depth: 2) = {
   set document(title: title, author: author)
   set page(
     paper: "us-letter",
@@ -544,7 +551,7 @@
   }
   outline(
     title: [Table of Contents],
-    depth: 2,
+    depth: depth,
     indent: auto,
   )
 
@@ -562,7 +569,7 @@
   ]
 
   problem_counter.update(0)
-  show link: l => underline(l) //  + $#emoji.chain$
+  show link: l => underline(l)
 
   doc
 }
