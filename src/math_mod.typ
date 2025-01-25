@@ -61,3 +61,8 @@
 
 // number theory
 #let lcm = $op("lcm")$
+
+// model theory
+#let mimp = $op(tack.r.double)$
+#let notmimp = $op(tack.r.double.not)$
+#let rlmimp = $tack.r.double tack.l.double$
