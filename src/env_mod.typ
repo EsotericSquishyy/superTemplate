@@ -366,7 +366,7 @@
     solution,
     kind:         [Problem],
     breakable:    breakable,
-    id:           "named_prob",
+    id:           "prob",
     width:        width,
     height:       height,
   )
@@ -401,7 +401,7 @@
     solution,
     kind:         [Exercise],
     breakable:    breakable,
-    id:           "named_excs",
+    id:           "excs",
     width:        width,
     height:       height,
   )

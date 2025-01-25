@@ -63,23 +63,11 @@
     "bgcolor":      "#ebcceb",
     "strokecolor":  "#9e18a2"
   },
-  "named_prob": {
-    "bgcolor1":     "#fafffa",
-    "bgcolor2":     "#abc3b0",
-    "strokecolor1": "#1fc71f",
-    "strokecolor2": "#739a7a"
-  },
   "prob": {
     "bgcolor1":     "#fafffa",
     "bgcolor2":     "#abc3b0",
     "strokecolor1": "#1fc71f",
     "strokecolor2": "#739a7a"
-  },
-  "named_excs": {
-    "bgcolor1":     "#fff3e1",
-    "bgcolor2":     "#eed08a",
-    "strokecolor1": "#fd9e0a",
-    "strokecolor2": "#c37410"
   },
   "excs": {
     "bgcolor1":     "#fff3e1",
