@@ -322,32 +322,59 @@
   let strokecolor1  = colors(env_theme.get(), id, "strokecolor1")
   let strokecolor2  = colors(env_theme.get(), id, "strokecolor2")
 
+  let name_content = [=== #kind #name]
+  let block_inset
+  let top_pad
+  let side_pad
+  if header_style.get() == "tab" {
+    name_content = block(
+      fill: strokecolor1,
+      inset: 7pt,
+      width: 100%,
+      text(white)[#name_content]
+    )
+
+    block_inset = 0pt
+    top_pad = 8pt
+    side_pad = 12pt
+
+  } else if header_style.get() == "classic" {
+    block_inset = 8pt
+    top_pad = 12pt
+    side_pad = 0pt
+  }
+
+  let statement_content = pad(
+    top: top_pad,
+    right: 12pt,
+    bottom: 12pt,
+    left: 12pt,
+    block(
+      fill: bgcolor2,
+      inset: 8pt,
+      radius: 2pt,
+      width: width,
+      stroke: (
+        left: strokecolor2 + 6pt
+      ),
+      statement
+    )
+  )
+
   block(
-    fill: rgb(bgcolor1),
+    fill: bgcolor1,
     width: width,
     height: height,
-    inset: 8pt,
+    inset: block_inset,
     radius: 7pt,
     stroke: strokecolor1,
     breakable: breakable,
+    clip: true,
     stack(
-      [=== #kind #name],
-      pad(
-        top: 12pt,
-        bottom: 12pt,
-        left: 12pt,
-        block(
-          fill: bgcolor2,
-          inset: 8pt,
-          radius: 2pt,
-          stroke: (
-            left: strokecolor2 + 6pt
-          ),
-          statement
-        )
-      ),
-      [*Solution*],
-      pad(top: 12pt, solution)
+      name_content,
+      statement_content,
+      pad([*Solution*], top: 12pt, left: side_pad),
+      pad(solution, side_pad)
     )
   )
 }

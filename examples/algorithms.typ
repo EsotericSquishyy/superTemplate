@@ -156,5 +156,6 @@
 ])
 
 #runtime([
-  The runtime of the previous algorithm is $O(n log n) + O(n) = O(n log n)$ because of the sorting and then iteration through.
+  Since the Earliest Finish Time algorithm involves sorts its values, it is at least $O(n log n)$.
+  Then notice we iterate through the sorted values, an $O(n)$ operation, so the algorithm is $O(n log n)$ overall.
 ])

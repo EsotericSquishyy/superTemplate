@@ -126,4 +126,4 @@
   But since $k <= n - 1$, we must have either $n = 2 k$ or $k = 0$.
   But the former situation is impossible since $n$ is odd, so it must be true that $k = 0$ and $x = r^0 = 1$.
   Thus any element in $D_(2n)$ that commutes with every other element must be the identity.
-])
+], breakable: true)
