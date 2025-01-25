@@ -125,6 +125,7 @@
     id:           "thm",
   )
 }
+#let theorem = thm
 
 #let lem(name, statement, proof, breakable: false) = {
   proof_env(
@@ -136,6 +137,7 @@
     id:           "lemma",
   )
 }
+#let lemma = lem
 
 #let cor(name, statement, proof, breakable: false) = {
   proof_env(
@@ -147,6 +149,7 @@
     id:           "cor",
   )
 }
+#let corollary = cor
 
 #let prop(statement, proof, breakable: false) = {
   proof_env(
@@ -158,6 +161,7 @@
     id:           "prop",
   )
 }
+#let proposition = prop
 
 
 
@@ -241,8 +245,9 @@
     id:           "defn",
   )
 }
+#let definition = defn
 
-#let rmk(statement, breakable: false) = {
+#let rem(statement, breakable: false) = {
   statement_env(
     [],
     statement,
@@ -251,6 +256,8 @@
     id:           "remark",
   )
 }
+#let rmk = rem
+#let remark = rem
 
 #let notation(statement, breakable: false) = {
   statement_env(
@@ -271,6 +278,7 @@
     id:           "example",
   )
 }
+#let example = ex
 
 // For a more general definition
 #let conc(name, statement, breakable: false) = {
@@ -282,6 +290,7 @@
     id:           "conc",
   )
 }
+#let concept = conc
 
 #let comp_prob(name, statement, breakable: false) = {
   statement_env(
@@ -292,6 +301,7 @@
     id:           "comp_prob",
   )
 }
+#let computational_problem = comp_prob
 
 #let algo(name, statement, breakable: false) = {
   statement_env(
@@ -302,6 +312,7 @@
     id:           "algor",
   )
 }
+#let algorithm = algo
 
 #let runtime(statement, breakable: false) = {
   statement_env(
@@ -405,6 +416,7 @@
     height:       height,
   )
 }
+#let named_problem = named_prob
 
 #let prob(
   statement,
@@ -420,6 +432,7 @@
     id:           "prob",
   )
 }
+#let problem = prob
 
 #let named_excs(
   name,
@@ -440,6 +453,7 @@
     height:       height,
   )
 }
+#let named_exercise = named_excs
 
 #let excs(
   statement,
@@ -455,6 +469,7 @@
     id:           "excs",
   )
 }
+#let exercise = excs
 
 //------Misc------//
 #let nn(content) = {  // no number
