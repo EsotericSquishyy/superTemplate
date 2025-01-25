@@ -1,6 +1,6 @@
 #import "@local/superTemplate:0.2.0": *
 #import math_mod: *
-#show: notes.with("Analysis Lecture Notes", "John Doe", number: true)
+#show: notes.with("Analysis Lecture Notes", "John Doe", number: true, depth: 3)
 #set enum(numbering: "i)")
 
 // These notes are based on the first few pages of Principles of Mathematical Analysis by Walter Rudin

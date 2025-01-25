@@ -1,6 +1,6 @@
 #import "@local/superTemplate:0.2.0": *
 #import cs_mod: *
-#show: notes.with("Algorithms", "Jane Doe")
+#show: notes.with("Algorithms", "Jane Doe", depth: 3)
 
 = Greedy Algorithms
 
