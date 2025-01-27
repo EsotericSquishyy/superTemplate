@@ -1,7 +1,4 @@
-#import "theme/colors.typ": *
-
-#let header_style_list = ("tab", "classic")
-#let header_style = state("headers", "tab")
+#import "theme/theme.typ": *
 
 #let problem_counter = counter("problem")
 
@@ -20,8 +17,8 @@
   title,
   info,
 ) = context {
-  let bgcolor     = colors(env_theme.get(), "bookmark", "bgcolor")
-  let strokecolor = colors(env_theme.get(), "bookmark", "strokecolor")
+  let bgcolor     = colors(env_colors.get(), "bookmark", "bgcolor")
+  let strokecolor = colors(env_colors.get(), "bookmark", "strokecolor")
 
   block(
     fill: bgcolor,
@@ -46,10 +43,10 @@
   breakable:    false,
   id:           "",
 ) = context {
-  let bgcolor1      = colors(env_theme.get(), id, "bgcolor1")
-  let bgcolor2      = colors(env_theme.get(), id, "bgcolor2")
-  let strokecolor1  = colors(env_theme.get(), id, "strokecolor1")
-  let strokecolor2  = colors(env_theme.get(), id, "strokecolor2")
+  let bgcolor1      = colors(env_colors.get(), id, "bgcolor1")
+  let bgcolor2      = colors(env_colors.get(), id, "bgcolor2")
+  let strokecolor1  = colors(env_colors.get(), id, "strokecolor1")
+  let strokecolor2  = colors(env_colors.get(), id, "strokecolor2")
 
   let name_content = [=== _ #kind _]
   if name != [] {
@@ -59,7 +56,7 @@
   let block_inset
   let top_pad
   let side_pad
-  if header_style.get() == "tab" {
+  if env_headers.get() == "tab" {
     name_content = block(
       fill: strokecolor1,
       inset: 7pt,
@@ -71,7 +68,7 @@
     top_pad = 8pt
     side_pad = 12pt
 
-  } else if header_style.get() == "classic" {
+  } else if env_headers.get() == "classic" {
     block_inset = 8pt
     top_pad = 12pt
     side_pad = 0pt
@@ -115,19 +112,19 @@
   )
 }
 
-#let thm(name, statement, proof, breakable: false) = {
+#let theorem(name, statement, proof, breakable: false) = {
   proof_env(
     name,
     statement,
     proof,
     kind:         [Theorem],
     breakable:    breakable,
-    id:           "thm",
+    id:           "theorem",
   )
 }
-#let theorem = thm
+#let thm = theorem
 
-#let lem(name, statement, proof, breakable: false) = {
+#let lemma(name, statement, proof, breakable: false) = {
   proof_env(
     name,
     statement,
@@ -137,31 +134,31 @@
     id:           "lemma",
   )
 }
-#let lemma = lem
+#let lem = lemma
 
-#let cor(name, statement, proof, breakable: false) = {
+#let corollary(name, statement, proof, breakable: false) = {
   proof_env(
     name,
     statement,
     proof,
     kind:         [Corollary],
     breakable:    breakable,
-    id:           "cor",
+    id:           "corollary",
   )
 }
-#let corollary = cor
+#let cor = corollary
 
-#let prop(statement, proof, breakable: false) = {
+#let proposition(statement, proof, breakable: false) = {
   proof_env(
     [],
     statement,
     proof,
     kind:         [Proposition],
     breakable:    breakable,
-    id:           "prop",
+    id:           "proposition",
   )
 }
-#let proposition = prop
+#let prop = proposition
 
 
 
@@ -173,8 +170,8 @@
   breakable:    false,
   id:           "",
 ) = context {
-  let bgcolor     = colors(env_theme.get(), id, "bgcolor")
-  let strokecolor = colors(env_theme.get(), id, "strokecolor")
+  let bgcolor     = colors(env_colors.get(), id, "bgcolor")
+  let strokecolor = colors(env_colors.get(), id, "strokecolor")
 
   let name_content = [=== #kind]
   if name != [] {
@@ -185,7 +182,7 @@
   let top_pad
   let side_pad
   let bottom_pad
-  if header_style.get() == "tab" {
+  if env_headers.get() == "tab" {
     name_content = block(
       fill: strokecolor,
       inset: 7pt,
@@ -198,7 +195,7 @@
     side_pad = 12pt
     bottom_pad = 10pt
 
-  } else if header_style.get() == "classic" {
+  } else if env_headers.get() == "classic" {
     block_inset = 8pt
     top_pad = 12pt
     side_pad = 0pt
@@ -236,18 +233,18 @@
   )
 }
 
-#let defn(name, statement, breakable: false) = {
+#let definition(name, statement, breakable: false) = {
   statement_env(
     name,
     statement,
     kind:         [Definition],
     breakable:    breakable,
-    id:           "defn",
+    id:           "definition",
   )
 }
-#let definition = defn
+#let defn = definition
 
-#let rem(statement, breakable: false) = {
+#let remark(statement, breakable: false) = {
   statement_env(
     [],
     statement,
@@ -256,8 +253,8 @@
     id:           "remark",
   )
 }
-#let rmk = rem
-#let remark = rem
+#let rem = remark
+#let rmk = remark
 
 #let notation(statement, breakable: false) = {
   statement_env(
@@ -269,7 +266,7 @@
   )
 }
 
-#let ex(name, statement, breakable: false) = {
+#let example(name, statement, breakable: false) = {
   statement_env(
     name,
     statement,
@@ -278,41 +275,41 @@
     id:           "example",
   )
 }
-#let example = ex
+#let ex = example
 
 // For a more general definition
-#let conc(name, statement, breakable: false) = {
+#let concept(name, statement, breakable: false) = {
   statement_env(
     name,
     statement,
     kind:         [Concept],
     breakable:    breakable,
-    id:           "conc",
+    id:           "concept",
   )
 }
-#let concept = conc
+#let conc = concept
 
-#let comp_prob(name, statement, breakable: false) = {
+#let computational_problem(name, statement, breakable: false) = {
   statement_env(
     name,
     statement,
     kind:         [Computational Problem],
     breakable:    breakable,
-    id:           "comp_prob",
+    id:           "computational_problem",
   )
 }
-#let computational_problem = comp_prob
+#let comp_prob = computational_problem
 
-#let algo(name, statement, breakable: false) = {
+#let algorithm(name, statement, breakable: false) = {
   statement_env(
     name,
     statement,
     kind:         [Algorithm],
     breakable:    breakable,
-    id:           "algor",
+    id:           "algorithm",
   )
 }
-#let algorithm = algo
+#let algo = algorithm
 
 #let runtime(statement, breakable: false) = {
   statement_env(
@@ -335,16 +332,16 @@
   width:        100%,
   height:       auto,
 ) = context {
-  let bgcolor1      = colors(env_theme.get(), id, "bgcolor1")
-  let bgcolor2      = colors(env_theme.get(), id, "bgcolor2")
-  let strokecolor1  = colors(env_theme.get(), id, "strokecolor1")
-  let strokecolor2  = colors(env_theme.get(), id, "strokecolor2")
+  let bgcolor1      = colors(env_colors.get(), id, "bgcolor1")
+  let bgcolor2      = colors(env_colors.get(), id, "bgcolor2")
+  let strokecolor1  = colors(env_colors.get(), id, "strokecolor1")
+  let strokecolor2  = colors(env_colors.get(), id, "strokecolor2")
 
   let name_content = [=== #kind #name]
   let block_inset
   let top_pad
   let side_pad
-  if header_style.get() == "tab" {
+  if env_headers.get() == "tab" {
     name_content = block(
       fill: strokecolor1,
       inset: 7pt,
@@ -356,7 +353,7 @@
     top_pad = 8pt
     side_pad = 12pt
 
-  } else if header_style.get() == "classic" {
+  } else if env_headers.get() == "classic" {
     block_inset = 8pt
     top_pad = 12pt
     side_pad = 0pt
@@ -397,7 +394,7 @@
   )
 }
 
-#let named_prob(
+#let named_problem(
   name,
   statement,
   solution,
@@ -411,14 +408,14 @@
     solution,
     kind:         [Problem],
     breakable:    breakable,
-    id:           "prob",
+    id:           "problem",
     width:        width,
     height:       height,
   )
 }
-#let named_problem = named_prob
+#let named_prob = named_problem
 
-#let prob(
+#let problem(
   statement,
   solution,
   breakable: false,
@@ -429,12 +426,12 @@
     solution,
     kind:         [Problem],
     breakable:    breakable,
-    id:           "prob",
+    id:           "problem",
   )
 }
-#let problem = prob
+#let prob = problem
 
-#let named_excs(
+#let named_exercise(
   name,
   statement,
   solution,
@@ -448,14 +445,14 @@
     solution,
     kind:         [Exercise],
     breakable:    breakable,
-    id:           "excs",
+    id:           "exercise",
     width:        width,
     height:       height,
   )
 }
-#let named_exercise = named_excs
+#let named_excs = named_exercise
 
-#let excs(
+#let exercise(
   statement,
   solution,
   breakable: false,
@@ -466,10 +463,10 @@
     solution,
     kind:         [Exercise],
     breakable:    breakable,
-    id:           "excs",
+    id:           "exercise",
   )
 }
-#let exercise = excs
+#let excs = exercise
 
 //------Misc------//
 #let nn(content) = {  // no number
