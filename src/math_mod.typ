@@ -66,3 +66,6 @@
 #let mimp = $op(tack.r.double)$
 #let notmimp = $op(tack.r.double.not)$
 #let rlmimp = $tack.r.double tack.l.double$
+
+// Geometry
+#let Cay = $op("Cay")$

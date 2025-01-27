@@ -265,6 +265,7 @@
     id:           "notation",
   )
 }
+#let notn = notation
 
 #let example(name, statement, breakable: false) = {
   statement_env(
