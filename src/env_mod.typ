@@ -493,7 +493,8 @@
         return
       }
 
-      let headings_shown = (1, 2)
+      let last_heading_level = headings.last().level
+      let headings_shown = (1, 2).filter(l => l<=last_heading_level)
       let heading_max_level = calc.max(..headings_shown)
 
       let section = level.display((..nums) => nums
@@ -516,15 +517,9 @@
       .join([ --- ])
 
       let level_one_headings = query(heading.where(level: 1))
-      let on_same_page = level_one_headings.find(h => h.location().page() == here().page())
+      let h1_on_page = level_one_headings.find(h => h.location().page() == here().page())
 
-      let result
-      if (on_same_page == none) {
-        result = false
-      } else {
-        result = true
-      }
-      if (not heading_text.has("text")) and not result {
+      if (h1_on_page == none) {
         align(right, [* #heading_text (#section)*])
       }
     },
