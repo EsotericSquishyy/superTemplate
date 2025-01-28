@@ -494,7 +494,7 @@
       }
 
       let last_heading_level = headings.last().level
-      let headings_shown = (1, 2).filter(l => l<=last_heading_level)
+      let headings_shown = (1, 2).filter(l => (l <= last_heading_level))
       let heading_max_level = calc.max(..headings_shown)
 
       let section = level.display((..nums) => nums
