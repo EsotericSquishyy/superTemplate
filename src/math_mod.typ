@@ -58,6 +58,7 @@
 #let rcoset = $#h(0cm) \\ #h(0cm)$
 #let Isom = $op("Isom")$
 #let char = $op("char")$
+#let nil = $op("nil")$
 
 // number theory
 #let lcm = $op("lcm")$
