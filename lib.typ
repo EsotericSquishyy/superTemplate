@@ -69,19 +69,19 @@
 #let Wlog = "Without loss of generality"
 #let Sps = "Suppose"
 #let Spst = "Suppose that"
+#let wrt = "with respect to"
 #let cdots = math.class("relation", $dot thin dot thin dot$)
 #let ldots = math.class("relation", $. thin . thin .$)
 #let comp = $compose$
 #let propto = $prop$
 #let varphi = $phi.alt$
 #let mapsto = $arrow.r.long.bar$
+#let exiuni = $exists!$
 
 // misc operators
 #let Id = $op("Id")$
 #let Im = $op("Im")$
 #let sgn = $op("sgn")$
-#let max = $limits(op("max"))$
-#let min = $limits(op("min"))$
 #let prod = $limits(product)$
 #let sum = $limits(sum)$
 #let oplus = $plus.circle$

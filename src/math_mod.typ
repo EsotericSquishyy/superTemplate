@@ -18,6 +18,8 @@
 #let conj(a) = $overline(#a)$
 #let sup = $limits(op("sup"))$
 #let inf = $limits(op("inf"))$
+#let max = $limits(op("max"))$
+#let min = $limits(op("min"))$
 #let limsup = $limits(op("limsup"))$
 #let liminf = $limits(op("liminf"))$
 #let contint1 = $integral_C f(z) d z$
