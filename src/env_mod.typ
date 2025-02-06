@@ -48,6 +48,16 @@
   let strokecolor1  = colors(env_colors.get(), id, "strokecolor1")
   let strokecolor2  = colors(env_colors.get(), id, "strokecolor2")
 
+  show raw.where(block: false): r => {
+    box(
+      fill: bgcolor1.saturate(25%),
+      outset: (x: 1pt, y: 3pt),
+      inset: (x: 2pt),
+      radius: 2pt,
+      r
+    )
+  }
+
   let name_content = [=== _ #kind _]
   if name != [] {
     name_content = [=== _ #kind: _ #name]
@@ -176,6 +186,16 @@
   let name_content = [=== #kind]
   if name != [] {
     name_content = [=== #kind: #name]
+  }
+
+  show raw.where(block: false): r => {
+    box(
+      fill: bgcolor.saturate(25%),
+      outset: (x: 1pt, y: 3pt),
+      inset: (x: 2pt),
+      radius: 2pt,
+      r
+    )
   }
 
   let block_inset
@@ -337,6 +357,16 @@
   let bgcolor2      = colors(env_colors.get(), id, "bgcolor2")
   let strokecolor1  = colors(env_colors.get(), id, "strokecolor1")
   let strokecolor2  = colors(env_colors.get(), id, "strokecolor2")
+
+  show raw.where(block: false): r => {
+    box(
+      fill: bgcolor1.saturate(25%),
+      outset: (x: 1pt, y: 3pt),
+      inset: (x: 2pt),
+      radius: 2pt,
+      r
+    )
+  }
 
   let name_content = [=== #kind #name]
   let block_inset
@@ -578,15 +608,6 @@
 
   problem_counter.update(0)
   show link: l => underline(l)
-  show raw.where(block: false): r => {
-    box(
-      fill: rgb("#eee"),
-      outset: (x: 1pt, y: 3pt),
-      inset: (x: 2pt),
-      radius: 2pt,
-      r
-    )
-  }
 
   doc
 }

@@ -70,6 +70,7 @@
 #let Sps = "Suppose"
 #let Spst = "Suppose that"
 #let wrt = "with respect to"
+#let qquad = $quad quad$
 #let cdots = math.class("relation", $dot thin dot thin dot$)
 #let ldots = math.class("relation", $. thin . thin .$)
 #let comp = $compose$
