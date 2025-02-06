@@ -578,6 +578,15 @@
 
   problem_counter.update(0)
   show link: l => underline(l)
+  show raw.where(block: false): r => {
+    box(
+      fill: rgb("#eee"),
+      outset: (x: 1pt, y: 3pt),
+      inset: (x: 2pt),
+      radius: 2pt,
+      r
+    )
+  }
 
   doc
 }

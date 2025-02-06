@@ -10,3 +10,4 @@
 #let Enc = $op("Enc")$
 #let Dec = $op("Dec")$
 #let concat = $#h(0.05em) || #h(0.05em)$
+#let poly = $op("poly")$

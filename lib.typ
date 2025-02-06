@@ -86,5 +86,3 @@
 #let sum = $limits(sum)$
 #let oplus = $plus.circle$
 #let otimes = $times.circle$
-
-#show link: underline

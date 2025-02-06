@@ -9,7 +9,6 @@
   return rgb(colors_dict.at(theme_name).at(env_name).at(color_name))
 }
 
-#colors_dict.at("bootstrap")
 
 // Header Styling
 #let env_headers_list = ("tab", "classic")
