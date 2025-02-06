@@ -1,6 +1,6 @@
-#import "@local/superTemplate:0.1.3": *
+#import "@local/superTemplate:0.2.0": *
 #import cs_mod: *
-#show: notes.with("Algorithms", "Jane Doe")
+#show: notes.with("Algorithms", "Jane Doe", depth: 3)
 
 = Greedy Algorithms
 
@@ -17,7 +17,7 @@
   Our goal is to schedule the maximum possible number of tasks.
 ])
 
-#remark([
+#rmk([
   We can formalize the previous problem as follows:
 
   Call our set of tasks $S = {1, 2, dots, n}$.
@@ -27,14 +27,14 @@
   Thus, our goal is to find a feasible schedule of maximum size.
 ])
 
-#example([Interval Scheduling], [
+#ex([Interval Scheduling], [
   Suppose we have 5 tasks: $ {(3, 6), (1, 4), (4, 10), (6, 8), (0, 2)} $
   A feasible schedule cannot have two activities that overlap, so we cannot accept both (1, 4) and (3, 6).
   However, (3, 6) and (6, 8) are acceptable, because second only begins when first ends.
   Note that the optimal solution in this example has size 3.
 ])
 
-#remark([
+#rmk([
   We have a few possible greedy strategies:
   1. First In First Out (FIFO): pick the task that starts first, remove overlapping activities and repeat
   2. Shortest first: pick the activity with the shortest duration, remove overlapping activities and repeat
@@ -45,7 +45,7 @@
 ])
 
 <eft>
-#algor([Earliest Finish Time (EFT)], [
+#algo([Earliest Finish Time (EFT)], [
   We claim that the optimal greedy strategy is to sort the process jobs in order by earliest finish time.
 
   We sort jobs by order:
@@ -85,7 +85,7 @@
   )
 ])
 
-#example([Earliest Finish Time], [
+#ex([Earliest Finish Time], [
   #grid(
     align: center,
     columns: (0.3fr, 1fr),
@@ -141,7 +141,7 @@
   In particular, $f(a_1) <= f(b_1)$, that is, the greedy algorithm stays ahead.
   We formalize this as follows.
 
-  #lemma([Greedy Structure Lemma], [
+  #lem([Greedy Structure Lemma], [
     For every $i <= k$, we have $f(a_i) <= f(b_i)$.
   ], [
     We proceed by induction.
@@ -156,5 +156,6 @@
 ])
 
 #runtime([
-  The runtime of the previous algorithm is $O(n log n) + O(n) = O(n log n)$ because of the sorting and then iteration through.
+  Since the Earliest Finish Time algorithm involves sorts its values, it is at least $O(n log n)$.
+  Then notice we iterate through the sorted values, an $O(n)$ operation, so the algorithm is $O(n log n)$ overall.
 ])

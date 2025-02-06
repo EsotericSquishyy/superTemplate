@@ -1,4 +1,4 @@
-#import "theme/colors.typ": *
+#import "theme/theme.typ": *
 
 #let problem_counter = counter("problem")
 
@@ -7,8 +7,9 @@
 }
 
 #let qed = [#v(0.2em) #h(90%) $square.big$]
-#let proof(body) = {
-  [_Proof_: ]; body; qed
+
+#let pf(body) = {
+  [_*Proof*_: ]; body; qed
 }
 
 //-----Bookmark-----//
@@ -16,8 +17,8 @@
   title,
   info,
 ) = context {
-  let bgcolor     = colors(env_theme.get(), "bookmark", "bgcolor")
-  let strokecolor = colors(env_theme.get(), "bookmark", "strokecolor")
+  let bgcolor     = colors(env_colors.get(), "bookmark", "bgcolor")
+  let strokecolor = colors(env_colors.get(), "bookmark", "strokecolor")
 
   block(
     fill: bgcolor,
@@ -33,55 +34,86 @@
   )
 }
 
-
 //-----Theorem Environments-----//
 #let proof_env(
   name,
   statement,
   proof,
-  type:         [],
+  kind:         [],
   breakable:    false,
   id:           "",
 ) = context {
-  let bgcolor1      = colors(env_theme.get(), id, "bgcolor1")
-  let bgcolor2      = colors(env_theme.get(), id, "bgcolor2")
-  let strokecolor1  = colors(env_theme.get(), id, "strokecolor1")
-  let strokecolor2  = colors(env_theme.get(), id, "strokecolor2")
+  let bgcolor1      = colors(env_colors.get(), id, "bgcolor1")
+  let bgcolor2      = colors(env_colors.get(), id, "bgcolor2")
+  let strokecolor1  = colors(env_colors.get(), id, "strokecolor1")
+  let strokecolor2  = colors(env_colors.get(), id, "strokecolor2")
 
-  let name_content = [=== _ #type _]
-  let statement_content = pad(
-      top: 12pt,
-      bottom: 12pt,
-      left: 12pt,
-      block(
-        fill: bgcolor2,
-        inset: 8pt,
-        radius: 2pt,
-        stroke: (
-          left: strokecolor2 + 6pt
-        ),
-        statement
-      )
+  show raw.where(block: false): r => {
+    box(
+      fill: bgcolor1.saturate(25%),
+      outset: (x: 1pt, y: 3pt),
+      inset: (x: 2pt),
+      radius: 2pt,
+      r
     )
+  }
+
+  let name_content = [=== _ #kind _]
+  if name != [] {
+    name_content = [=== _ #kind: _ #name]
+  }
+
+  let block_inset
+  let top_pad
+  let side_pad
+  if env_headers.get() == "tab" {
+    name_content = block(
+      fill: strokecolor1,
+      inset: 7pt,
+      width: 100%,
+      text(white)[#name_content]
+    )
+
+    block_inset = 0pt
+    top_pad = 8pt
+    side_pad = 12pt
+
+  } else if env_headers.get() == "classic" {
+    block_inset = 8pt
+    top_pad = 12pt
+    side_pad = 0pt
+  }
+
+  let statement_content = pad(
+    top: top_pad,
+    right: 12pt,
+    left: 12pt,
+    bottom: 12pt,
+    block(
+      fill: bgcolor2,
+      inset: 8pt,
+      radius: 2pt,
+      width: 100%,
+      stroke: (
+        left: strokecolor2 + 6pt
+      ),
+      statement
+    )
+  )
   let proof_content = []
 
-  if name != [] {
-    name_content = [=== _ #type: _ #name]
-  }
   if proof != [] {
-    proof_content = stack(
-      [*Proof*],
-      pad(proof + qed, top: 8pt),
-    )
+    proof_content = pad(pf(proof), side_pad)
   }
 
   block(
     fill: bgcolor1,
     width: 100%,
-    inset: 8pt,
+    inset: block_inset,
     radius: 7pt,
     stroke: strokecolor1,
     breakable: breakable,
+    clip: true,
     stack(
       name_content,
       statement_content,
@@ -90,49 +122,53 @@
   )
 }
 
-#let thm(name, statement, proof, breakable: false) = {
+#let theorem(name, statement, proof, breakable: false) = {
   proof_env(
     name,
     statement,
     proof,
-    type:         [Theorem],
+    kind:         [Theorem],
     breakable:    breakable,
-    id:           "thm",
+    id:           "theorem",
   )
 }
+#let thm = theorem
 
 #let lemma(name, statement, proof, breakable: false) = {
   proof_env(
     name,
     statement,
     proof,
-    type:         [Lemma],
+    kind:         [Lemma],
     breakable:    breakable,
     id:           "lemma",
   )
 }
+#let lem = lemma
 
-#let cor(name, statement, proof, breakable: false) = {
+#let corollary(name, statement, proof, breakable: false) = {
   proof_env(
     name,
     statement,
     proof,
-    type:         [Corollary],
+    kind:         [Corollary],
     breakable:    breakable,
-    id:           "cor",
+    id:           "corollary",
   )
 }
+#let cor = corollary
 
-#let prop(statement, proof, breakable: false) = {
+#let proposition(statement, proof, breakable: false) = {
   proof_env(
     [],
     statement,
     proof,
-    type:         [Proposition],
+    kind:         [Proposition],
     breakable:    breakable,
-    id:           "prop",
+    id:           "proposition",
   )
 }
+#let prop = proposition
 
 
 
@@ -140,31 +176,67 @@
 #let statement_env(
   name,
   statement,
-  type:         [],
+  kind:         [],
   breakable:    false,
   id:           "",
 ) = context {
-  let bgcolor     = colors(env_theme.get(), id, "bgcolor")
-  let strokecolor = colors(env_theme.get(), id, "strokecolor")
+  let bgcolor     = colors(env_colors.get(), id, "bgcolor")
+  let strokecolor = colors(env_colors.get(), id, "strokecolor")
 
-  let name_content = [=== #type]
-
+  let name_content = [=== #kind]
   if name != [] {
-    name_content = [=== #type: #name]
+    name_content = [=== #kind: #name]
   }
+
+  show raw.where(block: false): r => {
+    box(
+      fill: bgcolor.saturate(25%),
+      outset: (x: 1pt, y: 3pt),
+      inset: (x: 2pt),
+      radius: 2pt,
+      r
+    )
+  }
+
+  let block_inset
+  let top_pad
+  let side_pad
+  let bottom_pad
+  if env_headers.get() == "tab" {
+    name_content = block(
+      fill: strokecolor,
+      inset: 7pt,
+      width: 100%,
+      text(white)[#name_content]
+    )
+
+    block_inset = 0pt
+    top_pad = 8pt
+    side_pad = 12pt
+    bottom_pad = 10pt
+
+  } else if env_headers.get() == "classic" {
+    block_inset = 8pt
+    top_pad = 12pt
+    side_pad = 0pt
+    bottom_pad = 3pt
+  }
+
   block(
     fill: bgcolor,
     width: 100%,
-    inset: 8pt,
+    inset: block_inset,
     radius: 7pt,
     stroke: strokecolor,
     breakable: breakable,
+    clip: true,
     stack(
       name_content,
       pad(
-        top: 12pt,
-        bottom: 6pt,
-        left: 12pt,
+        top: top_pad,
+        bottom: bottom_pad,
+        left: side_pad,
+        right: side_pad,
         statement
       )
     )
@@ -175,88 +247,96 @@
   statement_env(
     [],
     statement,
-    type:         [Note],
+    kind:         [Note],
     breakable:    breakable,
     id:           "note",
   )
 }
 
-#let defn(name, statement, breakable: false) = {
+#let definition(name, statement, breakable: false) = {
   statement_env(
     name,
     statement,
-    type:         [Definition],
+    kind:         [Definition],
     breakable:    breakable,
-    id:           "defn",
+    id:           "definition",
   )
 }
+#let defn = definition
 
 #let remark(statement, breakable: false) = {
   statement_env(
     [],
     statement,
-    type:         [Remark],
+    kind:         [Remark],
     breakable:    breakable,
     id:           "remark",
   )
 }
+#let rem = remark
+#let rmk = remark
 
 #let notation(statement, breakable: false) = {
   statement_env(
     [],
     statement,
-    type:         [Notation],
+    kind:         [Notation],
     breakable:    breakable,
     id:           "notation",
   )
 }
+#let notn = notation
 
 #let example(name, statement, breakable: false) = {
   statement_env(
     name,
     statement,
-    type:         [Example],
+    kind:         [Example],
     breakable:    breakable,
     id:           "example",
   )
 }
+#let ex = example
 
 // For a more general definition
-#let conc(name, statement, breakable: false) = {
+#let concept(name, statement, breakable: false) = {
   statement_env(
     name,
     statement,
-    type:         [Concept],
+    kind:         [Concept],
     breakable:    breakable,
-    id:           "conc",
+    id:           "concept",
   )
 }
+#let conc = concept
 
-#let comp_prob(name, statement, breakable: false) = {
+#let computational_problem(name, statement, breakable: false) = {
   statement_env(
     name,
     statement,
-    type:         [Computational Problem],
+    kind:         [Computational Problem],
     breakable:    breakable,
-    id:           "comp_prob",
+    id:           "computational_problem",
   )
 }
+#let comp_prob = computational_problem
 
-#let algor(name, statement, breakable: false) = {
+#let algorithm(name, statement, breakable: false) = {
   statement_env(
     name,
     statement,
-    type:         [Algorithm],
+    kind:         [Algorithm],
     breakable:    breakable,
-    id:           "algor",
+    id:           "algorithm",
   )
 }
+#let algo = algorithm
 
 #let runtime(statement, breakable: false) = {
   statement_env(
     [],
     statement,
-    type:         [Runtime Analysis],
+    kind:         [Runtime Analysis],
     breakable:    breakable,
     id:           "runtime",
   )
@@ -267,48 +347,85 @@
   name,
   statement,
   solution,
-  type:         [],
+  kind:         [],
   breakable:    false,
   id:           "",
   width:        100%,
   height:       auto,
 ) = context {
-  let bgcolor1      = colors(env_theme.get(), id, "bgcolor1")
-  let bgcolor2      = colors(env_theme.get(), id, "bgcolor2")
-  let strokecolor1  = colors(env_theme.get(), id, "strokecolor1")
-  let strokecolor2  = colors(env_theme.get(), id, "strokecolor2")
+  let bgcolor1      = colors(env_colors.get(), id, "bgcolor1")
+  let bgcolor2      = colors(env_colors.get(), id, "bgcolor2")
+  let strokecolor1  = colors(env_colors.get(), id, "strokecolor1")
+  let strokecolor2  = colors(env_colors.get(), id, "strokecolor2")
+
+  show raw.where(block: false): r => {
+    box(
+      fill: bgcolor1.saturate(25%),
+      outset: (x: 1pt, y: 3pt),
+      inset: (x: 2pt),
+      radius: 2pt,
+      r
+    )
+  }
+
+  let name_content = [=== #kind #name]
+  let block_inset
+  let top_pad
+  let side_pad
+  if env_headers.get() == "tab" {
+    name_content = block(
+      fill: strokecolor1,
+      inset: 7pt,
+      width: 100%,
+      text(white)[#name_content]
+    )
+
+    block_inset = 0pt
+    top_pad = 8pt
+    side_pad = 12pt
+
+  } else if env_headers.get() == "classic" {
+    block_inset = 8pt
+    top_pad = 12pt
+    side_pad = 0pt
+  }
+
+  let statement_content = pad(
+    top: top_pad,
+    right: 12pt,
+    bottom: 12pt,
+    left: 12pt,
+    block(
+      fill: bgcolor2,
+      inset: 8pt,
+      radius: 2pt,
+      width: width,
+      stroke: (
+        left: strokecolor2 + 6pt
+      ),
+      statement
+    )
+  )
 
   block(
-    fill: rgb(bgcolor1),
+    fill: bgcolor1,
     width: width,
     height: height,
-    inset: 8pt,
+    inset: block_inset,
     radius: 7pt,
     stroke: strokecolor1,
     breakable: breakable,
+    clip: true,
     stack(
-      [=== #type #name],
-      pad(
-        top: 12pt,
-        bottom: 12pt,
-        left: 12pt,
-        block(
-          fill: bgcolor2,
-          inset: 8pt,
-          radius: 2pt,
-          stroke: (
-            left: strokecolor2 + 6pt
-          ),
-          statement
-        )
-      ),
-      [*Solution*],
-      pad(top: 12pt, solution)
+      name_content,
+      statement_content,
+      pad([*Solution*], top: 12pt, left: side_pad),
+      pad(solution, side_pad)
     )
   )
 }
 
-#let named_prob(
+#let named_problem(
   name,
   statement,
   solution,
@@ -320,15 +437,16 @@
     name,
     statement,
     solution,
-    type:         [Problem],
+    kind:         [Problem],
     breakable:    breakable,
-    id:           "named_prob",
+    id:           "problem",
     width:        width,
     height:       height,
   )
 }
+#let named_prob = named_problem
 
-#let prob(
+#let problem(
   statement,
   solution,
   breakable: false,
@@ -337,13 +455,14 @@
     [#problem_counter.step() #context { problem_counter.display() }],
     statement,
     solution,
-    type:         [Problem],
+    kind:         [Problem],
     breakable:    breakable,
-    id:           "prob",
+    id:           "problem",
   )
 }
+#let prob = problem
 
-#let named_excs(
+#let named_exercise(
   name,
   statement,
   solution,
@@ -355,15 +474,16 @@
     name,
     statement,
     solution,
-    type:         [Exercise],
+    kind:         [Exercise],
     breakable:    breakable,
-    id:           "named_excs",
+    id:           "exercise",
     width:        width,
     height:       height,
   )
 }
+#let named_excs = named_exercise
 
-#let excs(
+#let exercise(
   statement,
   solution,
   breakable: false,
@@ -372,11 +492,12 @@
     [],
     statement,
     solution,
-    type:         [Exercise],
+    kind:         [Exercise],
     breakable:    breakable,
-    id:           "excs",
+    id:           "exercise",
   )
 }
+#let excs = exercise
 
 //------Misc------//
 #let nn(content) = {  // no number
@@ -388,7 +509,7 @@
 }
 
 //-----Templates-----//
-#let notes(title, author, doc, number: false) = {
+#let notes(title, author, doc, number: false, depth: 2) = {
   set document(title: title, author: author)
   set page(
     paper: "us-letter",
@@ -402,7 +523,8 @@
         return
       }
 
-      let headings_shown = (1, 2)
+      let last_heading_level = headings.last().level
+      let headings_shown = (1, 2).filter(l => (l <= last_heading_level))
       let heading_max_level = calc.max(..headings_shown)
 
       let section = level.display((..nums) => nums
@@ -425,15 +547,9 @@
       .join([ --- ])
 
       let level_one_headings = query(heading.where(level: 1))
-      let on_same_page = level_one_headings.find(h => h.location().page() == here().page())
+      let h1_on_page = level_one_headings.find(h => h.location().page() == here().page())
 
-      let result
-      if (on_same_page == none) {
-        result = false
-      } else {
-        result = true
-      }
-      if (not heading_text.has("text")) and not result {
+      if (h1_on_page == none) {
         align(right, [* #heading_text (#section)*])
       }
     },
@@ -442,7 +558,7 @@
       let total_pages = counter(page).final().last()
       align(center)[Page #page_number of #total_pages]
     },
-    margin: 1.75cm
+    margin: 1.25cm
   )
 
   align(center, text(25pt)[
@@ -471,36 +587,27 @@
     v(12pt, weak: true)
     strong(it)
   }
-  show outline.entry.where(
-    level: 3
-  ): it => {
-    if (it.body.children.at(2).has("body")) {
-      let form
-      if (it.body.children.at(2).fields().body.has("children")) {
-        form = it.body.children.at(2).fields().body.children.at(1).text
-      } else {
-        form = it.body.children.at(2).fields().at("body").text
-      }
-
-      it
-    } else {
-      it
-    }
-  }
   outline(
     title: [Table of Contents],
+    depth: depth,
     indent: auto,
   )
 
   show heading.where(level: 1): it => [
     #pagebreak(weak: true)
-    #set text(25pt)
-    #it
-    #v(1.2em)
+    #set text(27pt, rgb("#290661"))
+    #underline[#it]
+    #v(0.3em)
+  ]
+
+  show heading.where(level: 2): it => [
+    #set text(21pt, rgb("#663209"))
+    #underline[#it]
+    #v(0.5em)
   ]
 
   problem_counter.update(0)
-  show link: l => underline(l) //  + $#emoji.chain$
+  show link: l => underline(l)
 
   doc
 }

@@ -1,6 +1,6 @@
-#import "@local/superTemplate:0.1.3": *
+#import "@local/superTemplate:0.2.0": *
 #import math_mod: *
-#show: notes.with("Analysis Lecture Notes", "John Doe", number: true)
+#show: notes.with("Analysis Lecture Notes", "John Doe", number: true, depth: 3)
 #set enum(numbering: "i)")
 
 // These notes are based on the first few pages of Principles of Mathematical Analysis by Walter Rudin
@@ -18,7 +18,7 @@ What do we mean when we say the sequence
 $]
 tends to $sqrt(2)$?
 
-#example([], [
+#ex([], [
   We now show that the equation $ p^2 = 2 $<1> is not satisfied by any rational $p$.
   By contradiction, suppose there were such a $p$.
   Then we could write $p = m / n$ where $n, m in ZZ$ and $n$ and $m$ are coprime.
@@ -48,7 +48,7 @@ We now consider this more closely.
   Thus $q in B$.
 ])
 
-#remark([
+#rmk([
   This shows that the rational number system has gaps, despite the density of $QQ$ in $QQ$.
   The real number system fills these gaps.
 ])

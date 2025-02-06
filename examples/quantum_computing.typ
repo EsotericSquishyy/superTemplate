@@ -1,4 +1,4 @@
-#import "@local/superTemplate:0.1.3": *
+#import "@local/superTemplate:0.2.0": *
 #import quantum_mod: *
 #show: basic
 

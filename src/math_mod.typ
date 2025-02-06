@@ -18,6 +18,8 @@
 #let conj(a) = $overline(#a)$
 #let sup = $limits(op("sup"))$
 #let inf = $limits(op("inf"))$
+#let max = $limits(op("max"))$
+#let min = $limits(op("min"))$
 #let limsup = $limits(op("limsup"))$
 #let liminf = $limits(op("liminf"))$
 #let contint1 = $integral_C f(z) d z$
@@ -58,6 +60,15 @@
 #let rcoset = $#h(0cm) \\ #h(0cm)$
 #let Isom = $op("Isom")$
 #let char = $op("char")$
+#let nil = $op("nil")$
 
 // number theory
 #let lcm = $op("lcm")$
+
+// model theory
+#let mimp = $op(tack.r.double)$
+#let notmimp = $op(tack.r.double.not)$
+#let rlmimp = $tack.r.double tack.l.double$
+
+// Geometry
+#let Cay = $op("Cay")$
