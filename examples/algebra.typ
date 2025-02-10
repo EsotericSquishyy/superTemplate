@@ -57,12 +57,12 @@
     Thus $G \\ {0}$ is a group under multiplication.
 ], breakable: true)
 
-#prob([
+#prob[
   (Dummit and Foote, exercise 1.1.25)
 
   Let $G$ be a group.
   Prove that if $x^2 = 1 forall x in G$, then $G$ is abelian.
-], [
+][
   Let $a, b in G$.
   Then observe
   $
@@ -74,20 +74,20 @@
   &= b a
   $
   so $G$ is abelian.
-])
+]
 
-#prob([
+#prob[
   (Dummit and Foote, exercise 1.1.32)
   If $x$ is an element of finite order $n$ in a group $G$, prove that the elements $1, x, x^2, dots, x^(n - 1)$ are all distinct.
   Deduce that $|x| <= |G|$.
-], [
+][
   Suppose by contradiction that $x^a = x^b$ for some $a, b in {0, 1, dots, n - 1}$ with $a != b$.
   Without loss of generality, suppose $a < b$.
   Then $x^(-a) x^a = 1 = x^(-a) x^b = x^(b - a)$.
   But since $b - a <= (n - 1) - 0 < n$, we must have that $x$ cannot be order $n$, a contradiction.
   Therefore $1, x, dots, x^(n - 1)$ are all distinct.
   Further, each belongs to $G$, so $G$ includes at least these elements, and thus $n = |x| <= |G|$.
-])
+]
 
 #prob([
   (Dummit and Foote, exercise 1.2.5)

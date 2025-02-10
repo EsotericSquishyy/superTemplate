@@ -533,7 +533,7 @@
         .map(str)
         .join("."))
 
-      let heading_text = headings_shown.map((i) => {
+      let headers = headings_shown.map((i) => {
         let headings_at_this_level = headings
           .filter(h => h.level == i)
 
@@ -544,13 +544,21 @@
           .body
       })
       .filter(it => it != none)
-      .join([ --- ])
 
       let level_one_headings = query(heading.where(level: 1))
       let h1_on_page = level_one_headings.find(h => h.location().page() == here().page())
 
       if (h1_on_page == none) {
-        align(right, [* #heading_text (#section)*])
+        grid(
+          columns: (1fr, 1fr),
+          align(left)[
+            #smallcaps[*#headers.at(0)*]
+          ],
+          align(right)[
+            #smallcaps[*#headers.at(1) --- #section*]
+          ]
+        )
+        line(length: 100%)
       }
     },
     footer: context {
@@ -558,7 +566,7 @@
       let total_pages = counter(page).final().last()
       align(center)[Page #page_number of #total_pages]
     },
-    margin: 1.25cm
+    margin: (top: 1.75cm, bottom: 1.25cm, left: 1cm, right: 1cm)
   )
 
   align(center, text(25pt)[
@@ -595,14 +603,14 @@
 
   show heading.where(level: 1): it => [
     #pagebreak(weak: true)
-    #set text(27pt, rgb("#290661"))
-    #underline[#it]
+    #set text(27pt, rgb("#020004"))
+    #it
     #v(0.3em)
   ]
 
   show heading.where(level: 2): it => [
-    #set text(21pt, rgb("#663209"))
-    #underline[#it]
+    #set text(21pt, rgb("#16428e"))
+    #it
     #v(0.5em)
   ]
 
