@@ -16,7 +16,7 @@
 #let oiiint = $integral.vol$
 #let bu(unit) = $bold(upright(unit))$
 #let vtr(unit) = $bold(upright(unit))$
-#let u(unit) = $upright(unit)$
+#let up(unit) = $upright(unit)$
 #let dt = $upright(d) t$
 #let dx = $upright(d) x$
 #let dy = $upright(d) y$

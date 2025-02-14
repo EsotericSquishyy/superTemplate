@@ -61,6 +61,8 @@
 #let Isom = $op("Isom")$
 #let char = $op("char")$
 #let nil = $op("nil")$
+#let cont = $op("cont")$
+#let pp = $op("pp")$
 
 // number theory
 #let lcm = $op("lcm")$
