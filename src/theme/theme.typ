@@ -8,7 +8,9 @@
 #let colors(theme_name, env_name, color_name) = {
   return rgb(colors_dict.at(theme_name).at(env_name).at(color_name))
 }
-
+#let ratios(theme_name, env_name, parameter_name) = {
+  return float(colors_dict.at(theme_name).at(env_name).at(parameter_name)) * 100%
+}
 
 // Header Styling
 #let env_headers_list = ("tab", "classic")

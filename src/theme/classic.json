@@ -74,5 +74,8 @@
     "bgcolor2":     "#eed08a",
     "strokecolor1": "#fd9e0a",
     "strokecolor2": "#c37410"
+  },
+   "raw": {
+    "saturation": "0.25"
   }
 }

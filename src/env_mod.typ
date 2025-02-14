@@ -43,14 +43,16 @@
   breakable:    false,
   id:           "",
 ) = context {
-  let bgcolor1      = colors(env_colors.get(), id, "bgcolor1")
-  let bgcolor2      = colors(env_colors.get(), id, "bgcolor2")
-  let strokecolor1  = colors(env_colors.get(), id, "strokecolor1")
-  let strokecolor2  = colors(env_colors.get(), id, "strokecolor2")
+  let theme = env_colors.get()
+
+  let bgcolor1      = colors(theme, id, "bgcolor1")
+  let bgcolor2      = colors(theme, id, "bgcolor2")
+  let strokecolor1  = colors(theme, id, "strokecolor1")
+  let strokecolor2  = colors(theme, id, "strokecolor2")
 
   show raw.where(block: false): r => {
     box(
-      fill: bgcolor1.saturate(25%),
+      fill: bgcolor1.saturate(ratios(theme, "raw", "saturation")),
       outset: (x: 1pt, y: 3pt),
       inset: (x: 2pt),
       radius: 2pt,
@@ -180,8 +182,10 @@
   breakable:    false,
   id:           "",
 ) = context {
-  let bgcolor     = colors(env_colors.get(), id, "bgcolor")
-  let strokecolor = colors(env_colors.get(), id, "strokecolor")
+  let theme = env_colors.get()
+
+  let bgcolor     = colors(theme, id, "bgcolor")
+  let strokecolor = colors(theme, id, "strokecolor")
 
   let name_content = [=== #kind]
   if name != [] {
@@ -190,7 +194,7 @@
 
   show raw.where(block: false): r => {
     box(
-      fill: bgcolor.saturate(25%),
+      fill: bgcolor.saturate(ratios(theme, "raw", "saturation")),
       outset: (x: 1pt, y: 3pt),
       inset: (x: 2pt),
       radius: 2pt,
@@ -353,14 +357,16 @@
   width:        100%,
   height:       auto,
 ) = context {
-  let bgcolor1      = colors(env_colors.get(), id, "bgcolor1")
-  let bgcolor2      = colors(env_colors.get(), id, "bgcolor2")
-  let strokecolor1  = colors(env_colors.get(), id, "strokecolor1")
-  let strokecolor2  = colors(env_colors.get(), id, "strokecolor2")
+  let theme = env_colors.get()
+
+  let bgcolor1      = colors(theme, id, "bgcolor1")
+  let bgcolor2      = colors(theme, id, "bgcolor2")
+  let strokecolor1  = colors(theme, id, "strokecolor1")
+  let strokecolor2  = colors(theme, id, "strokecolor2")
 
   show raw.where(block: false): r => {
     box(
-      fill: bgcolor1.saturate(25%),
+      fill: bgcolor1.saturate(ratios(theme, "raw", "saturation")),
       outset: (x: 1pt, y: 3pt),
       inset: (x: 2pt),
       radius: 2pt,
