@@ -1,6 +1,8 @@
 #import "@local/superTemplate:0.2.0": *
 #import cs_mod: *
 #show: notes.with("Algorithms", "Jane Doe", depth: 3)
+#show: codly-init.with()
+#codly(stroke: 2pt + black, fill: white, zebra-fill: rgb("#f5f4f2"), languages: codly-languages)
 
 = Greedy Algorithms
 
