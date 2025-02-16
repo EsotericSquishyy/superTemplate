@@ -124,7 +124,7 @@
   )
 }
 
-#let theorem(name, statement, proof, breakable: false) = {
+#let theorem(statement, proof, name: [], breakable: false) = {
   proof_env(
     name,
     statement,
@@ -136,7 +136,7 @@
 }
 #let thm = theorem
 
-#let lemma(name, statement, proof, breakable: false) = {
+#let lemma(statement, proof, name: [], breakable: false) = {
   proof_env(
     name,
     statement,
@@ -148,7 +148,7 @@
 }
 #let lem = lemma
 
-#let corollary(name, statement, proof, breakable: false) = {
+#let corollary(statement, proof, name: [], breakable: false) = {
   proof_env(
     name,
     statement,
@@ -291,7 +291,7 @@
 }
 #let notn = notation
 
-#let example(name, statement, breakable: false) = {
+#let example(statement, name: [], breakable: false) = {
   statement_env(
     name,
     statement,
@@ -303,7 +303,7 @@
 #let ex = example
 
 // For a more general definition
-#let concept(name, statement, breakable: false) = {
+#let concept(statement, name: [], breakable: false) = {
   statement_env(
     name,
     statement,
@@ -325,7 +325,7 @@
 }
 #let comp_prob = computational_problem
 
-#let algorithm(name, statement, breakable: false) = {
+#let algorithm(statement, name: [], breakable: false) = {
   statement_env(
     name,
     statement,

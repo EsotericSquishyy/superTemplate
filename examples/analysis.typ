@@ -18,7 +18,7 @@ What do we mean when we say the sequence
 $]
 tends to $sqrt(2)$?
 
-#ex[][
+#ex[
   We now show that the equation $ p^2 = 2 $<1> is not satisfied by any rational $p$.
   By contradiction, suppose there were such a $p$.
   Then we could write $p = m / n$ where $n, m in ZZ$ and $n$ and $m$ are coprime.
@@ -70,7 +70,7 @@ We now consider this more closely.
   For example, $QQ$ is an ordered set if $r < s$ is defined to mean that $s - r$ is a positive rational number.
 ]
 
-#thm[][
+#thm[
   Suppose $S$ is an ordered set with the least upper bound property, $B subset S$, $B$ is nonempty, and $B$ is bounded below.
   Let $L$ be the set of all lower bounds of $B$.
   Then #nn[$ alpha = sup L $] exists in $S$, and $alpha = inf B$.

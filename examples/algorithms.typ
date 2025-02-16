@@ -27,7 +27,7 @@
   Thus, our goal is to find a feasible schedule of maximum size.
 ]
 
-#ex[Interval Scheduling][
+#ex[
   Suppose we have 5 tasks: $ {(3, 6), (1, 4), (4, 10), (6, 8), (0, 2)} $
   A feasible schedule cannot have two activities that overlap, so we cannot accept both (1, 4) and (3, 6).
   However, (3, 6) and (6, 8) are acceptable, because second only begins when first ends.
@@ -45,7 +45,7 @@
 ]
 
 <eft>
-#algo[Earliest Finish Time (EFT)][
+#algo(name: "Earliest Finish Time (EFT)")[
   We claim that the optimal greedy strategy is to sort the process jobs in order by earliest finish time.
 
   We sort jobs by order:
@@ -85,7 +85,7 @@
   )
 ]
 
-#ex[Earliest Finish Time][
+#ex[
   #grid(
     align: center,
     columns: (0.3fr, 1fr),
@@ -141,7 +141,7 @@
   In particular, $f(a_1) <= f(b_1)$, that is, the greedy algorithm stays ahead.
   We formalize this as follows.
 
-  #lem[Greedy Structure Lemma][
+  #lem(name: "Greedy Structure Lemma")[
     For every $i <= k$, we have $f(a_i) <= f(b_i)$.
   ][
     We proceed by induction.
