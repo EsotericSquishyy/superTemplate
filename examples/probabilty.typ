@@ -7,7 +7,7 @@
   month: 1,
   day: 3
 )
-#show: assignment.with("Probability Homework 1", "Jane Doe", date)
+#show: assignment.with("Probability Homework 1", "Jane Doe", date, box: true)
 
 #prob[
   For this question, note that poker hands consist of 5 cards, and that we are using a standard 52 card deck, with 4 suits (Spades, Clubs, Hearts, and Diamonds), and within each suit there are 13 different ranks (Ace, 2, ..., 10, J, Q, K).

@@ -494,7 +494,7 @@
 }
 
 //-----Templates-----//
-#let notes(title, author, doc, number: false, depth: 2) = context {
+#let notes(title, author, doc, box: false, number: false, depth: 2) = context {
   let theme = env_colors.get()
 
   set document(title: title, author: author)
@@ -559,10 +559,15 @@
     margin: (top: 1.75cm, bottom: 1.25cm, left: 1cm, right: 1cm)
   )
 
+  let header_stroke = get_page_color(theme)
+  if (box) {
+    header_stroke = get_text_color(theme, 1)
+  }
+
   block(
     width: 100%,
     inset: 8pt,
-    stroke: get_text_color(theme, 1),
+    stroke: header_stroke,
     breakable: false,
     stack(
       dir: ttb,
@@ -636,7 +641,7 @@
   doc
 }
 
-#let assignment(title, author, date, doc, margin: 1.5cm) = context {
+#let assignment(title, author, date, doc, box: false, margin: 1.5cm) = context {
   let theme = env_colors.get()
 
   set document(title: title, author: author)
@@ -667,10 +672,15 @@
     margin: (top: 1.75cm, bottom: 1.25cm, left: margin, right: margin)
   )
 
+  let header_stroke = get_page_color(theme)
+  if (box) {
+    header_stroke = get_text_color(theme, 1)
+  }
+
   block(
     width: 100%,
     inset: 8pt,
-    stroke: get_text_color(theme, 1),
+    stroke: header_stroke,
     breakable: false,
     stack(
       dir: ttb,

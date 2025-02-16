@@ -6,7 +6,7 @@
   month: 1,
   day: 3
 )
-#show: assignment.with("Group Theory Homework 1", "John Doe", date)
+#show: assignment.with("Group Theory Homework 1", "John Doe", date, box: true)
 
 
 #excs(name: "Dummit and Foote 1.1.9", breakable: true)[
