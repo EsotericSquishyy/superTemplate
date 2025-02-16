@@ -160,7 +160,7 @@
   But this clearly implies $Y sim Exp(n lambda)$.
 ]
 
-#prob[
+#prob(breakable: true)[
   Let $X$ and $Y$ be jointly continuous with joint density
   $
   f(x, y) = cases(

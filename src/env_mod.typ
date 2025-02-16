@@ -635,14 +635,23 @@
   doc
 }
 
-#let assignment(title, author, date, doc, margin: 1.75cm) = {
+#let assignment(title, author, date, doc, margin: 1.5cm) = {
   set document(title: title, author: author)
   set enum(numbering: "a)")
   set page(
     paper: "us-letter",
     header: context {
       if counter(page).at(here()).first() != 1 {
-        align(right, [*#title* | *#author*])
+        grid(
+          columns: (1fr, 1fr),
+          align(left)[
+            #smallcaps[*#title*]
+          ],
+          align(right)[
+            #smallcaps[*#author*]
+          ]
+        )
+        line(length: 100%)
       }
     },
     footer: context {
@@ -650,7 +659,7 @@
       let total_pages = counter(page).final().last()
       align(center)[Page #page_number of #total_pages]
     },
-    margin: margin
+    margin: (top: 1.75cm, bottom: 1.25cm, left: margin, right: margin)
   )
   align(center, text(25pt)[
     *#title*
