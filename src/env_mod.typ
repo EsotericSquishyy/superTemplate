@@ -554,10 +554,20 @@
     margin: (top: 1.75cm, bottom: 1.25cm, left: 1cm, right: 1cm)
   )
 
-  align(center, text(25pt)[
-    *#title*
-  ])
-  align(center, text(15pt)[#author])
+  block(
+    width: 100%,
+    inset: 8pt,
+    stroke: black,
+    breakable: false,
+    stack(
+      dir: ttb,
+      align(center, text(25pt)[
+        *#title*
+      ]),
+      v(20pt),
+      align(center, text(15pt)[#author])
+    )
+  )
 
   let eq-numbering = none
   if number {
@@ -640,11 +650,26 @@
     },
     margin: (top: 1.75cm, bottom: 1.25cm, left: margin, right: margin)
   )
-  align(center, text(25pt)[
-    *#title*
-  ])
-  align(center, text(15pt)[#author])
-  align(center, text(15pt)[#date.display("[month repr:long] [day], [year]")])
+
+  block(
+    width: 100%,
+    inset: 8pt,
+    stroke: black,
+    breakable: false,
+    stack(
+      dir: ttb,
+      align(center, text(25pt)[
+        *#title*
+      ]),
+      v(20pt),
+      grid(
+        columns: (1fr, 1fr),
+        inset: 30%,
+        align(left, text(15pt)[#author]),
+        align(right, text(15pt)[#date.display("[month repr:long] [day], [year]")]),
+      )
+    )
+  )
 
   doc
 }
