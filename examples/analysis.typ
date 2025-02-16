@@ -1,4 +1,5 @@
 #import "@local/superTemplate:0.2.0": *
+#env_colors.update("gruvbox_dark")
 #import math_mod: *
 #show: notes.with("Analysis Lecture Notes", "John Doe", number: true, depth: 3)
 #set enum(numbering: "i)")

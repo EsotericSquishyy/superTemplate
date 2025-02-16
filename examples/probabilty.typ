@@ -1,4 +1,6 @@
 #import "@local/superTemplate:0.2.0": *
+#env_colors.update("classic")
+#env_headers.update("classic")
 #import pstat_mod: *
 #let date = datetime(
   year: 2025,

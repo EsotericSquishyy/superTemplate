@@ -425,7 +425,7 @@
     stack(
       name_content,
       statement_content,
-      pad([*Solution*], top: 12pt, left: side_pad),
+      pad([*Solution*], top: 12pt, left: side_pad, bottom: 12pt),
       pad(solution, side_pad)
     )
   )

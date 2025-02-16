@@ -128,9 +128,9 @@
     })
   )
 
-  The greedy algorithm first chooses 1, then skips 2 and 3.
-  Next it chooses 4, and skips 5, 6, and 7.
-  Finally, it should choose 8 and 11.
+  The greedy algorithm first chooses `1`, then skips `2` and `3`.
+  Next it chooses `4`, and skips `5`, `6`, and `7`.
+  Finally, it should choose `8` and `11`.
 ]
 
 #prop[

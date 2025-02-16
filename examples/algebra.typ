@@ -1,4 +1,5 @@
 #import "@local/superTemplate:0.2.0": *
+#env_colors.update("bw")
 #import math_mod: *
 #let date = datetime(
   year: 2025,
@@ -6,6 +7,7 @@
   day: 3
 )
 #show: assignment.with("Group Theory Homework 1", "John Doe", date)
+
 
 #excs(name: "Dummit and Foote 1.1.9", breakable: true)[
   Let $G = {a + b sqrt(2) in RR : a, b in QQ}$.
