@@ -68,7 +68,7 @@
   $
 ]
 
-#prob([
+#prob(breakable: true)[
   Let $X$ and $Y$ be jointly continuous with joint probability density function
   $
   f(x, y) = cases(
@@ -81,7 +81,7 @@
   2. Find the marginal density functions of $X$ and $Y$.
   3. Calculate the probability $P(X < Y)$.
   4. Calculate the expectation $E[X^2 Y]$.
-], [
+][
   1. For this to be a joint PDF, we must have
   $
   1 = int_(-infty)^infty int_(-infty)^infty f(x, y) dx dy &= int_0^1 int_0^1 c(x y + y^2) dx dy \
@@ -146,7 +146,7 @@
   &= 12 / 7 (1 / 6) \
   &= 2 / 7.
   $
-], breakable: true)
+]
 
 #prob[
   Suppose the random variables $X_1, X_2, dots, X_n sim^("i.i.d.") Exp(lambda)$ and define the random variable $Y$ as the minimum of those $X$'s, or $ Y = min_(1 <= i <= n) {X_i}. $
@@ -160,7 +160,7 @@
   But this clearly implies $Y sim Exp(n lambda)$.
 ]
 
-#prob([
+#prob[
   Let $X$ and $Y$ be jointly continuous with joint density
   $
   f(x, y) = cases(
@@ -174,7 +174,7 @@
   2. Given that $Y > 2 slash 3$ find the probability that $X < 1 slash 2$.
   3. Find the expected value of $X$.
   4. Find the expected value of $Y$.
-], [
+][
   1. We have
   $
   1 &= int_0^1 int_0^y c(1 - y) dx dy \
@@ -215,4 +215,4 @@
   &= 6 (1 / 3 - 1 / 4) \
   &= 1 / 2.
   $
-], breakable: true)
+]
