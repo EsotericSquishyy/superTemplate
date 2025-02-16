@@ -73,7 +73,7 @@
       fill: strokecolor1,
       inset: 7pt,
       width: 100%,
-      text(white)[#name_content]
+      text(get_text_color(theme, 2))[#name_content]
     )
 
     block_inset = 0pt
@@ -211,7 +211,7 @@
       fill: strokecolor,
       inset: 7pt,
       width: 100%,
-      text(white)[#name_content]
+      text(get_text_color(theme, 2))[#name_content]
     )
 
     block_inset = 0pt
@@ -383,7 +383,7 @@
       fill: strokecolor1,
       inset: 7pt,
       width: 100%,
-      text(white)[#name_content]
+      text(get_text_color(theme, 2))[#name_content]
     )
 
     block_inset = 0pt
@@ -494,10 +494,15 @@
 }
 
 //-----Templates-----//
-#let notes(title, author, doc, number: false, depth: 2) = {
+#let notes(title, author, doc, number: false, depth: 2) = context {
+  let theme = env_colors.get()
+
   set document(title: title, author: author)
+  set text(get_text_color(theme, 1))
+  set table(stroke: get_text_color(theme, 1))
   set page(
     paper: "us-letter",
+    fill: get_page_color(theme),
     // https://stackoverflow.com/a/78318321
     header: context {
       let selector = selector(heading).before(here())
@@ -543,7 +548,7 @@
             #smallcaps[*#headers.at(1) --- #section*]
           ]
         )
-        line(length: 100%)
+        line(length: 100%, stroke: get_text_color(theme, 1))
       }
     },
     footer: context {
@@ -557,7 +562,7 @@
   block(
     width: 100%,
     inset: 8pt,
-    stroke: black,
+    stroke: get_text_color(theme, 1),
     breakable: false,
     stack(
       dir: ttb,
@@ -596,15 +601,18 @@
     indent: auto,
   )
 
+  let h1_color = rgb(colors_dict.at(env_colors.get()).at("h1", default: "#020004"))
+  let h2_color = rgb(colors_dict.at(env_colors.get()).at("h2", default: "#16428e"))
+
   show heading.where(level: 1): it => [
     #pagebreak(weak: true)
-    #set text(27pt, rgb("#020004"))
+    #set text(27pt, h1_color)
     #it
     #v(0.3em)
   ]
 
   show heading.where(level: 2): it => [
-    #set text(21pt, rgb("#16428e"))
+    #set text(21pt, h2_color)
     #it
     #v(0.5em)
   ]
@@ -615,20 +623,28 @@
   doc
 }
 
-#let basic(doc) = {
+#let basic(doc) = context {
+  let theme = env_colors.get()
+
   set document()
+  set text(get_text_color(theme, 1))
   set page(
     paper: "us-letter",
+    fill: get_page_color(theme),
     margin: 1cm
   )
   doc
 }
 
-#let assignment(title, author, date, doc, margin: 1.5cm) = {
+#let assignment(title, author, date, doc, margin: 1.5cm) = context {
+  let theme = env_colors.get()
+
   set document(title: title, author: author)
   set enum(numbering: "a)")
+  set text(get_text_color(theme, 1))
   set page(
     paper: "us-letter",
+    fill: get_page_color(theme),
     header: context {
       if counter(page).at(here()).first() != 1 {
         grid(
@@ -640,7 +656,7 @@
             #smallcaps[*#author*]
           ]
         )
-        line(length: 100%)
+        line(length: 100%, stroke: get_text_color(theme, 1))
       }
     },
     footer: context {
@@ -654,7 +670,7 @@
   block(
     width: 100%,
     inset: 8pt,
-    stroke: black,
+    stroke: get_text_color(theme, 1),
     breakable: false,
     stack(
       dir: ttb,
