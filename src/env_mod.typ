@@ -431,76 +431,55 @@
   )
 }
 
-#let named_problem(
-  name,
+#let problem(
   statement,
   solution,
+  name:       [],
   breakable:  false,
   width:      100%,
   height:     auto,
 ) = {
+  problem_counter.step()
+
+  let suffix = [:]
+  if name == [] {
+    name = [#context { problem_counter.display() }]
+    suffix = []
+  }
+
   prob_env(
     name,
     statement,
     solution,
-    kind:         [Problem],
+    kind:         [Problem] + suffix,
     breakable:    breakable,
     id:           "problem",
     width:        width,
     height:       height,
-  )
-}
-#let named_prob = named_problem
-
-#let problem(
-  statement,
-  solution,
-  breakable: false,
-) = {
-  prob_env(
-    [#problem_counter.step() #context { problem_counter.display() }],
-    statement,
-    solution,
-    kind:         [Problem],
-    breakable:    breakable,
-    id:           "problem",
   )
 }
 #let prob = problem
 
-#let named_exercise(
-  name,
+#let exercise(
   statement,
   solution,
+  name:       [],
   breakable:  false,
   width:      100%,
   height:     auto,
 ) = {
+  let suffix = [:]
+  if name == [] { suffix = [] }
+
   prob_env(
     name,
     statement,
     solution,
-    kind:         [Exercise],
+    kind:         [Exercise] + suffix,
     breakable:    breakable,
     id:           "exercise",
     width:        width,
     height:       height,
-  )
-}
-#let named_excs = named_exercise
-
-#let exercise(
-  statement,
-  solution,
-  breakable: false,
-) = {
-  prob_env(
-    [],
-    statement,
-    solution,
-    kind:         [Exercise],
-    breakable:    breakable,
-    id:           "exercise",
   )
 }
 #let excs = exercise

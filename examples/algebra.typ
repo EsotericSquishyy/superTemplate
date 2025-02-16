@@ -7,9 +7,7 @@
 )
 #show: assignment.with("Group Theory Homework 1", "John Doe", date)
 
-#prob(breakable: true)[
-  (Dummit and Foote, exercise 1.1.9)
-
+#excs(name: "Dummit and Foote 1.1.9", breakable: true)[
   Let $G = {a + b sqrt(2) in RR : a, b in QQ}$.
 
   1. Prove that $G$ is a group under addition.
@@ -57,9 +55,7 @@
     Thus $G \\ {0}$ is a group under multiplication.
 ]
 
-#prob[
-  (Dummit and Foote, exercise 1.1.25)
-
+#excs(name: "Dummit and Foote 1.1.25")[
   Let $G$ be a group.
   Prove that if $x^2 = 1 forall x in G$, then $G$ is abelian.
 ][
@@ -76,8 +72,7 @@
   so $G$ is abelian.
 ]
 
-#prob[
-  (Dummit and Foote, exercise 1.1.32)
+#excs(name: "Dummit and Foote 1.1.32)")[
   If $x$ is an element of finite order $n$ in a group $G$, prove that the elements $1, x, x^2, dots, x^(n - 1)$ are all distinct.
   Deduce that $|x| <= |G|$.
 ][
@@ -89,9 +84,8 @@
   Further, each belongs to $G$, so $G$ includes at least these elements, and thus $n = |x| <= |G|$.
 ]
 
-#prob(breakable: true)[
-  (Dummit and Foote, exercise 1.2.5)
-
+#pagebreak()
+#excs(name: "Dummit and Foote 1.2.5)", breakable: true)[
   If $n$ is odd and $n >= 3$, show that the identity is the only element of $D_(2n)$ which commutes with all the elements of $D_(2n)$.
 ][
   Recall that $D_(2n) = angle.l r, s | r^n = 1, s^2 = 1, s r = inv(r) s angle.r$.
