@@ -688,12 +688,7 @@
         *#title*
       ]),
       v(20pt),
-      grid(
-        columns: (1fr, 1fr),
-        inset: 8pt,
-        align(center + horizon, text(15pt)[#author]),
-        align(center + horizon, text(15pt)[#date.display("[month repr:long] [day], [year]")]),
-      )
+      align(center + horizon, text(15pt)[#author $dash.em$ #date.display("[month repr:long] [day], [year]")]),
     )
   )
 
