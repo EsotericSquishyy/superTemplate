@@ -540,10 +540,11 @@
 
       if (h1_on_page == none) {
         grid(
-          columns: (1fr, 1fr),
+          columns: (auto, 1fr, auto),
           align(left)[
             #smallcaps[*#headers.at(0)*]
           ],
+          [],
           align(right)[
             #smallcaps[*#headers.at(1) --- #section*]
           ]
