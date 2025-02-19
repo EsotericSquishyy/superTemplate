@@ -494,7 +494,7 @@
 }
 
 //-----Templates-----//
-#let notes(title, author, doc, box: false, number: false, depth: 2) = context {
+#let notes(title, author, doc, box: false, continuous: false, number: false, depth: 2) = context {
   let theme = env_colors.get()
 
   set document(title: title, author: author)
@@ -560,6 +560,12 @@
     margin: (top: 1.75cm, bottom: 1.25cm, left: 1cm, right: 1cm)
   )
 
+  set page(
+    height: auto,
+    header: none,
+    footer: none
+  ) if continuous
+
   let header_stroke = get_page_color(theme)
   if (box) {
     header_stroke = get_text_color(theme, 1)
@@ -601,6 +607,23 @@
     v(12pt, weak: true)
     strong(it)
   }
+  // https://stackoverflow.com/questions/77031078/how-to-remove-numbers-from-outline
+  show outline.entry: it => {
+    if (not continuous) {
+      it
+    } else if it.at("label", default: none) == <modified-entry> {
+      it // prevent infinite recursion
+    } else {
+      [#outline.entry(
+        it.level,
+        it.element,
+        it.body,
+        [],  // remove fill
+        []  // remove page number
+      ) <modified-entry>]
+    }
+  }
+
   outline(
     title: [Table of Contents],
     depth: depth,
@@ -611,7 +634,7 @@
   let h2_color = rgb(colors_dict.at(env_colors.get()).at("h2", default: "#16428e"))
 
   show heading.where(level: 1): it => [
-    #pagebreak(weak: true)
+    // #pagebreak(weak: true)
     #set text(27pt, h1_color)
     #it
     #v(0.3em)
