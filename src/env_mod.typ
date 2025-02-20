@@ -639,7 +639,9 @@
   }
 
   show heading.where(level: 1): it => [
-    // #pagebreak(weak: true)
+    #if not continuous {
+      pagebreak(weak: true)
+    }
     #set text(27pt, h1_color)
     #it
     #v(0.3em)
