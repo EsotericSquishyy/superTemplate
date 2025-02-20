@@ -50,11 +50,11 @@
 }
 #let ang(..args) = {
   let joined = args.pos().map(x => $#x$).join(",")
-  $angle.l joined angle.r$
+  $lr(angle.l joined angle.r)$
 }
 #let paren(..args) = {
   let joined = args.pos().map(x => $#x$).join(",")
-  $paren.l joined paren.r$
+  $lr(paren.l joined paren.r)$
 }
 
 // misc symbols

@@ -30,10 +30,10 @@
 #let null = $op("null")$
 #let span(..args) = {
   let joined = args.pos().map(x => $#x$).join(",")
-  $"span"{ joined }$
+  $"span"lr({ joined })$
 }
 #let range = $op("range")$
-#let ip(x, y) = $angle.l #x, #y angle.r$  // inner product
+#let ip(x, y) = $lr(angle.l #x, #y angle.r)$  // inner product
 #let tr = $op("tr")$  // trace
 #let dsum = $plus.circle$  // direct sum
 #let tp = $times.circle$  // tensor product
@@ -46,7 +46,7 @@
 #let ord = [#math.op("ord")]
 #let cyc(..args) = {
   let joined = args.pos().map(x => $#x$).join($space$)
-  $(joined)$
+  $lr((joined))$
 }
 #let gen(a) = $angle.l #a angle.r$  // cyclic subgroup
 #let nsub = $lt.tri.eq$
