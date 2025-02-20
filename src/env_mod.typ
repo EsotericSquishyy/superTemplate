@@ -546,7 +546,7 @@
           ],
           [],
           align(right)[
-            #smallcaps[*#headers.at(1) --- #section*]
+            #smallcaps[*#headers.at(1) $dash.em$ #section*]
           ]
         )
         line(length: 100%, stroke: get_text_color(theme, 1))
@@ -630,8 +630,13 @@
     indent: auto,
   )
 
-  let h1_color = rgb(colors_dict.at(env_colors.get()).at("h1", default: "#020004"))
-  let h2_color = rgb(colors_dict.at(env_colors.get()).at("h2", default: "#16428e"))
+  let h1_color = rgb(colors_dict.at(theme).at("h1", default: "#020004"))
+  let h2_color = rgb(colors_dict.at(theme).at("h2", default: "#16428e"))
+
+  show strong: it => {
+    set text(fill: rgb(colors_dict.at(theme).at("strong", default: "#000")))
+    it
+  }
 
   show heading.where(level: 1): it => [
     // #pagebreak(weak: true)
