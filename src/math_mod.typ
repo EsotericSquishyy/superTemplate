@@ -74,3 +74,24 @@
 
 // Geometry
 #let Cay = $op("Cay")$
+
+// https://github.com/typst/typst/discussions/3149
+#let longdiv(cols_count, ..cells) = {
+  let cols = if type(cols_count) == int { cols_count } else { 1 }
+  set grid(
+    columns: cols,
+    inset: 5pt,
+    align: right,
+    stroke: (x, y) => (
+      left: if x == cols - 1 { black },
+
+      bottom: if (
+        y == 0 and x == cols - 1
+        or x < cols - 1 and calc.odd(y) and x + 1 >= y / 2
+      ) {
+        black
+      }
+    ),
+  )
+  grid(..cells)
+}
