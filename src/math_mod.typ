@@ -1,4 +1,4 @@
-#import "@preview/commute:0.2.0": node, arr, commutative-diagram
+#import "@preview/fletcher:0.5.4" as fletcher: diagram, node, edge
 
 // Differential Geometry
 #let grad = $gradient$

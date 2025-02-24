@@ -607,20 +607,17 @@
     v(12pt, weak: true)
     strong(it)
   }
-  // https://stackoverflow.com/questions/77031078/how-to-remove-numbers-from-outline
+
   show outline.entry: it => {
-    if (not continuous) {
-      it
-    } else if it.at("label", default: none) == <modified-entry> {
-      it // prevent infinite recursion
+    if continuous {
+      link(
+        it.element.location(),
+        // Keep just the body, dropping
+        // the fill and the page.
+        it.indented(it.prefix(), it.body()),
+      )
     } else {
-      [#outline.entry(
-        it.level,
-        it.element,
-        it.body,
-        [],  // remove fill
-        []  // remove page number
-      ) <modified-entry>]
+      it
     }
   }
 
@@ -634,7 +631,7 @@
   let h2_color = rgb(colors_dict.at(theme).at("h2", default: "#16428e"))
 
   show strong: it => {
-    set text(fill: rgb(colors_dict.at(theme).at("strong", default: "#000")))
+    set text(fill: rgb(colors_dict.at(theme).at("strong", default: "#020004")))
     it
   }
 
