@@ -9,7 +9,7 @@
 #let qed = [#v(0.2em) #h(90%) $square.big$]
 
 #let pf(body) = {
-  [_*Proof*_: ]; body; qed
+  [*Proof:* ]; body; qed
 }
 
 //-----Bookmark-----//
@@ -539,17 +539,19 @@
       let h1_on_page = level_one_headings.find(h => h.location().page() == here().page())
 
       if (h1_on_page == none) {
+        let header_color = get_text_color(theme, 1)
+
         grid(
           columns: (auto, 1fr, auto),
           align(left)[
-            #smallcaps[*#headers.at(0)*]
+            #smallcaps[#text(fill: header_color, weight: "extrabold")[#headers.at(0)]]
           ],
           [],
           align(right)[
-            #smallcaps[*#headers.at(1) $dash.em$ #section*]
+            #smallcaps[#text(fill: header_color, weight: "extrabold")[#headers.at(1) $dash.em$ #section]]
           ]
         )
-        line(length: 100%, stroke: get_text_color(theme, 1))
+        line(length: 100%, stroke: header_color)
       }
     },
     footer: context {
