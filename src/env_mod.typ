@@ -1,5 +1,6 @@
 #import "theme/theme.typ": *
 
+//-----Setup and Misc-----//
 #let problem_counter = counter("problem")
 
 #let correction(body) = {
@@ -10,6 +11,14 @@
 
 #let pf(body) = {
   [*Proof:* ]; body; qed
+}
+
+// usage example type_assert("title", title, str, content, none)
+#let type_assert(name, obj, ..types) = {
+    assert(
+        types.pos().contains(type(obj)),
+        message: "Expected "+str(name)+" to be of type: "+types.pos().map(str).join(" or ") + " found "+str(type(obj))
+    )
 }
 
 //-----Bookmark-----//
