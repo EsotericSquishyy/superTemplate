@@ -160,9 +160,9 @@
 }
 #let cor = corollary
 
-#let proposition(statement, proof, breakable: false) = {
+#let proposition(statement, proof, name: [], breakable: false) = {
   proof_env(
-    [],
+    name,
     statement,
     proof,
     kind:         [Proposition],
@@ -247,9 +247,9 @@
   )
 }
 
-#let note(statement, breakable: false) = {
+#let note(statement, name: [], breakable: false) = {
   statement_env(
-    [],
+    name,
     statement,
     kind:         [Note],
     breakable:    breakable,
@@ -257,7 +257,7 @@
   )
 }
 
-#let definition(name, statement, breakable: false) = {
+#let definition(statement, name: [], breakable: false) = {
   statement_env(
     name,
     statement,
@@ -268,9 +268,9 @@
 }
 #let defn = definition
 
-#let remark(statement, breakable: false) = {
+#let remark(statement, name: [], breakable: false) = {
   statement_env(
-    [],
+    name,
     statement,
     kind:         [Remark],
     breakable:    breakable,
@@ -280,9 +280,9 @@
 #let rem = remark
 #let rmk = remark
 
-#let notation(statement, breakable: false) = {
+#let notation(statement, name: [], breakable: false) = {
   statement_env(
-    [],
+    name,
     statement,
     kind:         [Notation],
     breakable:    breakable,
@@ -314,7 +314,7 @@
 }
 #let conc = concept
 
-#let computational_problem(name, statement, breakable: false) = {
+#let computational_problem(statement, name: [], breakable: false) = {
   statement_env(
     name,
     statement,
@@ -336,9 +336,9 @@
 }
 #let algo = algorithm
 
-#let runtime(statement, breakable: false) = {
+#let runtime(statement, name: [], breakable: false) = {
   statement_env(
-    [],
+    name,
     statement,
     kind:         [Runtime Analysis],
     breakable:    breakable,

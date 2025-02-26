@@ -55,7 +55,7 @@ We now consider this more closely.
 ]
 
 <order>
-#defn[Order][
+#defn(name: [Order])[
   Let $S$ be a set.
   An *order* on $S$ is a relation, denoted by $<$, with the following two properties:
 
@@ -65,7 +65,7 @@ We now consider this more closely.
   The statement "$x < y$" may be read as "$x$ is less than $y$" of "$x$ is smaller than $y$".
 ]
 
-#defn[Ordered Set][
+#defn(name: [Ordered Set])[
   An *ordered set* is a set $S$ in which an order is defined.
 
   For example, $QQ$ is an ordered set if $r < s$ is defined to mean that $s - r$ is a positive rational number.

@@ -1,6 +1,6 @@
 #import "@local/superTemplate:0.2.0": *
 #import cs_mod: *
-#show: notes.with("Algorithms", "Jane Doe", depth: 3)
+#show: notes.with("Algorithms", "Jane Doe", depth: 3, continuous: true)
 #show: codly-init.with()
 #codly(stroke: 2pt + black, fill: white, zebra-fill: rgb("#f5f4f2"), languages: codly-languages)
 
@@ -11,7 +11,7 @@
 #bookmark[Lecture 1][Jan 1, 2025]
 
 <intsche>
-#comp_prob[Interval Scheduling][
+#comp_prob(name: [Interval Scheduling])[
   Suppose we have a list of $n$ tasks that we want to schedule on a single processor.
   Each activity is specified by its start and end times, and only one activity can be scheduled on the resource at a time.
   Note an activity cannot be paused, i.e., it uses the resource continuously between its start and end times.
