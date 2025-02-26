@@ -1,4 +1,4 @@
-#import "@preview/cetz:0.2.2"
+#import "@preview/cetz:0.3.2"
 #import "src/math_mod.typ"
 #import "src/cs_mod.typ"
 #import "src/quantum_mod.typ"
