@@ -434,12 +434,13 @@
     stack(
       name_content,
       statement_content,
-      pad([*Solution*], top: 12pt, left: side_pad, bottom: 12pt),
-      pad(solution, side_pad)
+      pad([*Solution*], top: 12pt, left: side_pad),
+      pad(solution, left: side_pad, right: side_pad, bottom: side_pad, top: 12pt)
     )
   )
 }
 
+// proof param?
 #let problem(
   statement,
   solution,
@@ -566,7 +567,7 @@
     footer: context {
       let page_number = counter(page).at(here()).first()
       let total_pages = counter(page).final().last()
-      align(center)[Page #page_number of #total_pages]
+      align(center)[#smallcaps[#text(weight: "extrabold", fill: get_text_color(theme, 1))[Page #page_number of #total_pages]]]
     },
     margin: (top: 1.75cm, bottom: 1.25cm, left: 1cm, right: 1cm)
   )
