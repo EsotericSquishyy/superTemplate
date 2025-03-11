@@ -13,7 +13,10 @@
 #let concat = $#h(0.05em) || #h(0.05em)$
 #let poly = $op("poly")$
 #let PPT = $"PPT"$
+#let pk = $op("pk")$
+#let sk = $op("sk")$
 
 // lambda calculus
 #let evalto = $arrow.b.double$
 #let pred = $dot.circle$
+

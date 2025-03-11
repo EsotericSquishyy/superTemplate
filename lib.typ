@@ -59,6 +59,7 @@
 
 // misc symbols
 #let infty = $infinity$
+#let sect = $inter$  // following deprecation
 #let pm = $plus.minus$
 #let sim = $tilde.op$
 #let ni = $in.rev$
