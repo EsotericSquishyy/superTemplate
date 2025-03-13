@@ -8,12 +8,12 @@
 
 // Quality of life
 #let integer = int // required for integral
-#let int    = $integral$
-#let iint   = $integral.double$
-#let iiint  = $integral.triple$
-#let oint   = $integral.cont$
-#let oiint  = $integral.surf$
-#let oiiint = $integral.vol$
+#let int    = sym.integral
+#let iint   = sym.integral.double
+#let iiint  = sym.integral.triple
+#let oint   = sym.integral.cont
+#let oiint  = sym.integral.surf
+#let oiiint = sym.integral.vol
 #let bu(unit) = $bold(upright(unit))$
 #let vtr(unit) = $bold(upright(unit))$
 #let up(unit) = $upright(unit)$
@@ -33,7 +33,7 @@
 #let dtheta = $upright(d) theta$
 #let dphi = $upright(d) phi$
 #let dpsi = $upright(d) psi$
-#let del = $partial$
+#let del = sym.partial
 #let deriv(x, n: 1, f: none) = {
   if (n == 1) {
     $(upright(d) #f) / (upright(d) #x)$
@@ -58,26 +58,28 @@
 }
 
 // misc symbols
-#let infty = $infinity$
-#let sect = $inter$  // following deprecation
-#let pm = $plus.minus$
-#let sim = $tilde.op$
-#let ni = $in.rev$
-#let st = "such that"
-#let fs = "for some"
-#let iff = "if and only if"
-#let wlog = "without loss of generality"
-#let Wlog = "Without loss of generality"
-#let Sps = "Suppose"
-#let Spst = "Suppose that"
-#let wrt = "with respect to"
-#let qquad = $quad quad$
-#let cdots = math.class("relation", $dot thin dot thin dot$)
-#let ldots = math.class("relation", $. thin . thin .$)
-#let comp = $compose$
-#let propto = $prop$
-#let varphi = $phi.alt$
-#let mapsto = $arrow.r.long.bar$
+#let cap    = sym.inter
+#let sect   = sym.inter
+#let cup    = sym.union
+#let infty  = sym.infinity
+#let pm     = sym.plus.minus
+#let sim    = sym.tilde.op
+#let ni     = sym.in.rev
+#let st     = "such that"
+#let fs     = "for some"
+#let iff    = "if and only if"
+#let wlog   = "without loss of generality"
+#let Wlog   = "Without loss of generality"
+#let Sps    = "Suppose"
+#let Spst   = "Suppose that"
+#let wrt    = "with respect to"
+#let qquad  = $quad quad$
+#let cdots  = math.class("relation", $dot thin dot thin dot$)
+#let ldots  = math.class("relation", $. thin . thin .$)
+#let comp   = sym.compose
+#let propto = sym.prop
+#let varphi = sym.phi.alt
+#let mapsto = sym.arrow.r.long.bar
 #let exiuni = $exists!$
 
 // misc operators
@@ -86,5 +88,5 @@
 #let sgn = $op("sgn")$
 #let prod = $limits(product)$
 #let sum = $limits(sum)$
-#let oplus = $plus.circle$
-#let otimes = $times.circle$
+#let oplus = sym.plus.circle
+#let otimes = sym.times.circle

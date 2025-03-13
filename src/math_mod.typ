@@ -7,7 +7,7 @@
 #let lapl = $laplace$
 
 // Topology
-#let bound = $diff$
+#let bound = sym.diff
 #let clo(x) = $overline(#x)$
 
 // misc analysis
@@ -35,8 +35,8 @@
 #let range = $op("range")$
 #let ip(x, y) = $lr(angle.l #x, #y angle.r)$  // inner product
 #let tr = $op("tr")$  // trace
-#let dsum = $plus.circle$  // direct sum
-#let tp = $times.circle$  // tensor product
+#let dsum = sym.plus.circle  // direct sum
+#let tp = sym.times.circle  // tensor product
 #let codim = $op("codim")$
 
 // algebra
@@ -49,14 +49,14 @@
   $lr((joined))$
 }
 #let gen(a) = $angle.l #a angle.r$  // cyclic subgroup
-#let nsub = $lt.tri.eq$
-#let notnsub = $lt.tri.eq.not$
+#let nsub = sym.lt.tri.eq
+#let notnsub = sym.lt.tri.eq.not
 #let Aut = $op("Aut")$
 #let Inn = $op("Inn")$
 #let GL = $op("GL")$
 #let SL = $op("SL")$
-#let iso = $tilde.equiv$
-#let notiso = $tilde.equiv.not$
+#let iso = sym.tilde.equiv
+#let notiso = sym.tilde.equiv.not
 #let rcoset = $#h(0cm) \\ #h(0cm)$
 #let Isom = $op("Isom")$
 #let char = $op("char")$

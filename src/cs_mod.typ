@@ -17,6 +17,6 @@
 #let sk = $op("sk")$
 
 // lambda calculus
-#let evalto = $arrow.b.double$
-#let pred = $dot.circle$
+#let evalto = sym.arrow.b.double
+#let pred = sym.dot.circle
 
