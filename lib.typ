@@ -1,4 +1,4 @@
-#import "@preview/cetz:0.2.2"
+#import "@preview/cetz:0.3.2"
 #import "src/math_mod.typ"
 #import "src/cs_mod.typ"
 #import "src/quantum_mod.typ"
@@ -8,15 +8,15 @@
 
 // Quality of life
 #let integer = int // required for integral
-#let int    = $integral$
-#let iint   = $integral.double$
-#let iiint  = $integral.triple$
-#let oint   = $integral.cont$
-#let oiint  = $integral.surf$
-#let oiiint = $integral.vol$
+#let int    = sym.integral
+#let iint   = sym.integral.double
+#let iiint  = sym.integral.triple
+#let oint   = sym.integral.cont
+#let oiint  = sym.integral.surf
+#let oiiint = sym.integral.vol
 #let bu(unit) = $bold(upright(unit))$
 #let vtr(unit) = $bold(upright(unit))$
-#let u(unit) = $upright(unit)$
+#let up(unit) = $upright(unit)$
 #let dt = $upright(d) t$
 #let dx = $upright(d) x$
 #let dy = $upright(d) y$
@@ -33,7 +33,7 @@
 #let dtheta = $upright(d) theta$
 #let dphi = $upright(d) phi$
 #let dpsi = $upright(d) psi$
-#let del = $partial$
+#let del = sym.partial
 #let deriv(x, n: 1, f: none) = {
   if (n == 1) {
     $(upright(d) #f) / (upright(d) #x)$
@@ -50,37 +50,43 @@
 }
 #let ang(..args) = {
   let joined = args.pos().map(x => $#x$).join(",")
-  $angle.l joined angle.r$
+  $lr(angle.l joined angle.r)$
+}
+#let paren(..args) = {
+  let joined = args.pos().map(x => $#x$).join(",")
+  $lr(paren.l joined paren.r)$
 }
 
 // misc symbols
-#let infty = $infinity$
-#let pm = $plus.minus$
-#let sim = $tilde.op$
-#let ni = $in.rev$
-#let st = "such that"
-#let fs = "for some"
-#let iff = "if and only if"
-#let wlog = "without loss of generality"
-#let Wlog = "Without loss of generality"
-#let Sps = "Suppose"
-#let Spst = "Suppose that"
-#let cdots = math.class("relation", $dot thin dot thin dot$)
-#let ldots = math.class("relation", $. thin . thin .$)
-#let comp = $compose$
-#let propto = $prop$
-#let varphi = $phi.alt$
-#let mapsto = $arrow.r.long.bar$
+#let cap    = sym.inter
+#let sect   = sym.inter
+#let cup    = sym.union
+#let infty  = sym.infinity
+#let pm     = sym.plus.minus
+#let sim    = sym.tilde.op
+#let ni     = sym.in.rev
+#let st     = "such that"
+#let fs     = "for some"
+#let iff    = "if and only if"
+#let wlog   = "without loss of generality"
+#let Wlog   = "Without loss of generality"
+#let Sps    = "Suppose"
+#let Spst   = "Suppose that"
+#let wrt    = "with respect to"
+#let qquad  = $quad quad$
+#let cdots  = math.class("relation", $dot thin dot thin dot$)
+#let ldots  = math.class("relation", $. thin . thin .$)
+#let comp   = sym.compose
+#let propto = sym.prop
+#let varphi = sym.phi.alt
+#let mapsto = sym.arrow.r.long.bar
+#let exiuni = $exists!$
 
 // misc operators
 #let Id = $op("Id")$
 #let Im = $op("Im")$
 #let sgn = $op("sgn")$
-#let max = $limits(op("max"))$
-#let min = $limits(op("min"))$
 #let prod = $limits(product)$
 #let sum = $limits(sum)$
-#let oplus = $plus.circle$
-#let otimes = $times.circle$
-
-#show link: underline
+#let oplus = sym.plus.circle
+#let otimes = sym.times.circle

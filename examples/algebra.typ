@@ -1,21 +1,21 @@
-#import "@local/superTemplate:0.1.3": *
+#import "@local/superTemplate:0.2.0": *
+#env_colors.update("bw")
 #import math_mod: *
 #let date = datetime(
   year: 2025,
   month: 1,
   day: 3
 )
-#show: assignment.with("Group Theory Homework 1", "John Doe", date)
+#show: assignment.with("Group Theory Homework 1", "John Doe", date, box: true)
 
-#prob([
-  (Dummit and Foote, exercise 1.1.9)
 
+#excs(name: "Dummit and Foote 1.1.9", breakable: true)[
   Let $G = {a + b sqrt(2) in RR : a, b in QQ}$.
 
   1. Prove that $G$ is a group under addition.
   2. Prove that the nonzero elements of $G$ are a group under multiplication.
     [Rationalize the denominators to find multiplicative inverses.]
-], [
+][
   1. We begin by showing closure under the operation.
     Take $g_1, g_2 in G$ so that $exists a, b, c, d in QQ st g_1 = a + b sqrt(2), g_2 = c + d sqrt(2)$.
     Then $g_1 + g_2 = a + b sqrt(2) + c + d sqrt(2) = (a + c) + (b + d) sqrt(2) in G$, which follows from associativity, commutativity, and and the distribution law on the field $RR$, and the fact that $QQ$ is closed under addition..
@@ -55,14 +55,12 @@
     &= 1.
     $
     Thus $G \\ {0}$ is a group under multiplication.
-], breakable: true)
+]
 
-#prob([
-  (Dummit and Foote, exercise 1.1.25)
-
+#excs(name: "Dummit and Foote 1.1.25")[
   Let $G$ be a group.
   Prove that if $x^2 = 1 forall x in G$, then $G$ is abelian.
-], [
+][
   Let $a, b in G$.
   Then observe
   $
@@ -74,26 +72,24 @@
   &= b a
   $
   so $G$ is abelian.
-])
+]
 
-#prob([
-  (Dummit and Foote, exercise 1.1.32)
+#excs(name: "Dummit and Foote 1.1.32)")[
   If $x$ is an element of finite order $n$ in a group $G$, prove that the elements $1, x, x^2, dots, x^(n - 1)$ are all distinct.
   Deduce that $|x| <= |G|$.
-], [
+][
   Suppose by contradiction that $x^a = x^b$ for some $a, b in {0, 1, dots, n - 1}$ with $a != b$.
   Without loss of generality, suppose $a < b$.
   Then $x^(-a) x^a = 1 = x^(-a) x^b = x^(b - a)$.
   But since $b - a <= (n - 1) - 0 < n$, we must have that $x$ cannot be order $n$, a contradiction.
   Therefore $1, x, dots, x^(n - 1)$ are all distinct.
   Further, each belongs to $G$, so $G$ includes at least these elements, and thus $n = |x| <= |G|$.
-])
+]
 
-#prob([
-  (Dummit and Foote, exercise 1.2.5)
-
+#pagebreak()
+#excs(name: "Dummit and Foote 1.2.5)", breakable: true)[
   If $n$ is odd and $n >= 3$, show that the identity is the only element of $D_(2n)$ which commutes with all the elements of $D_(2n)$.
-], [
+][
   Recall that $D_(2n) = angle.l r, s | r^n = 1, s^2 = 1, s r = inv(r) s angle.r$.
   Suppose $x in D_(2n)$ commutes with all elements of $D_(2n)$.
 
@@ -126,4 +122,4 @@
   But since $k <= n - 1$, we must have either $n = 2 k$ or $k = 0$.
   But the former situation is impossible since $n$ is odd, so it must be true that $k = 0$ and $x = r^0 = 1$.
   Thus any element in $D_(2n)$ that commutes with every other element must be the identity.
-])
+]

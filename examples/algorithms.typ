@@ -1,23 +1,25 @@
-#import "@local/superTemplate:0.1.3": *
+#import "@local/superTemplate:0.2.0": *
 #import cs_mod: *
-#show: notes.with("Algorithms", "Jane Doe")
+#show: notes.with("Algorithms", "Jane Doe", depth: 3, continuous: true)
+#show: codly-init.with()
+#codly(stroke: 2pt + black, fill: white, zebra-fill: rgb("#f5f4f2"), languages: codly-languages)
 
 = Greedy Algorithms
 
 == Interval Scheduling
 
-#bookmark([Lecture 1], [Jan 1, 2025])
+#bookmark[Lecture 1][Jan 1, 2025]
 
 <intsche>
-#comp_prob([Interval Scheduling], [
+#comp_prob(name: [Interval Scheduling])[
   Suppose we have a list of $n$ tasks that we want to schedule on a single processor.
   Each activity is specified by its start and end times, and only one activity can be scheduled on the resource at a time.
   Note an activity cannot be paused, i.e., it uses the resource continuously between its start and end times.
 
   Our goal is to schedule the maximum possible number of tasks.
-])
+]
 
-#remark([
+#rmk[
   We can formalize the previous problem as follows:
 
   Call our set of tasks $S = {1, 2, dots, n}$.
@@ -25,16 +27,16 @@
 
   Define a _feasible schedule_ as a subset in which no two tasks overlap.
   Thus, our goal is to find a feasible schedule of maximum size.
-])
+]
 
-#example([Interval Scheduling], [
+#ex[
   Suppose we have 5 tasks: $ {(3, 6), (1, 4), (4, 10), (6, 8), (0, 2)} $
   A feasible schedule cannot have two activities that overlap, so we cannot accept both (1, 4) and (3, 6).
   However, (3, 6) and (6, 8) are acceptable, because second only begins when first ends.
   Note that the optimal solution in this example has size 3.
-])
+]
 
-#remark([
+#rmk[
   We have a few possible greedy strategies:
   1. First In First Out (FIFO): pick the task that starts first, remove overlapping activities and repeat
   2. Shortest first: pick the activity with the shortest duration, remove overlapping activities and repeat
@@ -42,10 +44,10 @@
 
   But if we analyze these, we can find simple counterexamples for the first one (an activity that's really long is first) and the third one (a shorter interval in the middle that overlaps with 2 which could fit together).
   We could also construct a counterexample example for the second option.
-])
+]
 
 <eft>
-#algor([Earliest Finish Time (EFT)], [
+#algo(name: "Earliest Finish Time (EFT)")[
   We claim that the optimal greedy strategy is to sort the process jobs in order by earliest finish time.
 
   We sort jobs by order:
@@ -83,9 +85,9 @@
       ```
     )
   )
-])
+]
 
-#example([Earliest Finish Time], [
+#ex[
   #grid(
     align: center,
     columns: (0.3fr, 1fr),
@@ -126,14 +128,14 @@
     })
   )
 
-  The greedy algorithm first chooses 1, then skips 2 and 3.
-  Next it chooses 4, and skips 5, 6, and 7.
-  Finally, it should choose 8 and 11.
-])
+  The greedy algorithm first chooses `1`, then skips `2` and `3`.
+  Next it chooses `4`, and skips `5`, `6`, and `7`.
+  Finally, it should choose `8` and `11`.
+]
 
-#prop([
+#prop[
   The #link(<eft>)[Earliest Finish Time Algorithm] correctly solves the #link(<intsche>)[Interval Scheduling Problem].
-], [
+][
   Suppose $a_1, dots, a_k$ are the indices of jobs in the greedy schedule, and $b_1, dots, b_m$ are jobs in an optimal schedule OPT.
   We want to show $k = m$.
 
@@ -141,20 +143,21 @@
   In particular, $f(a_1) <= f(b_1)$, that is, the greedy algorithm stays ahead.
   We formalize this as follows.
 
-  #lemma([Greedy Structure Lemma], [
+  #lem(name: "Greedy Structure Lemma")[
     For every $i <= k$, we have $f(a_i) <= f(b_i)$.
-  ], [
+  ][
     We proceed by induction.
     Note the $i = 1$ case is trivial.
     By the induction hypothesis, we have $f(a_(i - 1)) <= f(b_(i - 1))$.
     Therefore $f(a_(i - 1)) <= s(b_i)$, since clearly $f(b_(i - 1)) <= s(b_i)$.
     But notice $s(b_i) <= f(b_i)$, which implies $f(a_i) <= f(b_i)$ as desired.
-  ])
+  ]
 
   Notice by the lemma, $f(a_k) <= f(b_k)$, but $f(b_k) <= f(b_m)$, so $f(a_k) <= f(b_m)$, implying $k <= m$.
   But $m <= k$ since OPT is optimal, implying $m = k$ as desired.
-])
+]
 
-#runtime([
-  The runtime of the previous algorithm is $O(n log n) + O(n) = O(n log n)$ because of the sorting and then iteration through.
-])
+#runtime[
+  Since the Earliest Finish Time algorithm involves sorts its values, it is at least $O(n log n)$.
+  Then notice we iterate through the sorted values, an $O(n)$ operation, so the algorithm is $O(n log n)$ overall.
+]

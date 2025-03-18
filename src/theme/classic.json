@@ -3,7 +3,7 @@
     "bgcolor": "#ffffff",
     "strokecolor":  "#ea4120"
   },
-  "thm": {
+  "theorem": {
     "bgcolor1":     "#faf1fd",
     "bgcolor2":     "#dfc1e6",
     "strokecolor1": "#6913d1",
@@ -15,13 +15,13 @@
     "strokecolor1": "#abc00c",
     "strokecolor2": "#b2c016"
   },
-  "cor": {
+  "corollary": {
     "bgcolor1":     "#dedbf8",
     "bgcolor2":     "#bfb6df",
     "strokecolor1": "#0f0cc0",
     "strokecolor2": "#4922bf"
   },
-  "prop": {
+  "proposition": {
     "bgcolor1":     "#fbdfdb",
     "bgcolor2":     "#e1a29f",
     "strokecolor1": "#e03636",
@@ -31,7 +31,7 @@
     "bgcolor":      "#ffffff",
     "strokecolor":  "#000000"
   },
-  "defn": {
+  "definition": {
     "bgcolor":      "#cceeff",
     "strokecolor":  "#33adff"
   },
@@ -47,15 +47,15 @@
     "bgcolor":      "#fafffa",
     "strokecolor":  "#1fc71f"
   },
-  "conc": {
+  "concept": {
     "bgcolor":      "#bddce9",
     "strokecolor":  "#0a5667"
   },
-  "comp_prob": {
+  "computational_problem": {
     "bgcolor":      "#e3f2f4",
     "strokecolor":  "#14a1f2"
   },
-  "algor": {
+  "algorithm": {
     "bgcolor":      "#e3e3f4",
     "strokecolor":  "#221fc7"
   },
@@ -63,28 +63,19 @@
     "bgcolor":      "#ebcceb",
     "strokecolor":  "#9e18a2"
   },
-  "named_prob": {
+  "problem": {
     "bgcolor1":     "#fafffa",
     "bgcolor2":     "#abc3b0",
     "strokecolor1": "#1fc71f",
     "strokecolor2": "#739a7a"
   },
-  "prob": {
-    "bgcolor1":     "#fafffa",
-    "bgcolor2":     "#abc3b0",
-    "strokecolor1": "#1fc71f",
-    "strokecolor2": "#739a7a"
-  },
-  "named_excs": {
+  "exercise": {
     "bgcolor1":     "#fff3e1",
     "bgcolor2":     "#eed08a",
     "strokecolor1": "#fd9e0a",
     "strokecolor2": "#c37410"
   },
-  "excs": {
-    "bgcolor1":     "#fff3e1",
-    "bgcolor2":     "#eed08a",
-    "strokecolor1": "#fd9e0a",
-    "strokecolor2": "#c37410"
+   "raw": {
+    "saturation": "0.25"
   }
 }
