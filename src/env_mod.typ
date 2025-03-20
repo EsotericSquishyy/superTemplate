@@ -90,7 +90,7 @@
     stack(
       dir: ttb,
       align(center, text(25pt)[
-        *#title*
+        #title
       ]),
       v(20pt),
       align(center, text(15pt)[#author])
@@ -138,25 +138,17 @@
     indent: auto,
   )
 
-  let h1_color = rgb("#020004")
-  let h2_color = rgb("#16428e")
-
-  show strong: it => {
-    set text(fill: rgb("#020004"))
-    it
-  }
-
   show heading.where(level: 1): it => [
     #if not continuous {
       pagebreak(weak: true)
     }
-    #set text(27pt, h1_color)
+    #set text(27pt)
     #it
     #v(0.3em)
   ]
 
   show heading.where(level: 2): it => [
-    #set text(21pt, h2_color)
+    #set text(21pt)
     #it
     #v(0.5em)
   ]
@@ -185,10 +177,10 @@
         grid(
           columns: (1fr, 1fr),
           align(left)[
-            #smallcaps[*#title*]
+            #smallcaps[#title]
           ],
           align(right)[
-            #smallcaps[*#author*]
+            #smallcaps[#author]
           ]
         )
         line(length: 100%)
