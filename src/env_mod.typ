@@ -1,498 +1,3 @@
-#import "theme/theme.typ": *
-
-//-----Setup and Misc-----//
-#let problem_counter = counter("problem")
-
-#let correction(body) = {
-  text(fill: rgb("#ea4120"), weight: "semibold", body)
-}
-
-#let qed = [#v(0.2em) #h(90%) $square.big$]
-
-#let pf(body) = {
-  [*Proof:* ]; body; qed
-}
-
-// usage example type_assert("title", title, str, content, none)
-#let type_assert(name, obj, ..types) = {
-    assert(
-        types.pos().contains(type(obj)),
-        message: "Expected "+str(name)+" to be of type: "+types.pos().map(str).join(" or ") + " found "+str(type(obj))
-    )
-}
-
-//-----Bookmark-----//
-#let bookmark(
-  title,
-  info,
-) = context {
-  let bgcolor     = colors(env_colors.get(), "bookmark", "bgcolor")
-  let strokecolor = colors(env_colors.get(), "bookmark", "strokecolor")
-
-  block(
-    fill: bgcolor,
-    width: 100%,
-    inset: 8pt,
-    stroke: strokecolor,
-    breakable: false,
-    grid(
-      columns: (1fr, 1fr),
-      align(left)[#title],
-      align(right)[#info],
-    )
-  )
-}
-
-//-----Theorem Environments-----//
-#let proof_env(
-  name,
-  statement,
-  proof,
-  kind:         [],
-  breakable:    false,
-  id:           "",
-) = context {
-  let theme = env_colors.get()
-
-  let bgcolor1      = colors(theme, id, "bgcolor1")
-  let bgcolor2      = colors(theme, id, "bgcolor2")
-  let strokecolor1  = colors(theme, id, "strokecolor1")
-  let strokecolor2  = colors(theme, id, "strokecolor2")
-
-  show raw.where(block: false): r => {
-    box(
-      fill: bgcolor1.saturate(ratios(theme, "raw", "saturation")),
-      outset: (x: 1pt, y: 3pt),
-      inset: (x: 2pt),
-      radius: 2pt,
-      r
-    )
-  }
-
-  let name_content = [=== _ #kind _]
-  if name != [] {
-    name_content = [=== _ #kind: _ #name]
-  }
-
-  let block_inset
-  let top_pad
-  let side_pad
-  if env_headers.get() == "tab" {
-    name_content = block(
-      fill: strokecolor1,
-      inset: 7pt,
-      width: 100%,
-      text(get_text_color(theme, 2))[#name_content]
-    )
-
-    block_inset = 0pt
-    top_pad = 8pt
-    side_pad = 12pt
-
-  } else if env_headers.get() == "classic" {
-    block_inset = 8pt
-    top_pad = 12pt
-    side_pad = 0pt
-  }
-
-  let statement_content = pad(
-    top: top_pad,
-    right: 12pt,
-    left: 12pt,
-    bottom: 12pt,
-    block(
-      fill: bgcolor2,
-      inset: 8pt,
-      radius: 2pt,
-      width: 100%,
-      stroke: (
-        left: strokecolor2 + 6pt
-      ),
-      statement
-    )
-  )
-  let proof_content = []
-
-  if proof != [] {
-    proof_content = pad(pf(proof), side_pad)
-  }
-
-  block(
-    fill: bgcolor1,
-    width: 100%,
-    inset: block_inset,
-    radius: 7pt,
-    stroke: strokecolor1,
-    breakable: breakable,
-    clip: true,
-    stack(
-      name_content,
-      statement_content,
-      proof_content,
-    )
-  )
-}
-
-#let theorem(statement, proof, name: [], breakable: false) = {
-  proof_env(
-    name,
-    statement,
-    proof,
-    kind:         [Theorem],
-    breakable:    breakable,
-    id:           "theorem",
-  )
-}
-#let thm = theorem
-
-#let lemma(statement, proof, name: [], breakable: false) = {
-  proof_env(
-    name,
-    statement,
-    proof,
-    kind:         [Lemma],
-    breakable:    breakable,
-    id:           "lemma",
-  )
-}
-#let lem = lemma
-
-#let corollary(statement, proof, name: [], breakable: false) = {
-  proof_env(
-    name,
-    statement,
-    proof,
-    kind:         [Corollary],
-    breakable:    breakable,
-    id:           "corollary",
-  )
-}
-#let cor = corollary
-
-#let proposition(statement, proof, name: [], breakable: false) = {
-  proof_env(
-    name,
-    statement,
-    proof,
-    kind:         [Proposition],
-    breakable:    breakable,
-    id:           "proposition",
-  )
-}
-#let prop = proposition
-
-
-
-//-----Definition Environments-----//
-#let statement_env(
-  name,
-  statement,
-  kind:         [],
-  breakable:    false,
-  id:           "",
-) = context {
-  let theme = env_colors.get()
-
-  let bgcolor     = colors(theme, id, "bgcolor")
-  let strokecolor = colors(theme, id, "strokecolor")
-
-  let name_content = [=== #kind]
-  if name != [] {
-    name_content = [=== #kind: #name]
-  }
-
-  show raw.where(block: false): r => {
-    box(
-      fill: bgcolor.saturate(ratios(theme, "raw", "saturation")),
-      outset: (x: 1pt, y: 3pt),
-      inset: (x: 2pt),
-      radius: 2pt,
-      r
-    )
-  }
-
-  let block_inset
-  let top_pad
-  let side_pad
-  let bottom_pad
-  if env_headers.get() == "tab" {
-    name_content = block(
-      fill: strokecolor,
-      inset: 7pt,
-      width: 100%,
-      text(get_text_color(theme, 2))[#name_content]
-    )
-
-    block_inset = 0pt
-    top_pad = 8pt
-    side_pad = 12pt
-    bottom_pad = 10pt
-
-  } else if env_headers.get() == "classic" {
-    block_inset = 8pt
-    top_pad = 12pt
-    side_pad = 0pt
-    bottom_pad = 3pt
-  }
-
-  block(
-    fill: bgcolor,
-    width: 100%,
-    inset: block_inset,
-    radius: 7pt,
-    stroke: strokecolor,
-    breakable: breakable,
-    clip: true,
-    stack(
-      name_content,
-      pad(
-        top: top_pad,
-        bottom: bottom_pad,
-        left: side_pad,
-        right: side_pad,
-        statement
-      )
-    )
-  )
-}
-
-#let note(statement, name: [], breakable: false) = {
-  statement_env(
-    name,
-    statement,
-    kind:         [Note],
-    breakable:    breakable,
-    id:           "note",
-  )
-}
-
-#let definition(statement, name: [], breakable: false) = {
-  statement_env(
-    name,
-    statement,
-    kind:         [Definition],
-    breakable:    breakable,
-    id:           "definition",
-  )
-}
-#let defn = definition
-
-#let remark(statement, name: [], breakable: false) = {
-  statement_env(
-    name,
-    statement,
-    kind:         [Remark],
-    breakable:    breakable,
-    id:           "remark",
-  )
-}
-#let rem = remark
-#let rmk = remark
-
-#let notation(statement, name: [], breakable: false) = {
-  statement_env(
-    name,
-    statement,
-    kind:         [Notation],
-    breakable:    breakable,
-    id:           "notation",
-  )
-}
-#let notn = notation
-
-#let example(statement, name: [], breakable: false) = {
-  statement_env(
-    name,
-    statement,
-    kind:         [Example],
-    breakable:    breakable,
-    id:           "example",
-  )
-}
-#let ex = example
-
-// For a more general definition
-#let concept(statement, name: [], breakable: false) = {
-  statement_env(
-    name,
-    statement,
-    kind:         [Concept],
-    breakable:    breakable,
-    id:           "concept",
-  )
-}
-#let conc = concept
-
-#let computational_problem(statement, name: [], breakable: false) = {
-  statement_env(
-    name,
-    statement,
-    kind:         [Computational Problem],
-    breakable:    breakable,
-    id:           "computational_problem",
-  )
-}
-#let comp_prob = computational_problem
-
-#let algorithm(statement, name: [], breakable: false) = {
-  statement_env(
-    name,
-    statement,
-    kind:         [Algorithm],
-    breakable:    breakable,
-    id:           "algorithm",
-  )
-}
-#let algo = algorithm
-
-#let runtime(statement, name: [], breakable: false) = {
-  statement_env(
-    name,
-    statement,
-    kind:         [Runtime Analysis],
-    breakable:    breakable,
-    id:           "runtime",
-  )
-}
-
-//-----Problem Environments-----//
-#let prob_env(
-  name,
-  statement,
-  solution,
-  kind:         [],
-  breakable:    false,
-  id:           "",
-  width:        100%,
-  height:       auto,
-) = context {
-  let theme = env_colors.get()
-
-  let bgcolor1      = colors(theme, id, "bgcolor1")
-  let bgcolor2      = colors(theme, id, "bgcolor2")
-  let strokecolor1  = colors(theme, id, "strokecolor1")
-  let strokecolor2  = colors(theme, id, "strokecolor2")
-
-  show raw.where(block: false): r => {
-    box(
-      fill: bgcolor1.saturate(ratios(theme, "raw", "saturation")),
-      outset: (x: 1pt, y: 3pt),
-      inset: (x: 2pt),
-      radius: 2pt,
-      r
-    )
-  }
-
-  let name_content = [=== #kind #name]
-  let block_inset
-  let top_pad
-  let side_pad
-  if env_headers.get() == "tab" {
-    name_content = block(
-      fill: strokecolor1,
-      inset: 7pt,
-      width: 100%,
-      text(get_text_color(theme, 2))[#name_content]
-    )
-
-    block_inset = 0pt
-    top_pad = 8pt
-    side_pad = 12pt
-
-  } else if env_headers.get() == "classic" {
-    block_inset = 8pt
-    top_pad = 12pt
-    side_pad = 0pt
-  }
-
-  let statement_content = pad(
-    top: top_pad,
-    right: 12pt,
-    bottom: 12pt,
-    left: 12pt,
-    block(
-      fill: bgcolor2,
-      inset: 8pt,
-      radius: 2pt,
-      width: width,
-      stroke: (
-        left: strokecolor2 + 6pt
-      ),
-      statement
-    )
-  )
-
-  block(
-    fill: bgcolor1,
-    width: width,
-    height: height,
-    inset: block_inset,
-    radius: 7pt,
-    stroke: strokecolor1,
-    breakable: breakable,
-    clip: true,
-    stack(
-      name_content,
-      statement_content,
-      pad([*Solution*], top: 12pt, left: side_pad),
-      pad(solution, left: side_pad, right: side_pad, bottom: side_pad, top: 12pt)
-    )
-  )
-}
-
-// proof param?
-#let problem(
-  statement,
-  solution,
-  name:       [],
-  breakable:  false,
-  width:      100%,
-  height:     auto,
-) = {
-  problem_counter.step()
-
-  let suffix = [:]
-  if name == [] {
-    name = [#context { problem_counter.display() }]
-    suffix = []
-  }
-
-  prob_env(
-    name,
-    statement,
-    solution,
-    kind:         [Problem] + suffix,
-    breakable:    breakable,
-    id:           "problem",
-    width:        width,
-    height:       height,
-  )
-}
-#let prob = problem
-
-#let exercise(
-  statement,
-  solution,
-  name:       [],
-  breakable:  false,
-  width:      100%,
-  height:     auto,
-) = {
-  let suffix = [:]
-  if name == [] { suffix = [] }
-
-  prob_env(
-    name,
-    statement,
-    solution,
-    kind:         [Exercise] + suffix,
-    breakable:    breakable,
-    id:           "exercise",
-    width:        width,
-    height:       height,
-  )
-}
-#let excs = exercise
 
 //------Misc------//
 #let nn(content) = {  // no number
@@ -505,14 +10,10 @@
 
 //-----Templates-----//
 #let notes(title, author, doc, box: false, continuous: false, number: false, depth: 2) = context {
-  let theme = env_colors.get()
-
   set document(title: title, author: author)
-  set text(get_text_color(theme, 1))
-  set table(stroke: get_text_color(theme, 1))
+  set table(stroke: text.fill)
   set page(
     paper: "us-letter",
-    fill: get_page_color(theme),
     // https://stackoverflow.com/a/78318321
     header: context {
       let selector = selector(heading).before(here())
@@ -549,25 +50,23 @@
       let h1_on_page = level_one_headings.find(h => h.location().page() == here().page())
 
       if (h1_on_page == none) {
-        let header_color = get_text_color(theme, 1)
-
         grid(
           columns: (auto, 1fr, auto),
           align(left)[
-            #smallcaps[#text(fill: header_color, weight: "extrabold")[#headers.at(0)]]
+            #smallcaps[#text(fill: text.fill, weight: "extrabold")[#headers.at(0)]]
           ],
           [],
           align(right)[
-            #smallcaps[#text(fill: header_color, weight: "extrabold")[#headers.at(1) $dash.em$ #section]]
+            #smallcaps[#text(fill: text.fill, weight: "extrabold")[#headers.at(1) $dash.em$ #section]]
           ]
         )
-        line(length: 100%, stroke: header_color)
+        line(length: 100%, stroke: text.fill)
       }
     },
     footer: context {
       let page_number = counter(page).at(here()).first()
       let total_pages = counter(page).final().last()
-      align(center)[#smallcaps[#text(weight: "extrabold", fill: get_text_color(theme, 1))[Page #page_number of #total_pages]]]
+      align(center)[#smallcaps[#text(weight: "extrabold", fill: text.fill)[Page #page_number of #total_pages]]]
     },
     margin: (top: 1.75cm, bottom: 1.25cm, left: 1cm, right: 1cm)
   )
@@ -578,15 +77,15 @@
     footer: none
   ) if continuous
 
-  let header_stroke = get_page_color(theme)
+  let box_color = none
   if (box) {
-    header_stroke = get_text_color(theme, 1)
+    box_color = text.fill
   }
 
   block(
     width: 100%,
     inset: 8pt,
-    stroke: header_stroke,
+    stroke: box_color,
     breakable: false,
     stack(
       dir: ttb,
@@ -639,11 +138,11 @@
     indent: auto,
   )
 
-  let h1_color = rgb(colors_dict.at(theme).at("h1", default: "#020004"))
-  let h2_color = rgb(colors_dict.at(theme).at("h2", default: "#16428e"))
+  let h1_color = rgb("#020004")
+  let h2_color = rgb("#16428e")
 
   show strong: it => {
-    set text(fill: rgb(colors_dict.at(theme).at("strong", default: "#020004")))
+    set text(fill: rgb("#020004"))
     it
   }
 
@@ -662,34 +161,25 @@
     #v(0.5em)
   ]
 
-  problem_counter.update(0)
   show link: l => underline(l)
 
   doc
 }
 
 #let basic(doc) = context {
-  let theme = env_colors.get()
-
   set document()
-  set text(get_text_color(theme, 1))
   set page(
     paper: "us-letter",
-    fill: get_page_color(theme),
     margin: 1cm
   )
   doc
 }
 
 #let assignment(title, author, date, doc, box: false, margin: 1.5cm) = context {
-  let theme = env_colors.get()
-
   set document(title: title, author: author)
   set enum(numbering: "a)")
-  set text(get_text_color(theme, 1))
   set page(
     paper: "us-letter",
-    fill: get_page_color(theme),
     header: context {
       if counter(page).at(here()).first() != 1 {
         grid(
@@ -701,7 +191,7 @@
             #smallcaps[*#author*]
           ]
         )
-        line(length: 100%, stroke: get_text_color(theme, 1))
+        line(length: 100%)
       }
     },
     footer: context {
@@ -712,15 +202,15 @@
     margin: (top: 1.75cm, bottom: 1.25cm, left: margin, right: margin)
   )
 
-  let header_stroke = get_page_color(theme)
+  let box_color = none
   if (box) {
-    header_stroke = get_text_color(theme, 1)
+    box_color = text.fill
   }
 
   block(
     width: 100%,
     inset: 8pt,
-    stroke: header_stroke,
+    stroke: box_color,
     breakable: false,
     stack(
       dir: ttb,

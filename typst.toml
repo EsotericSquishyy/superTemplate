@@ -1,11 +1,11 @@
 [package]
 name = "superTemplate"
-version = "0.2.0"
+version = "0.3.0"
 compiler = "0.13.0"
 entrypoint = "lib.typ"
 
 authors = ["Jesse Cobb <@EsotericSquishyy>, Nate Annau <@aneziac>"]
 repository = "https://github.com/EsotericSquishyy/superTemplate"
-description = "A suite of environments/macros for ease of taking notes or doing problem sets in Mathematics, Computer Science, and Physics"
+description = "Template and macros useful for reports, problem sets, and notes in mathematics, computer science, and physics"
 disciplines = ["mathematics", "computer-science", "physics"]
 license = "MIT-0"
