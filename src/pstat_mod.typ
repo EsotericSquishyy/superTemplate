@@ -1,3 +1,4 @@
+// Probability distributions
 #let Var = $op("Var")$
 #let Bin = $op("Bin")$
 #let Exp = $op("Exp")$

@@ -1,22 +1,23 @@
-#import "@preview/finite:0.4.1": *
-#import "@preview/lovelace:0.3.0": *
-#import "@preview/cetz:0.3.2": canvas, draw, tree
-#import "@preview/codly:1.0.0": *
-#import "@preview/codly-languages:0.1.1": *
+#import "@preview/finite:0.4.1": *  // for cellular automata
+#import "@preview/lovelace:0.3.0": *  // for formalized pseudocode
+#import "@preview/cetz:0.3.2": canvas, draw, tree  // for quickly drawing binary trees and the like
+#import "@preview/codly:1.0.0": *  // for code snippets
+#import "@preview/codly-languages:0.1.1": *  // for more languages in those code snippets
 
-// cryptography
-#let KeyGen = $op("KeyGen")$
-#let Gen = $op("Gen")$
-#let unif = $<-^(\$)$
-#let Enc = $op("Enc")$
-#let Dec = $op("Dec")$
-#let concat = $#h(0.05em) || #h(0.05em)$
-#let poly = $op("poly")$
-#let PPT = $"PPT"$
-#let pk = $op("pk")$
-#let sk = $op("sk")$
 
-// lambda calculus
-#let evalto = sym.arrow.b.double
-#let pred = sym.dot.circle
+//------Cryptography------
+#let KeyGen = $op("KeyGen")$  // cryptographic key generation
+#let Gen = $op("Gen")$  // short form of the same
+#let unif = $<-^(\$)$  // uniformly sampled from
+#let Enc = $op("Enc")$  // encryption algorithm
+#let Dec = $op("Dec")$  // decryption algorithm
+#let concat = $#h(0.05em) || #h(0.05em)$  // concatenation
+#let poly = $op("poly")$  // polynomial time algorithm
+#let PPT = $"PPT"$  // probabilistic polynomial time algorithm
+#let pk = $op("pk")$  // private key
+#let sk = $op("sk")$  // secret key
 
+
+//------Lambda Calculus------
+#let evalto = sym.arrow.b.double  // evaluate to this value under operational semantics
+#let pred = sym.dot.circle  // logical predicate
