@@ -78,7 +78,8 @@
 #let char = $op("char")$  // characteristic
 #let nil = $op("nil")$  // nilradical
 #let cont = $op("cont")$  // content
-#let pp = $op("pp")$  //
+#let pp = $op("pp")$
+#let GF = $op("GF")$  // galois field
 
 
 //------Number Theory------

@@ -1,7 +1,7 @@
 #import "@preview/cetz:0.3.2"
 #import "src/math_mod.typ"
 #import "src/cs_mod.typ"
-#import "src/physics.typ"
+#import "src/physics_mod.typ"
 #import "src/pstat_mod.typ"
 
 #import "src/env_mod.typ": *

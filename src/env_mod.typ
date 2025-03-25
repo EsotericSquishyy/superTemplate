@@ -1,4 +1,3 @@
-
 //------Misc------//
 #let nn(content) = {  // no number
   math.equation(

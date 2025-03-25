@@ -6,6 +6,6 @@ entrypoint = "lib.typ"
 
 authors = ["Jesse Cobb <@EsotericSquishyy>, Nate Annau <@aneziac>"]
 repository = "https://github.com/EsotericSquishyy/superTemplate"
-description = "Template and macros useful for reports, problem sets, and notes in mathematics, computer science, and physics"
-disciplines = ["mathematics", "computer-science", "physics"]
+description = "Templates and macros useful for problem sets, notes, reports, and presentations in Mathematics, Computer Science, Physics and Engineering"
+disciplines = ["mathematics", "computer-science", "physics", "engineering"]
 license = "MIT-0"
