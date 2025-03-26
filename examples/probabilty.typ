@@ -1,7 +1,10 @@
-#import "@local/superTemplate:0.2.0": *
-#env_colors.update("classic")
-#env_headers.update("classic")
+#import "@local/superTheorems:0.1.0": *
+#import "@local/superTemplate:0.3.0": *
+
 #import pstat_mod: *
+
+#show: thmS-init.with()
+
 #let date = datetime(
   year: 2025,
   month: 1,

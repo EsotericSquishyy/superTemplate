@@ -1,5 +1,7 @@
-#import "@local/superTemplate:0.2.0": *
-#import quantum_mod: *
+#import "@local/superTemplate:0.3.0": *
+
+#import physics_mod: *
+
 #show: basic
 
 #align(

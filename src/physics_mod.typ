@@ -1,5 +1,5 @@
 #import "@preview/unify:0.6.0": num, qty, numrange, unit  // for calculations involving units
-#import "@preview/physica:0.9.3": *  // for general physics notation
+#import "@preview/physica:0.9.5": *  // for general physics notation
 #import "@preview/quill:0.5.0": *  // for quantum circuits
 
 //------Quantum Mechanics------
