@@ -9,11 +9,13 @@ This is best used as a companion to [our other package](https://github.com/Esote
 
 ## Gallery
 
-<img src="assets/algebra-1.png" width="200">
-<img src="assets/analysis-2.png" width="200">
-<img src="assets/algorithms-1.png" width="200">
-<img src="assets/probability-2.png" width="200">
-<img src="assets/quantum_computing-5.png" width="200">
+<p float="left">
+    <img src="assets/algebra-1.png" width="200">
+    <img src="assets/analysis-2.png" width="200">
+    <img src="assets/algorithms-1.png" width="200">
+    <img src="assets/probability-2.png" width="200">
+    <img src="assets/quantum_computing-5.png" width="200">
+</p>
 
 See how these are rendered in `./examples`.
 
