@@ -174,12 +174,13 @@
     header: context {
       if counter(page).at(here()).first() != 1 {
         grid(
-          columns: (1fr, 1fr),
+          columns: (auto, 1fr, auto),
           align(left)[
-            #smallcaps[#title]
+            #smallcaps[#text(fill: text.fill, weight: "extrabold")[#title]]
           ],
+          [],
           align(right)[
-            #smallcaps[#author]
+            #smallcaps[#text(fill: text.fill, weight: "extrabold")[#author]]
           ]
         )
         line(length: 100%)
@@ -188,7 +189,7 @@
     footer: context {
       let page_number = counter(page).at(here()).first()
       let total_pages = counter(page).final().last()
-      align(center)[Page #page_number of #total_pages]
+      align(center)[#smallcaps[#text(weight: "extrabold", fill: text.fill)[Page #page_number of #total_pages]]]
     },
     margin: (top: 1.75cm, bottom: 1.25cm, left: margin, right: margin)
   )
