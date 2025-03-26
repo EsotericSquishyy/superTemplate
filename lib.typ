@@ -4,7 +4,7 @@
 #import "src/physics_mod.typ"
 #import "src/pstat_mod.typ"
 
-#import "src/envs.typ": *
+#import "src/templates.typ": *
 
 // Quality of life
 #let bu(unit) = $bold(upright(unit))$
