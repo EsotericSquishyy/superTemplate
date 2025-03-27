@@ -1,5 +1,5 @@
 //------Misc------//
-#let nn(content) = {  // no number
+#let nn(content) = {  // don't number an equation
   math.equation(
     block: true,
     numbering: none,
@@ -8,12 +8,22 @@
 }
 
 //-----Templates-----//
-#let notes(title, author, doc, box: false, continuous: false, number: false, depth: 2) = context {
+#let notes(
+  title,
+  author,
+  doc,
+  paper: "us-letter",  // the paper to use
+  box: false,  // whether to include a box around the document title
+  continuous: false,  // whether the generated pdf can be scrolled continuously, rather than being paginated
+  number: false,  // whether equations are numbered
+  depth: 2  // depth of the table of contents
+  ) = context {
   set document(title: title, author: author)
   set table(stroke: text.fill)
+
   set page(
-    paper: "us-letter",
-    // https://stackoverflow.com/a/78318321
+    paper: paper,
+    // Much of this is borrowed from https://stackoverflow.com/a/78318321
     header: context {
       let selector = selector(heading).before(here())
       let level = counter(selector)
@@ -51,13 +61,21 @@
       if (h1_on_page == none) {
         grid(
           columns: (auto, 1fr, auto),
-          align(left)[
-            #smallcaps[#text(fill: text.fill, weight: "extrabold")[#headers.at(0)]]
-          ],
+          align(left)[#smallcaps[
+            #text(fill: text.fill, weight: "extrabold")[
+              #if (headers.len() >= 1) {
+                [#headers.at(0)]
+              }
+            ]
+          ]],
           [],
-          align(right)[
-            #smallcaps[#text(fill: text.fill, weight: "extrabold")[#headers.at(1) $dash.em$ #section]]
-          ]
+          align(right)[#smallcaps[
+            #text(fill: text.fill, weight: "extrabold")[
+              #if (headers.len() == 2) {
+                [#headers.at(1) $dash.em$ #section]
+              }
+            ]
+          ]]
         )
         line(length: 100%, stroke: text.fill)
       }
@@ -65,9 +83,11 @@
     footer: context {
       let page_number = counter(page).at(here()).first()
       let total_pages = counter(page).final().last()
-      align(center)[#smallcaps[#text(weight: "extrabold", fill: text.fill)[Page #page_number of #total_pages]]]
+      align(center)[#smallcaps[
+        #text(weight: "extrabold", fill: text.fill)[Page #page_number of #total_pages]
+      ]]
     },
-    margin: (top: 1.75cm, bottom: 1.25cm, left: 1cm, right: 1cm)
+    margin: (top: 1.75cm, bottom: 1.5cm, left: 1cm, right: 1cm)
   )
 
   set page(
@@ -122,8 +142,7 @@
     if continuous {
       link(
         it.element.location(),
-        // Keep just the body, dropping
-        // the fill and the page.
+        // Keep just the body, dropping the fill and the page
         it.indented(it.prefix(), it.body()),
       )
     } else {
@@ -175,13 +194,13 @@
       if counter(page).at(here()).first() != 1 {
         grid(
           columns: (auto, 1fr, auto),
-          align(left)[
-            #smallcaps[#text(fill: text.fill, weight: "extrabold")[#title]]
-          ],
+          align(left)[#smallcaps[
+            #text(fill: text.fill, weight: "extrabold")[#title]
+          ]],
           [],
-          align(right)[
-            #smallcaps[#text(fill: text.fill, weight: "extrabold")[#author]]
-          ]
+          align(right)[#smallcaps[
+            #text(fill: text.fill, weight: "extrabold")[#author]
+          ]]
         )
         line(length: 100%)
       }
@@ -189,7 +208,9 @@
     footer: context {
       let page_number = counter(page).at(here()).first()
       let total_pages = counter(page).final().last()
-      align(center)[#smallcaps[#text(weight: "extrabold", fill: text.fill)[Page #page_number of #total_pages]]]
+      align(center)[#smallcaps[
+        #text(weight: "extrabold", fill: text.fill)[Page #page_number of #total_pages]
+      ]]
     },
     margin: (top: 1.75cm, bottom: 1.25cm, left: margin, right: margin)
   )
@@ -210,7 +231,9 @@
         *#title*
       ]),
       v(20pt),
-      align(center + horizon, text(15pt)[#author $dash.em$ #date.display("[month repr:long] [day], [year]")]),
+      align(center + horizon, text(15pt)[
+        #author $dash.em$ #date.display("[month repr:long] [day], [year]")
+      ]),
     )
   )
 
