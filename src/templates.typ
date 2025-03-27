@@ -58,6 +58,7 @@
       let level_one_headings = query(heading.where(level: 1))
       let h1_on_page = level_one_headings.find(h => h.location().page() == here().page())
 
+      // display headers and top bar
       if (h1_on_page == none) {
         grid(
           columns: (auto, 1fr, auto),
@@ -101,6 +102,7 @@
     box_color = text.fill
   }
 
+  // title and author
   block(
     width: 100%,
     inset: 8pt,
@@ -108,11 +110,11 @@
     breakable: false,
     stack(
       dir: ttb,
-      align(center, text(25pt)[
+      align(center, text(25pt, weight: "extrabold")[
         #title
       ]),
       v(20pt),
-      align(center, text(15pt)[#author])
+      align(center, text(15pt, weight: "extrabold")[#author])
     )
   )
 
@@ -135,7 +137,7 @@
     level: 1
   ): it => {
     v(12pt, weak: true)
-    strong(it)
+    text(it, weight: "extrabold")
   }
 
   show outline.entry: it => {
@@ -176,16 +178,106 @@
   doc
 }
 
-#let basic(doc) = context {
+#let quicknotes(
+  title,
+  author,
+  doc,
+  paper: "us-letter",  // the paper to use
+  box: false,  // whether to include a box around the document title
+  continuous: false,  // whether the generated pdf can be scrolled continuously, rather than being paginated
+  number: false,  // whether equations are numbered
+  ) = context {
+  set document(title: title, author: author)
+  set table(stroke: text.fill)
+
+  set page(
+    paper: paper,
+    footer: context {
+      let page_number = counter(page).at(here()).first()
+      let total_pages = counter(page).final().last()
+      align(center)[#smallcaps[
+        #text(weight: "extrabold", fill: text.fill)[Page #page_number of #total_pages]
+      ]]
+    },
+    margin: (top: 1.75cm, bottom: 1.5cm, left: 1cm, right: 1cm)
+  )
+
+  set page(
+    height: auto,
+    header: none,
+    footer: none
+  ) if continuous
+
+  let box_color = none
+  if (box) {
+    box_color = text.fill
+  }
+
+  block(
+    width: 100%,
+    inset: 8pt,
+    stroke: box_color,
+    breakable: false,
+    stack(
+      dir: ttb,
+      align(center, text(25pt, weight: "extrabold")[
+        #title
+      ]),
+      v(20pt),
+      align(center, text(15pt, weight: "extrabold")[#author])
+    )
+  )
+
+  let eq-numbering = none
+  if number {
+    eq-numbering = "(1.1)"
+  }
+
+  set math.equation(numbering: eq-numbering, supplement: none)
+  show ref: it => { // https://github.com/typst/typst/issues/873
+    if it.element != none and it.element.func() == math.equation {
+      [(#it)]
+    } else {
+      it
+    }
+  }
+
+  show heading.where(level: 1): it => [
+    #set text(27pt)
+    #it
+    #v(0.3em)
+  ]
+
+  show heading.where(level: 2): it => [
+    #set text(16pt)
+    #it
+    #v(0.5em)
+  ]
+
+  show link: l => underline(l)
+
+  doc
+}
+
+#let basic(
+  doc,
+  paper: "us-letter",  // the paper to use
+) = context {
   set document()
   set page(
-    paper: "us-letter",
+    paper: paper,
     margin: 1cm
   )
   doc
 }
 
-#let assignment(title, author, date, doc, box: false, margin: 1.5cm) = context {
+#let assignment(
+  title,
+  author,
+  date,
+  doc,
+  box: false,  // whether to include a box around the document title
+) = context {
   set document(title: title, author: author)
   set enum(numbering: "a)")
   set page(
@@ -212,7 +304,7 @@
         #text(weight: "extrabold", fill: text.fill)[Page #page_number of #total_pages]
       ]]
     },
-    margin: (top: 1.75cm, bottom: 1.25cm, left: margin, right: margin)
+    margin: (top: 1.75cm, bottom: 1.5cm, left: 1.5cm, right: 1.5cm)
   )
 
   let box_color = none
