@@ -13,11 +13,11 @@
 
 // Calculus
 #let integer = int // required for integral
-#let int    = sym.integral
-#let iint   = sym.integral.double
-#let iiint  = sym.integral.triple
-#let oint   = sym.integral.cont
-#let oiint  = sym.integral.surf
+#let int = sym.integral
+#let iint = sym.integral.double
+#let iiint = sym.integral.triple
+#let oint = sym.integral.cont
+#let oiint = sym.integral.surf
 #let oiiint = sym.integral.vol
 #let df = $upright(d) f$
 #let dg = $upright(d) g$
@@ -40,18 +40,45 @@
 #let arcosh = math.op("arcosh")
 #let arctanh = math.op("arctanh")
 
-#let deriv(x, n: 1, f: none) = {  // derivative
-  if (n == 1) {
-    $(upright(d) #f) / (upright(d) #x)$
+#let der(..args) = {
+  let argv = args.pos()
+  let argc = argv.len()
+
+  if argc < 1 {
+    panic("Must pass in at least one positional argument")
+  } else if argc > 3 {
+    panic("Must pass in at most 3 positional arguments")
+  }
+
+  let indvar = if argc == 3 { argv.at(1) } else if argc == 2 { argv.at(1) } else { argv.at(0) }
+  let depvar = if argc == 3 { argv.at(0) } else if argc == 2 { argv.at(0) } else { none }
+  let order = if argc == 3 { argv.at(2) } else { 1 }
+
+  if (order == 1) {
+    $(upright(d) #depvar) / (upright(d) #indvar)$
   } else {
-    $(upright(d)^#n #f) / (upright(d) #x^#n)$
+    $(upright(d)^#order #depvar) / (upright(d) #indvar^#order)$
   }
 }
-#let pderiv(x, n: 1, f: none) = {  // partial derivative
-  if (n == 1) {
-    $(partial #f) / (partial #x)$
+
+#let pder(..args) = {
+  let argv = args.pos()
+  let argc = argv.len()
+
+  if argc < 1 {
+    panic("Must pass in at least one positional argument")
+  } else if argc > 3 {
+    panic("Must pass in at most 3 positional arguments")
+  }
+
+  let indvar = if argc == 3 { argv.at(1) } else if argc == 2 { argv.at(1) } else { argv.at(0) }
+  let depvar = if argc == 3 { argv.at(0) } else if argc == 2 { argv.at(0) } else { none }
+  let order = if argc == 3 { argv.at(0) } else { 1 }
+
+  if (order == 1) {
+    $(partial #depvar) / (partial #indvar)$
   } else {
-    $(partial^#n #f) / (partial #x^#n)$
+    $(partial^#order #depvar) / (partial #indvar^#order)$
   }
 }
 
@@ -66,28 +93,28 @@
 }
 
 // Misc. Symbols
-#let cap    = sym.inter
-#let sect   = sym.inter
-#let cup    = sym.union
-#let infty  = sym.infinity
-#let pm     = sym.plus.minus
-#let sim    = sym.tilde.op
-#let ni     = sym.in.rev
-#let st     = "such that"
-#let fs     = "for some"
-#let iff    = "if and only if"
-#let wlog   = "without loss of generality"
-#let Wlog   = "Without loss of generality"
-#let Sps    = "Suppose"
-#let Spst   = "Suppose that"
-#let wrt    = "with respect to"
-#let qquad  = $quad quad$
-#let cdots  = math.class("relation", $dot thin dot thin dot$)
-#let ldots  = math.class("relation", $. thin . thin .$)
-#let comp   = sym.compose
-#let propto = sym.prop  // proportional to (avoids a symbol conflict with proposition)
-#let mapsto = sym.arrow.r.long.bar  // image of a given element under a map
-#let exiuni = $exists!$  // exists unique
+#let cap = sym.inter
+#let sect = sym.inter
+#let cup = sym.union
+#let infty = sym.infinity
+#let pm = sym.plus.minus
+#let sim = sym.tilde.op
+#let ni = sym.in.rev
+#let st = "such that"
+#let fs = "for some"
+#let iff = "if and only if"
+#let wlog = "without loss of generality"
+#let Wlog = "Without loss of generality"
+#let Sps = "Suppose"
+#let Spst = "Suppose that"
+#let wrt = "with respect to"
+#let qquad = $quad quad$
+#let cdots = math.class("relation", $dot thin dot thin dot$)
+#let ldots = math.class("relation", $. thin . thin .$)
+#let comp = sym.compose
+#let propto = sym.prop // proportional to (avoids a symbol conflict with proposition)
+#let mapsto = sym.arrow.r.long.bar // image of a given element under a map
+#let exiuni = $exists!$ // exists unique
 #let oplus = sym.plus.circle
 #let otimes = sym.times.circle
 
@@ -107,13 +134,11 @@
     align: right,
     stroke: (x, y) => (
       left: if x == cols - 1 { black },
-
       bottom: if (
-        y == 0 and x == cols - 1
-        or x < cols - 1 and calc.odd(y) and x + 1 >= y / 2
+        y == 0 and x == cols - 1 or x < cols - 1 and calc.odd(y) and x + 1 >= y / 2
       ) {
         black
-      }
+      },
     ),
   )
   grid(..cells)
