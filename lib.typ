@@ -35,6 +35,11 @@
 #let dtheta = $upright(d) theta$
 #let dphi = $upright(d) phi$
 #let dpsi = $upright(d) psi$
+
+#let arcsinh = math.op("arcsinh")
+#let arcosh = math.op("arcosh")
+#let arctanh = math.op("arctanh")
+
 #let deriv(x, n: 1, f: none) = {  // derivative
   if (n == 1) {
     $(upright(d) #f) / (upright(d) #x)$
