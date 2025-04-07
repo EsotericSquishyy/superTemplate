@@ -36,10 +36,6 @@
 #let dphi = $upright(d) phi$
 #let dpsi = $upright(d) psi$
 
-#let arcsinh = math.op("arcsinh")
-#let arcosh = math.op("arcosh")
-#let arctanh = math.op("arctanh")
-
 #let der(..args) = {
   let argv = args.pos()
   let argc = argv.len()
@@ -122,6 +118,12 @@
 #let Id = $op("Id")$
 #let Im = $op("Im")$
 #let sgn = $op("sgn")$
+#let asinh = $op("asinh")$
+#let acosh = $op("acosh")$
+#let atanh = $op("atanh")$
+#let arcsinh = $op("arcsinh")$
+#let arcosh = $op("arcosh")$
+#let arctanh = $op("arctanh")$
 #let prod = $limits(product)$
 #let sum = $limits(sum)$
 
