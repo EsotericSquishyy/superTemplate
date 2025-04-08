@@ -7,47 +7,74 @@
 #import "src/templates.typ": *
 
 // Quality of life
-#let bu(unit) = $bold(upright(unit))$
+#let bu(unit)  = $bold(upright(unit))$
 #let vtr(unit) = $bold(upright(unit))$
-#let up(unit) = $upright(unit)$
+#let up(unit)  = $upright(unit)$
 
 // Calculus
 #let integer = int // required for integral
-#let int    = sym.integral
-#let iint   = sym.integral.double
-#let iiint  = sym.integral.triple
-#let oint   = sym.integral.cont
-#let oiint  = sym.integral.surf
-#let oiiint = sym.integral.vol
-#let df = $upright(d) f$
-#let dg = $upright(d) g$
-#let dh = $upright(d) h$
-#let dr = $upright(d) r$
-#let ds = $upright(d) s$
-#let dt = $upright(d) t$
-#let du = $upright(d) u$
-#let dv = $upright(d) v$
-#let dw = $upright(d) w$
-#let dx = $upright(d) x$
-#let dy = $upright(d) y$
-#let dz = $upright(d) z$
+#let int     = sym.integral
+#let iint    = sym.integral.double
+#let iiint   = sym.integral.triple
+#let oint    = sym.integral.cont
+#let oiint   = sym.integral.surf
+#let oiiint  = sym.integral.vol
+#let df      = $upright(d) f$
+#let dg      = $upright(d) g$
+#let dh      = $upright(d) h$
+#let dr      = $upright(d) r$
+#let ds      = $upright(d) s$
+#let dt      = $upright(d) t$
+#let du      = $upright(d) u$
+#let dv      = $upright(d) v$
+#let dw      = $upright(d) w$
+#let dx      = $upright(d) x$
+#let dy      = $upright(d) y$
+#let dz      = $upright(d) z$
 #let dlambda = $upright(d) lambda$
-#let dtheta = $upright(d) theta$
-#let dphi = $upright(d) phi$
-#let dpsi = $upright(d) psi$
+#let dtheta  = $upright(d) theta$
+#let dphi    = $upright(d) phi$
+#let dpsi    = $upright(d) psi$
 
-#let deriv(x, n: 1, f: none) = {  // derivative
-  if (n == 1) {
-    $(upright(d) #f) / (upright(d) #x)$
+#let der(..args) = {
+  let argv = args.pos()
+  let argc = argv.len()
+
+  if argc < 1 {
+    panic("Must pass in at least one positional argument")
+  } else if argc > 3 {
+    panic("Must pass in at most 3 positional arguments")
+  }
+
+  let indvar = if argc == 3 { argv.at(1) } else if argc == 2 { argv.at(1) } else { argv.at(0) }
+  let depvar = if argc == 3 { argv.at(0) } else if argc == 2 { argv.at(0) } else { none }
+  let order = if argc == 3 { argv.at(2) } else { 1 }
+
+  if (order == 1) {
+    $(upright(d) #depvar) / (upright(d) #indvar)$
   } else {
-    $(upright(d)^#n #f) / (upright(d) #x^#n)$
+    $(upright(d)^#order #depvar) / (upright(d) #indvar^#order)$
   }
 }
-#let pderiv(x, n: 1, f: none) = {  // partial derivative
-  if (n == 1) {
-    $(partial #f) / (partial #x)$
+
+#let pder(..args) = {
+  let argv = args.pos()
+  let argc = argv.len()
+
+  if argc < 1 {
+    panic("Must pass in at least one positional argument")
+  } else if argc > 3 {
+    panic("Must pass in at most 3 positional arguments")
+  }
+
+  let indvar = if argc == 3 { argv.at(1) } else if argc == 2 { argv.at(1) } else { argv.at(0) }
+  let depvar = if argc == 3 { argv.at(0) } else if argc == 2 { argv.at(0) } else { none }
+  let order = if argc == 3 { argv.at(0) } else { 1 }
+
+  if (order == 1) {
+    $(partial #depvar) / (partial #indvar)$
   } else {
-    $(partial^#n #f) / (partial #x^#n)$
+    $(partial^#order #depvar) / (partial #indvar^#order)$
   }
 }
 
@@ -84,21 +111,21 @@
 #let propto = sym.prop  // proportional to (avoids a symbol conflict with proposition)
 #let mapsto = sym.arrow.r.long.bar  // image of a given element under a map
 #let exiuni = $exists!$  // exists unique
-#let oplus = sym.plus.circle
+#let oplus  = sym.plus.circle
 #let otimes = sym.times.circle
 
 // Misc. Operators
-#let Id = $op("Id")$
-#let Im = $op("Im")$
-#let sgn = $op("sgn")$
-#let asinh = $op("asinh")$
-#let acosh = $op("acosh")$
-#let atanh = $op("atanh")$
+#let Id      = $op("Id")$
+#let Im      = $op("Im")$
+#let sgn     = $op("sgn")$
+#let asinh   = $op("asinh")$
+#let acosh   = $op("acosh")$
+#let atanh   = $op("atanh")$
 #let arcsinh = $op("arcsinh")$
-#let arcosh = $op("arcosh")$
+#let arcosh  = $op("arcosh")$
 #let arctanh = $op("arctanh")$
-#let prod = $limits(product)$
-#let sum = $limits(sum)$
+#let prod    = $limits(product)$
+#let sum     = $limits(sum)$
 
 // Long division; see https://github.com/typst/typst/discussions/3149
 #let longdiv(cols_count, ..cells) = {
