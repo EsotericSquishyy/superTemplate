@@ -1,14 +1,20 @@
-#import "@preview/unify:0.6.0": num, qty, numrange, unit  // for calculations involving units
-#import "@preview/physica:0.9.5": *  // for general physics notation
-#import "@preview/quill:0.5.0": *  // for quantum circuits
+#import "@preview/unify:0.6.0": num, qty, numrange, unit // for calculations involving units
+#import "@preview/physica:0.9.5": * // for general physics notation
+#import "@preview/quill:0.5.0": * // for quantum circuits
+
+//------Classical Mechanics------
+#let ddot = math.dot.double
+#let dddot = math.dot.triple
+#let uvec(x) = $hat(bold(#x))$
+
 
 //------Quantum Mechanics------
-#let hbar = $planck.reduce$  // reduced planck constant
-#let tp = $times.circle$  // tensor product
+#let hbar = $planck.reduce$ // reduced planck constant
+#let tp = $times.circle$ // tensor product
 
 
 //------Quantum Information------
-#let expec(a) = $angle.l #a angle.r$  // expectation
+#let expec(a) = $angle.l #a angle.r$ // expectation
 
 // bases in the Bloch sphere
 #let zbasis = $plus.circle$
