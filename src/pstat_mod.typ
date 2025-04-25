@@ -4,3 +4,6 @@
 #let Exp = $op("Exp")$
 #let Poisson = $op("Poisson")$
 #let Geom = $op("Geom")$
+
+#let Cov = $op("Cov")$ // covariance
+

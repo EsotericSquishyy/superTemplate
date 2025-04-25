@@ -5,7 +5,8 @@
 //------Classical Mechanics------
 #let ddot = math.dot.double
 #let dddot = math.dot.triple
-#let uvec(x) = $hat(bold(#x))$
+#let eula1(x, y) = $0 = pdv(cal(L), #x) - dv(, y) pdv(cal(L), dot(#x))$
+#let eula2(x, y) = $0 = pdv(f, #x) - dv(, y) pdv(f, dot(#x))$
 
 
 //------Quantum Mechanics------

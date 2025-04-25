@@ -10,6 +10,7 @@
 #let bu(unit) = $bold(upright(unit))$
 #let vtr(unit) = $bold(upright(unit))$
 #let up(unit) = $upright(unit)$
+#let uvec(x) = $hat(bold(#x))$
 
 // Calculus
 #let integer = int // required for integral
@@ -91,13 +92,16 @@
   $lr(paren.l joined paren.r)$
 }
 
-// Misc. Symbols
+// Misc. Symbols / familiar macros from latex
 #let cap = sym.inter
 #let sect = sym.inter
 #let cup = sym.union
 #let infty = sym.infinity
 #let pm = sym.plus.minus
 #let sim = sym.tilde.op
+#let geq = sym.gt.eq
+#let leq = sym.lt.eq
+#let to = sym.arrow.r
 #let ni = sym.in.rev
 #let st = "such that"
 #let fs = "for some"
