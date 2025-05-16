@@ -20,9 +20,11 @@
 #let oint = sym.integral.cont
 #let oiint = sym.integral.surf
 #let oiiint = sym.integral.vol
+#let db = $upright(d) b$
 #let df = $upright(d) f$
 #let dg = $upright(d) g$
 #let dh = $upright(d) h$
+#let dk = $upright(d) k$
 #let dl = $upright(d) l$
 #let dr = $upright(d) r$
 #let ds = $upright(d) s$
@@ -37,8 +39,11 @@
 #let dtheta = $upright(d) theta$
 #let dphi = $upright(d) phi$
 #let dpsi = $upright(d) psi$
+#let dOmega = $upright(d) Omega$
+#let dsigma = $upright(d) sigma$
 #let dell = $upright(d) ell$
 #let dbu(x) = $upright(d) bu(#x)$
+#let dA = $upright(d) A$
 
 #let der(..args) = {
   let argv = args.pos()
