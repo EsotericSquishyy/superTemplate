@@ -22,6 +22,7 @@
 #let conj(a) = $overline(#a)$  // complex conjugate
 #let contint1 = $integral_C f(z) d z$  // generic contour integral (notation 1)
 #let contint2 = $integral_gamma f(z) d z$  // generic contour integral (notation 2)
+#let Vol = $op("Vol")$  // Volume of a set
 
 // the following have been redefined to display math underneath inline:
 #let sup = $limits(op("sup"))$  // supremum
@@ -80,6 +81,7 @@
 #let cont = $op("cont")$  // content
 #let pp = $op("pp")$
 #let GF = $op("GF")$  // galois field
+#let Gal = $op("Gal")$  // galois group
 
 
 //------Number Theory------
@@ -94,3 +96,4 @@
 
 //------Geometry------
 #let Cay = $op("Cay")$  // Cayley graph
+#let CAT = $op("CAT")$  // CAT
