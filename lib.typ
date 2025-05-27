@@ -20,31 +20,12 @@
 #let oint = sym.integral.cont
 #let oiint = sym.integral.surf
 #let oiiint = sym.integral.vol
-#let db = $upright(d) b$
-#let df = $upright(d) f$
-#let dg = $upright(d) g$
-#let dh = $upright(d) h$
-#let dk = $upright(d) k$
-#let dl = $upright(d) l$
-#let dr = $upright(d) r$
-#let ds = $upright(d) s$
-#let dt = $upright(d) t$
-#let du = $upright(d) u$
-#let dv = $upright(d) v$
-#let dw = $upright(d) w$
-#let dx = $upright(d) x$
-#let dy = $upright(d) y$
-#let dz = $upright(d) z$
-#let dlambda = $upright(d) lambda$
-#let dtheta = $upright(d) theta$
-#let dphi = $upright(d) phi$
-#let dpsi = $upright(d) psi$
-#let dOmega = $upright(d) Omega$
-#let dsigma = $upright(d) sigma$
-#let dell = $upright(d) ell$
-#let dbu(x) = $upright(d) bu(#x)$
-#let dA = $upright(d) A$
 
+// Differentials
+#let di(x) = $upright(d) #x$
+#let dbu(x) = $upright(d) bu(#x)$
+
+// Derivatives
 #let der(..args) = {
   let argv = args.pos()
   let argc = argv.len()
