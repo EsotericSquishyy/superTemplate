@@ -11,6 +11,7 @@
 //------Topology------
 #let bound = sym.diff  // boundary of a topological space
 #let clo(x) = $overline(#x)$  // closure of a topological space
+#let intr(x) = $#x^circle.small$  // interior of a topological space
 
 
 //------Real and Complex Analysis------
@@ -23,6 +24,7 @@
 #let contint1 = $integral_C f(z) d z$  // generic contour integral (notation 1)
 #let contint2 = $integral_gamma f(z) d z$  // generic contour integral (notation 2)
 #let Vol = $op("Vol")$  // Volume of a set
+#let supp = $op("supp")$  // Support of a function
 
 // the following have been redefined to display math underneath inline:
 #let sup = $limits(op("sup"))$  // supremum
