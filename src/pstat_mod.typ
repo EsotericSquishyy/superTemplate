@@ -7,3 +7,4 @@
 
 #let Cov = $op("Cov")$ // covariance
 
+#let logit = $op("logit")$

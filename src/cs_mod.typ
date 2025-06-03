@@ -21,3 +21,10 @@
 //------Lambda Calculus------
 #let evalto = sym.arrow.b.double  // evaluate to this value under operational semantics
 #let pred = sym.dot.circle  // logical predicate
+
+
+//------Machine Learning------
+#let softmax = $op("softmax")$
+#let ReLU = $op("ReLU")$
+#let score = $op("score")$
+#let attention = $op("attention")$

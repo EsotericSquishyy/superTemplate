@@ -5,17 +5,17 @@
 //------Classical Mechanics------
 #let ddot = math.dot.double
 #let dddot = math.dot.triple
-#let eula1(x, y) = $0 = pdv(cal(L), #x) - dv(, #y) pdv(cal(L), dot(#x))$
-#let eula2(x, y) = $0 = pdv(f, #x) - dv(, y) pdv(f, dot(#x))$
-
+#let eula(x, y) = $pdv(L, #x) - dv(, #y) pdv(L, dot(#x))$  // euler-lagrange equation
+#let ham1(q, p) = $dv(#q, t) = pdv(H, #p)$  // hamilton's equation 1
+#let ham2(q, p) = $dv(#p, t) = -pdv(H, #q)$  // hamilton's equation 2
 
 //------Quantum Mechanics------
-#let hbar = $planck.reduce$ // reduced planck constant
-#let tp = $times.circle$ // tensor product
+#let hbar = $planck.reduce$  // reduced planck constant
+#let tp = $times.circle$  // tensor product
 
 
 //------Quantum Information------
-#let expec(a) = $angle.l #a angle.r$ // expectation
+#let expec(a) = $angle.l #a angle.r$  // expectation
 
 // bases in the Bloch sphere
 #let zbasis = $plus.circle$
