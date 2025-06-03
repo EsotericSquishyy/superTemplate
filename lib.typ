@@ -59,7 +59,7 @@
 
   let indvar = if argc == 3 { argv.at(1) } else if argc == 2 { argv.at(1) } else { argv.at(0) }
   let depvar = if argc == 3 { argv.at(0) } else if argc == 2 { argv.at(0) } else { none }
-  let order = if argc == 3 { argv.at(0) } else { 1 }
+  let order = if argc == 3 { argv.at(2) } else { 1 }
 
   if (order == 1) {
     $(partial #depvar) / (partial #indvar)$
