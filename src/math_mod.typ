@@ -84,6 +84,7 @@
 #let pp = $op("pp")$
 #let GF = $op("GF")$  // galois field
 #let Gal = $op("Gal")$  // galois group
+#let Fr = $op("Fr")$ // Frobenius endomorphism
 
 
 //------Number Theory------
