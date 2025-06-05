@@ -85,6 +85,8 @@
 #let GF = $op("GF")$  // galois field
 #let Gal = $op("Gal")$  // galois group
 #let Fr = $op("Fr")$ // Frobenius endomorphism
+#let Orb = $op("Orb")$ // Orbit
+#let Stab = $op("Stab")$ // Stabilizer
 
 
 //------Number Theory------
