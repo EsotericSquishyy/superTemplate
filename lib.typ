@@ -73,7 +73,7 @@
   let joined = args.pos().map(x => $#x$).join(",")
   $lr(angle.l joined angle.r)$
 }
-#let paren(..args) = {
+#let par(..args) = {
   let joined = args.pos().map(x => $#x$).join(",")
   $lr(paren.l joined paren.r)$
 }
