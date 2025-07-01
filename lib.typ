@@ -69,11 +69,11 @@
 }
 
 // Arbitrary elements in angle brackets or parens
-#let ang(..args) = {
+#let angs(..args) = {
   let joined = args.pos().map(x => $#x$).join(",")
   $lr(angle.l joined angle.r)$
 }
-#let par(..args) = {
+#let pars(..args) = {
   let joined = args.pos().map(x => $#x$).join(",")
   $lr(paren.l joined paren.r)$
 }
