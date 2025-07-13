@@ -87,6 +87,9 @@
 #let Fr = $op("Fr")$ // Frobenius endomorphism
 #let Orb = $op("Orb")$ // Orbit
 #let Stab = $op("Stab")$ // Stabilizer
+#let Ann = $op("Ann")$ // Annihilator
+#let Hom = $op("Hom")$ // Homomorphisms
+#let Coker = $op("Coker")$ // Cokernel
 
 
 //------Number Theory------
