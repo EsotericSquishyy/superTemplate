@@ -66,7 +66,7 @@
   let joined = args.pos().map(x => $#x$).join($space$)
   $lr((joined))$
 }
-#let gen(a) = $angle.l #a angle.r$  // cyclic subgroup
+#let gen(a) = $lr(angle.l #a angle.r)$  // cyclic subgroup
 #let nsub = sym.lt.tri.eq  // normal subgroup
 #let notnsub = sym.lt.tri.eq.not  // not a normal subgroup
 #let Aut = $op("Aut")$  // automorphism
@@ -90,6 +90,7 @@
 #let Ann = $op("Ann")$ // Annihilator
 #let Hom = $op("Hom")$ // Homomorphisms
 #let Coker = $op("Coker")$ // Cokernel
+#let idealq(a, b) = $lr(paren.l #a colon #b paren.r)$
 
 
 //------Number Theory------
