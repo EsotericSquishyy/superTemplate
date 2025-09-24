@@ -89,6 +89,7 @@
 #let Stab = $op("Stab")$ // Stabilizer
 #let Ann = $op("Ann")$ // Annihilator
 #let Hom = $op("Hom")$ // Homomorphisms
+#let End = $op("End")$ // Endomorphism
 #let Coker = $op("Coker")$ // Cokernel
 #let idealq(a, b) = $lr(paren.l #a colon #b paren.r)$
 
