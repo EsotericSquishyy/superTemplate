@@ -294,7 +294,8 @@
             #text(fill: text.fill, weight: "extrabold")[#author]
           ]]
         )
-        line(length: 100%)
+
+        line(length: 100%, stroke: text.fill)
       }
     },
     footer: context {
