@@ -26,6 +26,8 @@
 #let Vol = $op("Vol")$  // Volume of a set
 #let supp = $op("supp")$  // Support of a function
 #let ER = $overline(RR)$
+#let uint(a, b) =  $overline(integral_(#a)^(#b))$
+#let lint(a, b) = $underline(integral_(#a)^(#b))$
 
 // the following have been redefined to display math underneath inline:
 #let sup = $limits(op("sup"))$  // supremum
