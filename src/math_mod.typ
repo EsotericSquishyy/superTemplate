@@ -76,6 +76,7 @@
 #let Aut = $op("Aut")$  // automorphism
 #let Inn = $op("Inn")$  // inner automorphism
 #let GL = $op("GL")$  // general linear group
+#let PGL = $op("PGL")$  // projective general linear group
 #let SL = $op("SL")$  // special linear group
 #let Ker = $op("Ker")$  // kernel
 #let iso = sym.tilde.equiv  // isomorphic
