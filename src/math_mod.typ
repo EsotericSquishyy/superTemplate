@@ -96,6 +96,7 @@
 #let Hom = $op("Hom")$ // Homomorphisms
 #let End = $op("End")$ // Endomorphism
 #let Mor = $op("Mor")$ // Morphism
+#let Ob = $op("Ob")$ // Objects
 #let Coker = $op("Coker")$ // Cokernel
 #let Br = $op("Br")$ // Brauer
 #let idealq(a, b) = $lr(paren.l #a colon #b paren.r)$
