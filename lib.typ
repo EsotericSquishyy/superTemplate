@@ -1,4 +1,4 @@
-#import "@preview/cetz:0.3.2"
+#import "@preview/cetz:0.4.2"
 #import "src/math_mod.typ"
 #import "src/cs_mod.typ"
 #import "src/physics_mod.typ"
@@ -104,8 +104,8 @@
 #let propto = sym.prop // proportional to (avoids a symbol conflict with proposition)
 #let mapsto = sym.arrow.r.long.bar // image of a given element under a map
 #let exiuni = $exists!$ // exists unique
-#let oplus = sym.plus.circle
-#let otimes = sym.times.circle
+#let oplus = sym.plus.o
+#let otimes = sym.times.o
 
 // Misc. Operators
 #let Id = $op("Id")$

@@ -11,15 +11,15 @@
 
 //------Quantum Mechanics------
 #let hbar = $planck.reduce$  // reduced planck constant
-#let tp = $times.circle$  // tensor product
+#let tp = $times.o$  // tensor product
 
 
 //------Quantum Information------
 #let expec(a) = $angle.l #a angle.r$  // expectation
 
 // bases in the Bloch sphere
-#let zbasis = $plus.circle$
-#let xbasis = $times.circle$
+#let zbasis = sym.plus.o
+#let xbasis = sym.times.o
 
 // the following prevent formatting errors in the Y basis
 #let pli = $+ #h(0em) i$

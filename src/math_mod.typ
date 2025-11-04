@@ -1,4 +1,4 @@
-#import "@preview/fletcher:0.5.4" as fletcher: diagram, node, edge  // for commutative diagrams
+#import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge  // for commutative diagrams
 
 
 //------Differential Geometry------
@@ -9,7 +9,7 @@
 
 
 //------Topology------
-#let bound = sym.diff  // boundary of a topological space
+#let bound = sym.partial  // boundary of a topological space
 #let clo(x) = $overline(#x)$  // closure of a topological space
 #let intr(x) = $#x^circle.small$  // interior of a topological space
 
@@ -54,8 +54,8 @@
 #let rank = $op("rank")$
 #let ip(x, y) = $lr(angle.l #x, #y angle.r)$  // inner product
 #let tr = $op("tr")$  // trace
-#let dsum = sym.plus.circle  // direct sum
-#let tp = sym.times.circle  // tensor product
+#let dsum = sym.plus.o  // direct sum
+#let tp = sym.times.o  // tensor product
 #let codim = $op("codim")$  // codimension
 
 
