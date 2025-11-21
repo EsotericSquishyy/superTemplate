@@ -25,17 +25,10 @@
 #let contint2 = $integral_gamma f(z) d z$  // generic contour integral (notation 2)
 #let Vol = $op("Vol")$  // Volume of a set
 #let supp = $op("supp")$  // Support of a function
-#let ER = $overline(RR)$
-#let uint(a, b) =  $overline(integral_(#a)^(#b))$
-#let lint(a, b) = $underline(integral_(#a)^(#b))$
-
-// the following have been redefined to display math underneath inline:
-#let sup = $limits(op("sup"))$  // supremum
-#let inf = $limits(op("inf"))$  // infimum
-#let max = $limits(op("max"))$  // maximum
-#let min = $limits(op("min"))$  // minimum
-#let limsup = $limits(op("lim" #h(0.2em) "sup"))$  // limit superior
-#let liminf = $limits(op("lim" #h(0.2em) "inf"))$  // limit inferior
+#let ER = $overline(RR)$  // extended reals
+#let uint(a, b) =  $overline(integral_(#a)^(#b))$  // Upper Riemann integral
+#let lint(a, b) = $underline(integral_(#a)^(#b))$  // Lower Riemann integral
+#let Cc(S) = $C_c (#S)$  // Continuous and compactly supported on S
 
 // measure differentials
 #let dmu = $upright(d) mu$
@@ -56,6 +49,7 @@
 #let tr = $op("tr")$  // trace
 #let dsum = sym.plus.o  // direct sum
 #let tp = sym.times.o  // tensor product
+#let tpb = sym.times.o.big  // big tensor product
 #let codim = $op("codim")$  // codimension
 
 
@@ -86,7 +80,7 @@
 #let char = $op("char")$  // characteristic
 #let nil = $op("nil")$  // nilradical
 #let cont = $op("cont")$  // content
-#let pp = $op("pp")$
+#let pp = $op("pp")$  // principal part
 #let GF = $op("GF")$  // galois field
 #let Gal = $op("Gal")$  // galois group
 #let Fr = $op("Fr")$ // Frobenius endomorphism
@@ -99,7 +93,7 @@
 #let Ob = $op("Ob")$ // Objects
 #let Coker = $op("Coker")$ // Cokernel
 #let Br = $op("Br")$ // Brauer
-#let idealq(a, b) = $lr(paren.l #a colon #b paren.r)$
+#let idealq(a, b) = $lr(paren.l #a colon #b paren.r)$  // ideal quotient
 
 
 //------Number Theory------
