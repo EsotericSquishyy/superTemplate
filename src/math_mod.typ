@@ -94,6 +94,7 @@
 #let Coker = $op("Coker")$ // Cokernel
 #let Br = $op("Br")$ // Brauer
 #let idealq(a, b) = $lr(paren.l #a colon #b paren.r)$  // ideal quotient
+#let colim = $limits(op("colim"))$ // Colim
 
 
 //------Number Theory------
