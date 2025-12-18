@@ -1,37 +1,15 @@
 # superTemplate
 
-A [`Typst`](https://github.com/typst/typst) suite of templates and macros for taking notes, doing problem sets, and writing reports in Mathematics, Computer Science, Physics, and Engineering.
+A [`Typst`](https://github.com/typst/typst) suite of macros for taking notes, doing problem sets, and writing reports in Mathematics, Computer Science, Physics, and Engineering.
 This package is best used as a companion to [our other package](https://github.com/EsotericSquishyy/superTheorems).
 
 > [`Typst`](https://github.com/typst/typst) is required to use this package.
 > You can get started by via the integrated language service [`Tinymist`](https://github.com/Myriad-Dreamin/tinymist) or by referring to Typst's [installation page](https://github.com/typst/typst?tab=readme-ov-file#installation).
 > Note that [`Tinymist`](https://github.com/Myriad-Dreamin/tinymist) currently supports `VSCode`, `NeoVim`, `Emacs`, `Sublime Text`, `Helix`, and `Zed`.
 
-## Gallery
-
-<p float="left">
-    <img src="assets/algebra-1.png" width="300">
-    <img src="assets/analysis-2.png" width="300">
-    <img src="assets/algorithms-1.png" width="300">
-    <img src="assets/probability-2.png" width="300">
-    <img src="assets/quantum_computing-5.png" width="300">
-</p>
-
-See the source code for these in `./examples`.
-
 ## Features
 
-This package consists of two parts:
-
-1. A set of templates
-2. Macros for various subjects
-
-We have implemented the following templates in `templates.typ`:
-
-- `notes`, for taking lecture notes during class (or taking them from a textbook). The real analysis and algorithm notes in the gallery above are both examples of this.
-- `assignment`, for completing homework assignments and problem sets. The probability and group theory assignments in the gallery above are both examples of this.
-- `basic`, a barebones template for generic tasks. We've used this to create study sheets summarizing key info in a course. The quantum computing summary sheet in the gallery above is an example of this.
-- `report` (in progress), for writing a paper, lab report, or (eventually) even a thesis
+This package is a set of namespaced macros for various subjects
 
 The macros we have implemented are separated by subject to avoid naming conflicts and minimize the amount of overhead when importing.
 Many of the macros are inspired by their equivalents in Latex, which we were heavy users of prior to switching to Typst.
@@ -70,11 +48,8 @@ The macros we implemented cover commonly used notation in the following topics:
     ```typ
     #import "@local/superTemplate:0.3.0": *
     #import math_mod: *
-    #show: basic
 
     #cyc(1, 2, 3) Hello world!
     ```
 
     If you're able to render the pdf, you're good to go.
-
-4. Check out the examples in `./examples` to get started.
