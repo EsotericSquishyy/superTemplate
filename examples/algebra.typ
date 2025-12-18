@@ -1,6 +1,10 @@
-#import "@local/superTemplate:0.2.0": *
-#env_colors.update("bw")
+#import "@local/superTheorems:0.1.0": *
+#import "@local/superTemplate:0.3.0": *
+
 #import math_mod: *
+
+#show: thmS-init.with(colors: "bw")
+
 #let date = datetime(
   year: 2025,
   month: 1,

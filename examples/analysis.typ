@@ -1,6 +1,10 @@
-#import "@local/superTemplate:0.2.0": *
-#env_colors.update("gruvbox_dark")
+#import "@local/superTheorems:0.1.0": *
+#import "@local/superTemplate:0.3.0": *
+
 #import math_mod: *
+
+#show: thmS-init.with(colors: "gruvbox_dark")
+
 #show: notes.with("Analysis Lecture Notes", "John Doe", number: true, depth: 3, box: true)
 #set enum(numbering: "i)")
 
@@ -55,7 +59,7 @@ We now consider this more closely.
 ]
 
 <order>
-#defn(name: [Order])[
+#defn[Order][
   Let $S$ be a set.
   An *order* on $S$ is a relation, denoted by $<$, with the following two properties:
 
@@ -65,7 +69,7 @@ We now consider this more closely.
   The statement "$x < y$" may be read as "$x$ is less than $y$" of "$x$ is smaller than $y$".
 ]
 
-#defn(name: [Ordered Set])[
+#defn[Ordered Set][
   An *ordered set* is a set $S$ in which an order is defined.
 
   For example, $QQ$ is an ordered set if $r < s$ is defined to mean that $s - r$ is a positive rational number.
@@ -79,7 +83,7 @@ We now consider this more closely.
   In particular, $inf B$ exists in $S$.
 ][
   Since $B$ is bounded below, $L$ is nonempty.
-  SInce $L$ consists of the $y in S$ which satisfy the inequality $y <= x$ for every $x in B$, we see that _every_ $x in B$ is an _upper bound_ of $L$.
+  Since $L$ consists of the $y in S$ which satisfy the inequality $y <= x$ for every $x in B$, we see that _every_ $x in B$ is an _upper bound_ of $L$.
   Thus, $L$ is bounded above.
   Our hypothesis then implies that $L$ has a supremum in $S$ called $alpha$.
 
